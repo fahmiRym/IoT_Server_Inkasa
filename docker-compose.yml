@@ -59,6 +59,14 @@ services:
     networks:
       - noc-network
 
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: noc-dashboard-mediamtx
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./mediamtx/mediamtx.yml:/mediamtx.yml:ro
+
 networks:
   noc-network:
     driver: bridge
