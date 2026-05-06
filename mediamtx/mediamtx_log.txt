@@ -1,0 +1,1394 @@
+2026/05/02 09:39:26 INF MediaMTX v1.18.1, windows, amd64
+2026/05/02 09:39:26 INF configuration loaded from C:\laragon\www\noc-dashboard\mediamtx\mediamtx.yml
+2026/05/02 09:39:26 INF [path cctv1] [RTSP source] started
+2026/05/02 09:39:26 INF [RTSP] listener opened on :8554 (TCP/RTSP), :8000 (UDP/RTP), :8001 (UDP/RTCP)
+2026/05/02 09:39:26 INF [RTMP] listener opened on :1935 (TCP/RTMP)
+2026/05/02 09:39:26 INF [HLS] listener opened on :8888 (TCP/HTTP)
+2026/05/02 09:39:26 INF [WebRTC] listener opened on :8889 (TCP/HTTP), :8189 (UDP/ICE)
+2026/05/02 09:39:26 INF [SRT] listener opened on :8890 (UDP)
+2026/05/02 09:39:26 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:39:31 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:39:37 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:39:39 INF reloading configuration (file changed)
+2026/05/02 09:39:42 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:39:47 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:39:52 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:39:57 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:02 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:05 INF reloading configuration (file changed)
+2026/05/02 09:40:08 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:13 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:18 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:23 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:28 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:33 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:39 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:44 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:49 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:40:54 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:00 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:05 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:10 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:15 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:20 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:25 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:31 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:36 INF reloading configuration (file changed)
+2026/05/02 09:41:36 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:38 INF reloading configuration (file changed)
+2026/05/02 09:41:41 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:46 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:51 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:41:57 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:02 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:07 INF [WebRTC] [session fe819abe] created by [::1]:52750
+2026/05/02 09:42:07 INF [WebRTC] [session fe819abe] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:08 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:09 INF [WebRTC] [session 5972fad1] created by [::1]:52750
+2026/05/02 09:42:09 INF [WebRTC] [session 5972fad1] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:11 INF [WebRTC] [session 4888f259] created by [::1]:52750
+2026/05/02 09:42:11 INF [WebRTC] [session 4888f259] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:13 INF [WebRTC] [session 55494c7d] created by [::1]:52750
+2026/05/02 09:42:13 INF [WebRTC] [session 55494c7d] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:13 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:15 INF [WebRTC] [session e48260e2] created by [::1]:52750
+2026/05/02 09:42:15 INF [WebRTC] [session e48260e2] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:17 INF [WebRTC] [session 3bcbc981] created by [::1]:52750
+2026/05/02 09:42:17 INF [WebRTC] [session 3bcbc981] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:18 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:20 INF [WebRTC] [session 853c8f7a] created by [::1]:52750
+2026/05/02 09:42:20 INF [WebRTC] [session 853c8f7a] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:23 INF [WebRTC] [session 67bf8719] created by [::1]:52750
+2026/05/02 09:42:23 INF [WebRTC] [session 67bf8719] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:24 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:25 INF reloading configuration (file changed)
+2026/05/02 09:42:25 INF [WebRTC] [session a3aa58af] created by [::1]:52750
+2026/05/02 09:42:25 INF [WebRTC] [session a3aa58af] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:28 INF [WebRTC] [session 2d4fdf8f] created by [::1]:52750
+2026/05/02 09:42:28 INF [WebRTC] [session 2d4fdf8f] closed: no stream is available on path 'cctv1'
+2026/05/02 09:42:29 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:34 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:39 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:44 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:50 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:55 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:42:58 INF reloading configuration (file changed)
+2026/05/02 09:42:58 WAR parameter 'sourceProtocol' is deprecated and has been replaced with 'rtspTransport'
+2026/05/02 09:42:58 INF [path cctv1] [RTSP source] stopped: path is closing
+2026/05/02 09:42:58 INF [path cctv1] [RTSP source] started
+2026/05/02 09:42:58 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:04 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:09 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:14 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:19 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:20 INF reloading configuration (file changed)
+2026/05/02 09:43:20 INF [path cctv1] [RTSP source] stopped: path is closing
+2026/05/02 09:43:20 INF [path cctv1] [RTSP source] started
+2026/05/02 09:43:20 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:25 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:30 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:35 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:41 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:43 INF [WebRTC] [session 9b32619d] created by [::1]:53098
+2026/05/02 09:43:43 INF [WebRTC] [session 9b32619d] closed: no stream is available on path 'cctv1'
+2026/05/02 09:43:45 INF [WebRTC] [session 7df17885] created by [::1]:53098
+2026/05/02 09:43:45 INF [WebRTC] [session 7df17885] closed: no stream is available on path 'cctv1'
+2026/05/02 09:43:46 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:48 INF [WebRTC] [session 7943fb27] created by [::1]:53098
+2026/05/02 09:43:48 INF [WebRTC] [session 7943fb27] closed: no stream is available on path 'cctv1'
+2026/05/02 09:43:51 INF [WebRTC] [session 50cc2b2f] created by [::1]:53098
+2026/05/02 09:43:51 INF [WebRTC] [session 50cc2b2f] closed: no stream is available on path 'cctv1'
+2026/05/02 09:43:51 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:54 INF [WebRTC] [session d37d9117] created by [::1]:53098
+2026/05/02 09:43:54 INF [WebRTC] [session d37d9117] closed: no stream is available on path 'cctv1'
+2026/05/02 09:43:56 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:43:57 INF [WebRTC] [session 4595f5b6] created by [::1]:53150
+2026/05/02 09:43:57 INF [WebRTC] [session 4595f5b6] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:00 INF [WebRTC] [session 6d43b01b] created by [::1]:53150
+2026/05/02 09:44:00 INF [WebRTC] [session 6d43b01b] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:01 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:44:03 INF [WebRTC] [session 0bf16520] created by [::1]:53150
+2026/05/02 09:44:03 INF [WebRTC] [session 0bf16520] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:06 INF [WebRTC] [session 90db89a5] created by [::1]:53150
+2026/05/02 09:44:06 INF [WebRTC] [session 90db89a5] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:07 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:44:09 INF [WebRTC] [session 0f0f8f8d] created by [::1]:53150
+2026/05/02 09:44:09 INF [WebRTC] [session 0f0f8f8d] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:12 INF [WebRTC] [session 95b6986b] created by [::1]:53150
+2026/05/02 09:44:12 INF [WebRTC] [session 95b6986b] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:12 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:44:15 INF [WebRTC] [session d5492a53] created by [::1]:53150
+2026/05/02 09:44:15 INF [WebRTC] [session d5492a53] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:17 ERR [path cctv1] [RTSP source] bad status code: 500 (Internal Server Error)
+2026/05/02 09:44:18 INF [WebRTC] [session d4cae161] created by [::1]:53150
+2026/05/02 09:44:18 INF [WebRTC] [session d4cae161] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:21 INF [WebRTC] [session 08522356] created by [::1]:53150
+2026/05/02 09:44:21 INF [WebRTC] [session 08522356] closed: no stream is available on path 'cctv1'
+2026/05/02 09:44:22 INF [path cctv1] stream is available and online, 2 tracks (H265, G711)
+2026/05/02 09:44:23 INF [WebRTC] [session b3e5167d] created by [::1]:53150
+2026/05/02 09:44:23 INF [WebRTC] [session b3e5167d] peer connection established, local candidate: host/udp/192.168.56.1/8189, remote candidate: prflx/udp/10.10.110.5/49831
+2026/05/02 09:44:23 INF [WebRTC] [session b3e5167d] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 09:44:24 INF [WebRTC] [session b3e5167d] closed: peer connection closed
+2026/05/02 09:44:53 INF [WebRTC] [session 43129a22] created by [::1]:53367
+2026/05/02 09:44:53 INF [WebRTC] [session 43129a22] peer connection established, local candidate: host/udp/127.0.0.1/8189, remote candidate: prflx/udp/10.10.110.5/65188
+2026/05/02 09:44:53 INF [WebRTC] [session 43129a22] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 09:44:55 INF reloading configuration (file changed)
+2026/05/02 09:44:57 INF reloading configuration (file changed)
+2026/05/02 09:47:32 INF reloading configuration (file changed)
+2026/05/02 09:50:30 INF [WebRTC] [session 43129a22] closed: peer connection closed
+2026/05/02 09:52:41 INF [WebRTC] [session 9ac9dd98] created by [::1]:56925
+2026/05/02 09:52:42 INF [WebRTC] [session 9ac9dd98] peer connection established, local candidate: host/udp/127.0.0.1/8189, remote candidate: prflx/udp/10.10.110.5/60526
+2026/05/02 09:52:42 INF [WebRTC] [session 9ac9dd98] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 10:11:55 INF reloading configuration (file changed)
+2026/05/02 10:12:05 INF [WebRTC] [session 398a5cb0] created by [::1]:60895
+2026/05/02 10:12:05 INF [WebRTC] [session 398a5cb0] peer connection established, local candidate: host/udp/10.10.110.5/8189, remote candidate: prflx/udp/10.10.110.5/58453
+2026/05/02 10:12:05 INF [WebRTC] [session 398a5cb0] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 10:12:09 INF reloading configuration (file changed)
+2026/05/02 10:12:25 INF reloading configuration (file changed)
+2026/05/02 10:14:21 INF reloading configuration (file changed)
+2026/05/02 10:14:32 INF reloading configuration (file changed)
+2026/05/02 10:14:35 INF reloading configuration (file changed)
+2026/05/02 10:18:03 INF [WebRTC] [session 398a5cb0] closed: peer connection closed
+2026/05/02 10:25:52 INF reloading configuration (file changed)
+2026/05/02 10:25:58 INF reloading configuration (file changed)
+2026/05/02 10:26:47 INF [WebRTC] [session 0f6bc62e] created by 10.10.110.1:44022
+2026/05/02 10:26:47 INF [WebRTC] [session 0f6bc62e] peer connection established, local candidate: host/udp/10.10.110.5/8189, remote candidate: prflx/udp/10.10.110.1/45044
+2026/05/02 10:26:47 INF [WebRTC] [session 0f6bc62e] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 10:26:55 INF reloading configuration (file changed)
+2026/05/02 10:26:59 INF reloading configuration (file changed)
+2026/05/02 10:27:04 INF reloading configuration (file changed)
+2026/05/02 10:27:59 INF [WebRTC] [session 0f6bc62e] closed: peer connection closed
+2026/05/02 10:28:05 INF [WebRTC] [session 9eb40f34] created by 10.10.110.2:56646
+2026/05/02 10:28:05 INF [WebRTC] [session 9eb40f34] closed: codecs not supported by client
+2026/05/02 10:28:07 INF [WebRTC] [session 7192b142] created by 10.10.110.2:56646
+2026/05/02 10:28:07 INF [WebRTC] [session 7192b142] closed: codecs not supported by client
+2026/05/02 10:28:09 INF [WebRTC] [session 8b61c5ef] created by 10.10.110.2:56646
+2026/05/02 10:28:09 INF [WebRTC] [session 8b61c5ef] closed: codecs not supported by client
+2026/05/02 10:28:11 INF [WebRTC] [session f6b541f0] created by 10.10.110.2:56646
+2026/05/02 10:28:11 INF [WebRTC] [session f6b541f0] closed: codecs not supported by client
+2026/05/02 10:28:13 INF [WebRTC] [session 6698a083] created by 10.10.110.2:56646
+2026/05/02 10:28:13 INF [WebRTC] [session 6698a083] closed: codecs not supported by client
+2026/05/02 10:28:15 INF [WebRTC] [session 289419c0] created by 10.10.110.2:56646
+2026/05/02 10:28:15 INF [WebRTC] [session 289419c0] closed: codecs not supported by client
+2026/05/02 10:28:17 INF [WebRTC] [session 3698daa0] created by 10.10.110.2:56646
+2026/05/02 10:28:17 INF [WebRTC] [session 3698daa0] closed: codecs not supported by client
+2026/05/02 10:28:19 INF [WebRTC] [session fd3b1fc0] created by 10.10.110.2:56646
+2026/05/02 10:28:20 INF [WebRTC] [session fd3b1fc0] closed: codecs not supported by client
+2026/05/02 10:28:22 INF [WebRTC] [session d456de50] created by 10.10.110.2:56646
+2026/05/02 10:28:22 INF [WebRTC] [session d456de50] closed: codecs not supported by client
+2026/05/02 10:28:24 INF [WebRTC] [session 8988dc75] created by 10.10.110.2:56646
+2026/05/02 10:28:24 INF [WebRTC] [session 8988dc75] closed: codecs not supported by client
+2026/05/02 10:28:26 INF [WebRTC] [session c43f88c4] created by 10.10.110.2:56646
+2026/05/02 10:28:26 INF [WebRTC] [session c43f88c4] closed: codecs not supported by client
+2026/05/02 10:28:28 INF [WebRTC] [session 50566355] created by 10.10.110.2:56646
+2026/05/02 10:28:28 INF [WebRTC] [session 50566355] closed: codecs not supported by client
+2026/05/02 10:28:30 INF [WebRTC] [session 4617a0a4] created by 10.10.110.2:56646
+2026/05/02 10:28:30 INF [WebRTC] [session 4617a0a4] closed: codecs not supported by client
+2026/05/02 10:28:32 INF [WebRTC] [session 31871d6f] created by 10.10.110.2:56646
+2026/05/02 10:28:32 INF [WebRTC] [session 31871d6f] closed: codecs not supported by client
+2026/05/02 10:28:34 INF [WebRTC] [session 55604740] created by 10.10.110.2:56646
+2026/05/02 10:28:34 INF [WebRTC] [session 55604740] closed: codecs not supported by client
+2026/05/02 10:28:36 INF [WebRTC] [session 4940b6fe] created by 10.10.110.2:56646
+2026/05/02 10:28:36 INF [WebRTC] [session 4940b6fe] closed: codecs not supported by client
+2026/05/02 10:28:38 INF [WebRTC] [session 7dd8f5db] created by 10.10.110.2:56646
+2026/05/02 10:28:38 INF [WebRTC] [session 7dd8f5db] closed: codecs not supported by client
+2026/05/02 10:28:40 INF [WebRTC] [session 8c2b3099] created by 10.10.110.2:56646
+2026/05/02 10:28:40 INF [WebRTC] [session 8c2b3099] closed: codecs not supported by client
+2026/05/02 10:28:42 INF [WebRTC] [session fdbd0b44] created by 10.10.110.2:56646
+2026/05/02 10:28:42 INF [WebRTC] [session fdbd0b44] closed: codecs not supported by client
+2026/05/02 10:28:44 INF [WebRTC] [session e214179b] created by 10.10.110.2:56646
+2026/05/02 10:28:44 INF [WebRTC] [session e214179b] closed: codecs not supported by client
+2026/05/02 10:28:46 INF [WebRTC] [session 2ad5205b] created by 10.10.110.2:56646
+2026/05/02 10:28:46 INF [WebRTC] [session 2ad5205b] closed: codecs not supported by client
+2026/05/02 10:28:48 INF [WebRTC] [session 5538f65d] created by 10.10.110.2:56646
+2026/05/02 10:28:48 INF [WebRTC] [session 5538f65d] closed: codecs not supported by client
+2026/05/02 10:28:50 INF [WebRTC] [session 42833bfe] created by 10.10.110.2:56646
+2026/05/02 10:28:50 INF [WebRTC] [session 42833bfe] closed: codecs not supported by client
+2026/05/02 10:28:52 INF [WebRTC] [session ad379111] created by 10.10.110.2:56646
+2026/05/02 10:28:52 INF [WebRTC] [session ad379111] closed: codecs not supported by client
+2026/05/02 10:28:54 INF [WebRTC] [session 3ee2ed6d] created by 10.10.110.2:56646
+2026/05/02 10:28:54 INF [WebRTC] [session 3ee2ed6d] closed: codecs not supported by client
+2026/05/02 10:28:56 INF [WebRTC] [session 84c45194] created by 10.10.110.2:56646
+2026/05/02 10:28:56 INF [WebRTC] [session 84c45194] closed: codecs not supported by client
+2026/05/02 10:28:58 INF [WebRTC] [session 33960069] created by 10.10.110.2:56646
+2026/05/02 10:28:58 INF [WebRTC] [session 33960069] closed: codecs not supported by client
+2026/05/02 10:29:00 INF [WebRTC] [session da71f4a7] created by 10.10.110.2:56646
+2026/05/02 10:29:00 INF [WebRTC] [session da71f4a7] closed: codecs not supported by client
+2026/05/02 10:29:03 INF [WebRTC] [session f35238b6] created by 10.10.110.2:56646
+2026/05/02 10:29:03 INF [WebRTC] [session f35238b6] closed: codecs not supported by client
+2026/05/02 10:29:05 INF [WebRTC] [session b15fa6d8] created by 10.10.110.2:56646
+2026/05/02 10:29:05 INF [WebRTC] [session b15fa6d8] closed: codecs not supported by client
+2026/05/02 10:29:07 INF [WebRTC] [session 3c381f88] created by 10.10.110.2:56646
+2026/05/02 10:29:07 INF [WebRTC] [session 3c381f88] closed: codecs not supported by client
+2026/05/02 10:29:09 INF [WebRTC] [session 6a5df99e] created by 10.10.110.2:56646
+2026/05/02 10:29:09 INF [WebRTC] [session 6a5df99e] closed: codecs not supported by client
+2026/05/02 10:29:11 INF [WebRTC] [session ad08ffbb] created by 10.10.110.2:56646
+2026/05/02 10:29:11 INF [WebRTC] [session ad08ffbb] closed: codecs not supported by client
+2026/05/02 10:29:13 INF [WebRTC] [session 14ac7b44] created by 10.10.110.2:56646
+2026/05/02 10:29:13 INF [WebRTC] [session 14ac7b44] closed: codecs not supported by client
+2026/05/02 10:29:15 INF [WebRTC] [session c8344e7c] created by 10.10.110.2:56646
+2026/05/02 10:29:15 INF [WebRTC] [session c8344e7c] closed: codecs not supported by client
+2026/05/02 10:29:17 INF [WebRTC] [session db004e46] created by 10.10.110.2:56646
+2026/05/02 10:29:17 INF [WebRTC] [session db004e46] closed: codecs not supported by client
+2026/05/02 10:29:19 INF [WebRTC] [session 1ae6eddf] created by 10.10.110.2:56646
+2026/05/02 10:29:19 INF [WebRTC] [session 1ae6eddf] closed: codecs not supported by client
+2026/05/02 10:29:21 INF [WebRTC] [session bcac3c90] created by 10.10.110.2:56646
+2026/05/02 10:29:21 INF [WebRTC] [session bcac3c90] closed: codecs not supported by client
+2026/05/02 10:29:23 INF [WebRTC] [session 69415c61] created by 10.10.110.2:56646
+2026/05/02 10:29:23 INF [WebRTC] [session 69415c61] closed: codecs not supported by client
+2026/05/02 10:29:25 INF [WebRTC] [session d6d3912d] created by 10.10.110.2:56646
+2026/05/02 10:29:25 INF [WebRTC] [session d6d3912d] closed: codecs not supported by client
+2026/05/02 10:29:27 INF [WebRTC] [session 427bdf80] created by 10.10.110.2:56646
+2026/05/02 10:29:27 INF [WebRTC] [session 427bdf80] closed: codecs not supported by client
+2026/05/02 10:29:29 INF [WebRTC] [session 63038c2d] created by 10.10.110.2:56646
+2026/05/02 10:29:29 INF [WebRTC] [session 63038c2d] closed: codecs not supported by client
+2026/05/02 10:29:31 INF [WebRTC] [session 5c1155c0] created by 10.10.110.2:56646
+2026/05/02 10:29:31 INF [WebRTC] [session 5c1155c0] closed: codecs not supported by client
+2026/05/02 10:29:31 INF [WebRTC] [session 9ac9dd98] closed: peer connection closed
+2026/05/02 10:29:33 INF [WebRTC] [session dd846596] created by 10.10.110.2:56646
+2026/05/02 10:29:33 INF [WebRTC] [session dd846596] closed: codecs not supported by client
+2026/05/02 10:29:35 INF [WebRTC] [session 14bbc33b] created by 10.10.110.2:56646
+2026/05/02 10:29:35 INF [WebRTC] [session 14bbc33b] closed: codecs not supported by client
+2026/05/02 10:29:37 INF [WebRTC] [session 15c18be4] created by 10.10.110.2:56646
+2026/05/02 10:29:37 INF [WebRTC] [session 15c18be4] closed: codecs not supported by client
+2026/05/02 10:29:39 INF [WebRTC] [session b59811b3] created by 10.10.110.2:56646
+2026/05/02 10:29:39 INF [WebRTC] [session b59811b3] closed: codecs not supported by client
+2026/05/02 10:29:41 INF [WebRTC] [session 584a1e66] created by 10.10.110.2:56646
+2026/05/02 10:29:41 INF [WebRTC] [session 584a1e66] closed: codecs not supported by client
+2026/05/02 10:29:44 INF [WebRTC] [session 57eb6d10] created by 10.10.110.2:56646
+2026/05/02 10:29:44 INF [WebRTC] [session 57eb6d10] closed: codecs not supported by client
+2026/05/02 10:29:46 INF [WebRTC] [session 7239dcfe] created by 10.10.110.2:56646
+2026/05/02 10:29:46 INF [WebRTC] [session 7239dcfe] closed: codecs not supported by client
+2026/05/02 10:29:48 INF [WebRTC] [session 890c6123] created by 10.10.110.2:56646
+2026/05/02 10:29:48 INF [WebRTC] [session 890c6123] closed: codecs not supported by client
+2026/05/02 10:29:50 INF [WebRTC] [session 69865116] created by 10.10.110.2:56646
+2026/05/02 10:29:50 INF [WebRTC] [session 69865116] closed: codecs not supported by client
+2026/05/02 10:29:52 INF [WebRTC] [session 35e1abc8] created by 10.10.110.2:56646
+2026/05/02 10:29:52 INF [WebRTC] [session 35e1abc8] closed: codecs not supported by client
+2026/05/02 10:29:54 INF [WebRTC] [session e71ba0eb] created by 10.10.110.2:56646
+2026/05/02 10:29:54 INF [WebRTC] [session e71ba0eb] closed: codecs not supported by client
+2026/05/02 10:29:56 INF [WebRTC] [session 5ca58e52] created by 10.10.110.2:56646
+2026/05/02 10:29:56 INF [WebRTC] [session 5ca58e52] closed: codecs not supported by client
+2026/05/02 10:29:58 INF [WebRTC] [session c3a1c6bf] created by 10.10.110.2:56646
+2026/05/02 10:29:58 INF [WebRTC] [session c3a1c6bf] closed: codecs not supported by client
+2026/05/02 10:30:00 INF [WebRTC] [session 5f92eb59] created by 10.10.110.2:56646
+2026/05/02 10:30:00 INF [WebRTC] [session 5f92eb59] closed: codecs not supported by client
+2026/05/02 10:30:02 INF [WebRTC] [session a1153ec7] created by 10.10.110.2:56646
+2026/05/02 10:30:02 INF [WebRTC] [session a1153ec7] closed: codecs not supported by client
+2026/05/02 10:30:04 INF [WebRTC] [session 1c720f22] created by 10.10.110.2:56646
+2026/05/02 10:30:04 INF [WebRTC] [session 1c720f22] closed: codecs not supported by client
+2026/05/02 10:30:06 INF [WebRTC] [session 3fada5f2] created by 10.10.110.2:56646
+2026/05/02 10:30:06 INF [WebRTC] [session 3fada5f2] closed: codecs not supported by client
+2026/05/02 10:30:08 INF [WebRTC] [session 725843f3] created by 10.10.110.2:56646
+2026/05/02 10:30:08 INF [WebRTC] [session 725843f3] closed: codecs not supported by client
+2026/05/02 10:30:10 INF [WebRTC] [session cc65fac6] created by 10.10.110.2:56646
+2026/05/02 10:30:10 INF [WebRTC] [session cc65fac6] closed: codecs not supported by client
+2026/05/02 10:30:12 INF [WebRTC] [session 2041a7c9] created by 10.10.110.2:56646
+2026/05/02 10:30:12 INF [WebRTC] [session 2041a7c9] closed: codecs not supported by client
+2026/05/02 10:30:14 INF [WebRTC] [session 99eb5241] created by 10.10.110.2:56646
+2026/05/02 10:30:14 INF [WebRTC] [session 99eb5241] closed: codecs not supported by client
+2026/05/02 10:30:16 INF [WebRTC] [session 60e185ea] created by 10.10.110.2:56646
+2026/05/02 10:30:16 INF [WebRTC] [session 60e185ea] closed: codecs not supported by client
+2026/05/02 10:30:18 INF [WebRTC] [session c2c877de] created by 10.10.110.2:56646
+2026/05/02 10:30:18 INF [WebRTC] [session c2c877de] closed: codecs not supported by client
+2026/05/02 10:30:20 INF [WebRTC] [session ebf05497] created by 10.10.110.2:56646
+2026/05/02 10:30:20 INF [WebRTC] [session ebf05497] closed: codecs not supported by client
+2026/05/02 10:30:22 INF [WebRTC] [session d1682c88] created by 10.10.110.2:56646
+2026/05/02 10:30:22 INF [WebRTC] [session d1682c88] closed: codecs not supported by client
+2026/05/02 10:30:24 INF [WebRTC] [session 0aea1827] created by 10.10.110.2:56646
+2026/05/02 10:30:24 INF [WebRTC] [session 0aea1827] closed: codecs not supported by client
+2026/05/02 10:30:26 INF [WebRTC] [session ec3b3ead] created by 10.10.110.2:56646
+2026/05/02 10:30:26 INF [WebRTC] [session ec3b3ead] closed: codecs not supported by client
+2026/05/02 10:30:28 INF [WebRTC] [session 971121a2] created by 10.10.110.2:56646
+2026/05/02 10:30:28 INF [WebRTC] [session 971121a2] closed: codecs not supported by client
+2026/05/02 10:30:30 INF [WebRTC] [session 59f0ff0f] created by 10.10.110.2:56646
+2026/05/02 10:30:30 INF [WebRTC] [session 59f0ff0f] closed: codecs not supported by client
+2026/05/02 10:30:32 INF [WebRTC] [session cc035a01] created by 10.10.110.2:56646
+2026/05/02 10:30:32 INF [WebRTC] [session cc035a01] closed: codecs not supported by client
+2026/05/02 10:30:34 INF [WebRTC] [session 9236c559] created by 10.10.110.2:56646
+2026/05/02 10:30:34 INF [WebRTC] [session 9236c559] closed: codecs not supported by client
+2026/05/02 10:30:36 INF [WebRTC] [session 5c123b95] created by 10.10.110.2:56646
+2026/05/02 10:30:36 INF [WebRTC] [session 5c123b95] closed: codecs not supported by client
+2026/05/02 10:30:38 INF [WebRTC] [session 743c7aaa] created by 10.10.110.2:56646
+2026/05/02 10:30:38 INF [WebRTC] [session 743c7aaa] closed: codecs not supported by client
+2026/05/02 10:30:41 INF [WebRTC] [session 3226e7b5] created by 10.10.110.2:56646
+2026/05/02 10:30:41 INF [WebRTC] [session 3226e7b5] closed: codecs not supported by client
+2026/05/02 10:30:41 INF [WebRTC] [session 8d28799f] created by 10.10.110.5:62935
+2026/05/02 10:30:41 INF [WebRTC] [session 8d28799f] peer connection established, local candidate: host/udp/10.10.110.5/8189, remote candidate: prflx/udp/10.10.110.5/63457
+2026/05/02 10:30:41 INF [WebRTC] [session 8d28799f] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 10:30:43 INF [WebRTC] [session 6b01860b] created by 10.10.110.2:56646
+2026/05/02 10:30:43 INF [WebRTC] [session 6b01860b] closed: codecs not supported by client
+2026/05/02 10:30:45 INF [WebRTC] [session bd209f59] created by 10.10.110.2:56646
+2026/05/02 10:30:45 INF [WebRTC] [session bd209f59] closed: codecs not supported by client
+2026/05/02 10:30:47 INF [WebRTC] [session e9fd8bf6] created by 10.10.110.2:56646
+2026/05/02 10:30:47 INF [WebRTC] [session e9fd8bf6] closed: codecs not supported by client
+2026/05/02 10:30:49 INF [WebRTC] [session 2b0547e7] created by 10.10.110.2:56646
+2026/05/02 10:30:49 INF [WebRTC] [session 2b0547e7] closed: codecs not supported by client
+2026/05/02 10:30:51 INF [WebRTC] [session 3df1ed32] created by 10.10.110.2:56646
+2026/05/02 10:30:51 INF [WebRTC] [session 3df1ed32] closed: codecs not supported by client
+2026/05/02 10:30:53 INF [WebRTC] [session 5a857998] created by 10.10.110.2:56646
+2026/05/02 10:30:53 INF [WebRTC] [session 5a857998] closed: codecs not supported by client
+2026/05/02 10:30:55 INF [WebRTC] [session da03c1da] created by 10.10.110.2:56646
+2026/05/02 10:30:55 INF [WebRTC] [session da03c1da] closed: codecs not supported by client
+2026/05/02 10:30:57 INF [WebRTC] [session bab00baf] created by 10.10.110.2:56646
+2026/05/02 10:30:57 INF [WebRTC] [session bab00baf] closed: codecs not supported by client
+2026/05/02 10:30:59 INF [WebRTC] [session 5404619e] created by 10.10.110.2:56646
+2026/05/02 10:30:59 INF [WebRTC] [session 5404619e] closed: codecs not supported by client
+2026/05/02 10:31:01 INF [WebRTC] [session 4582bc1c] created by 10.10.110.2:56646
+2026/05/02 10:31:01 INF [WebRTC] [session 4582bc1c] closed: codecs not supported by client
+2026/05/02 10:31:03 INF [WebRTC] [session f1128a91] created by 10.10.110.2:56646
+2026/05/02 10:31:03 INF [WebRTC] [session f1128a91] closed: codecs not supported by client
+2026/05/02 10:31:05 INF [WebRTC] [session 8654bfbb] created by 10.10.110.2:56646
+2026/05/02 10:31:05 INF [WebRTC] [session 8654bfbb] closed: codecs not supported by client
+2026/05/02 10:31:07 INF [WebRTC] [session 7407a7b5] created by 10.10.110.2:56646
+2026/05/02 10:31:07 INF [WebRTC] [session 7407a7b5] closed: codecs not supported by client
+2026/05/02 10:31:09 INF [WebRTC] [session d6e10d00] created by 10.10.110.2:56646
+2026/05/02 10:31:09 INF [WebRTC] [session d6e10d00] closed: codecs not supported by client
+2026/05/02 10:31:11 INF [WebRTC] [session 2137f44c] created by 10.10.110.2:56646
+2026/05/02 10:31:11 INF [WebRTC] [session 2137f44c] closed: codecs not supported by client
+2026/05/02 10:31:13 INF [WebRTC] [session 97d5e5e7] created by 10.10.110.2:56646
+2026/05/02 10:31:13 INF [WebRTC] [session 97d5e5e7] closed: codecs not supported by client
+2026/05/02 10:31:15 INF [WebRTC] [session f45a1a0c] created by 10.10.110.2:56646
+2026/05/02 10:31:15 INF [WebRTC] [session f45a1a0c] closed: codecs not supported by client
+2026/05/02 10:31:17 INF [WebRTC] [session aed09ff2] created by 10.10.110.2:56646
+2026/05/02 10:31:17 INF [WebRTC] [session aed09ff2] closed: codecs not supported by client
+2026/05/02 10:31:19 INF [WebRTC] [session 5974924b] created by 10.10.110.2:56646
+2026/05/02 10:31:19 INF [WebRTC] [session 5974924b] closed: codecs not supported by client
+2026/05/02 10:31:21 INF [WebRTC] [session 42dfad3b] created by 10.10.110.2:56646
+2026/05/02 10:31:21 INF [WebRTC] [session 42dfad3b] closed: codecs not supported by client
+2026/05/02 10:31:23 INF [WebRTC] [session fc0c95ac] created by 10.10.110.2:56646
+2026/05/02 10:31:23 INF [WebRTC] [session fc0c95ac] closed: codecs not supported by client
+2026/05/02 10:31:25 INF [WebRTC] [session 58265cd4] created by 10.10.110.2:56646
+2026/05/02 10:31:25 INF [WebRTC] [session 58265cd4] closed: codecs not supported by client
+2026/05/02 10:31:27 INF [WebRTC] [session 7ab9ee8d] created by 10.10.110.2:56646
+2026/05/02 10:31:27 INF [WebRTC] [session 7ab9ee8d] closed: codecs not supported by client
+2026/05/02 10:31:29 INF [WebRTC] [session f434c0c8] created by 10.10.110.2:56646
+2026/05/02 10:31:29 INF [WebRTC] [session f434c0c8] closed: codecs not supported by client
+2026/05/02 10:31:31 INF [WebRTC] [session 04219c25] created by 10.10.110.2:56646
+2026/05/02 10:31:31 INF [WebRTC] [session 04219c25] closed: codecs not supported by client
+2026/05/02 10:31:33 INF [WebRTC] [session be56f44f] created by 10.10.110.2:56646
+2026/05/02 10:31:33 INF [WebRTC] [session be56f44f] closed: codecs not supported by client
+2026/05/02 10:31:35 INF [WebRTC] [session 9597ecd6] created by 10.10.110.2:56646
+2026/05/02 10:31:36 INF [WebRTC] [session 9597ecd6] closed: codecs not supported by client
+2026/05/02 10:31:38 INF [WebRTC] [session a5b331ae] created by 10.10.110.2:56646
+2026/05/02 10:31:38 INF [WebRTC] [session a5b331ae] closed: codecs not supported by client
+2026/05/02 10:31:40 INF [WebRTC] [session 67e62962] created by 10.10.110.2:56646
+2026/05/02 10:31:40 INF [WebRTC] [session 67e62962] closed: codecs not supported by client
+2026/05/02 10:31:42 INF [WebRTC] [session e31e9ca9] created by 10.10.110.2:56646
+2026/05/02 10:31:42 INF [WebRTC] [session e31e9ca9] closed: codecs not supported by client
+2026/05/02 10:31:44 INF [WebRTC] [session 8107d0ca] created by 10.10.110.2:56646
+2026/05/02 10:31:44 INF [WebRTC] [session 8107d0ca] closed: codecs not supported by client
+2026/05/02 10:31:46 INF [WebRTC] [session 640f1eec] created by 10.10.110.2:56646
+2026/05/02 10:31:46 INF [WebRTC] [session 640f1eec] closed: codecs not supported by client
+2026/05/02 10:31:48 INF [WebRTC] [session 122e3960] created by 10.10.110.2:56646
+2026/05/02 10:31:48 INF [WebRTC] [session 122e3960] closed: codecs not supported by client
+2026/05/02 10:31:50 INF [WebRTC] [session 39154fd3] created by 10.10.110.2:56646
+2026/05/02 10:31:50 INF [WebRTC] [session 39154fd3] closed: codecs not supported by client
+2026/05/02 10:31:52 INF [WebRTC] [session 60b9f0a5] created by 10.10.110.2:56646
+2026/05/02 10:31:52 INF [WebRTC] [session 60b9f0a5] closed: codecs not supported by client
+2026/05/02 10:31:54 INF [WebRTC] [session d5b7dc53] created by 10.10.110.2:56646
+2026/05/02 10:31:54 INF [WebRTC] [session d5b7dc53] closed: codecs not supported by client
+2026/05/02 10:31:56 INF [WebRTC] [session 53c3b905] created by 10.10.110.2:56646
+2026/05/02 10:31:56 INF [WebRTC] [session 53c3b905] closed: codecs not supported by client
+2026/05/02 10:31:58 INF [WebRTC] [session 9c8ba67f] created by 10.10.110.2:56646
+2026/05/02 10:31:58 INF [WebRTC] [session 9c8ba67f] closed: codecs not supported by client
+2026/05/02 10:32:00 INF [WebRTC] [session 356cb6ef] created by 10.10.110.2:56646
+2026/05/02 10:32:00 INF [WebRTC] [session 356cb6ef] closed: codecs not supported by client
+2026/05/02 10:32:02 INF [WebRTC] [session f7579b6b] created by 10.10.110.2:56646
+2026/05/02 10:32:02 INF [WebRTC] [session f7579b6b] closed: codecs not supported by client
+2026/05/02 10:32:04 INF [WebRTC] [session 9186e536] created by 10.10.110.2:56646
+2026/05/02 10:32:04 INF [WebRTC] [session 9186e536] closed: codecs not supported by client
+2026/05/02 10:32:06 INF [WebRTC] [session 35803ca7] created by 10.10.110.2:56646
+2026/05/02 10:32:06 INF [WebRTC] [session 35803ca7] closed: codecs not supported by client
+2026/05/02 10:32:08 INF [WebRTC] [session 30e3321b] created by 10.10.110.2:56646
+2026/05/02 10:32:08 INF [WebRTC] [session 30e3321b] closed: codecs not supported by client
+2026/05/02 10:32:10 INF [WebRTC] [session e0741d7c] created by 10.10.110.2:56646
+2026/05/02 10:32:10 INF [WebRTC] [session e0741d7c] closed: codecs not supported by client
+2026/05/02 10:32:12 INF [WebRTC] [session f364fe70] created by 10.10.110.2:56646
+2026/05/02 10:32:12 INF [WebRTC] [session f364fe70] closed: codecs not supported by client
+2026/05/02 10:32:14 INF [WebRTC] [session 4103c35a] created by 10.10.110.2:56646
+2026/05/02 10:32:14 INF [WebRTC] [session 4103c35a] closed: codecs not supported by client
+2026/05/02 10:32:16 INF [WebRTC] [session 2b6af7f9] created by 10.10.110.2:56646
+2026/05/02 10:32:16 INF [WebRTC] [session 2b6af7f9] closed: codecs not supported by client
+2026/05/02 10:32:17 INF [WebRTC] [session 8d28799f] closed: peer connection closed
+2026/05/02 10:32:18 INF [WebRTC] [session a794b613] created by 10.10.110.2:56646
+2026/05/02 10:32:18 INF [WebRTC] [session a794b613] closed: codecs not supported by client
+2026/05/02 10:32:20 INF [WebRTC] [session ece459c5] created by 10.10.110.2:56646
+2026/05/02 10:32:20 INF [WebRTC] [session ece459c5] closed: codecs not supported by client
+2026/05/02 10:32:22 INF [WebRTC] [session 83e14d35] created by 10.10.110.2:56646
+2026/05/02 10:32:22 INF [WebRTC] [session 83e14d35] closed: codecs not supported by client
+2026/05/02 10:32:24 INF reloading configuration (file changed)
+2026/05/02 10:32:24 INF [WebRTC] [session cb340584] created by 10.10.110.2:56646
+2026/05/02 10:32:24 INF [WebRTC] [session cb340584] closed: codecs not supported by client
+2026/05/02 10:32:27 INF [WebRTC] [session da6be5f5] created by 10.10.110.2:56646
+2026/05/02 10:32:27 INF [WebRTC] [session da6be5f5] closed: codecs not supported by client
+2026/05/02 10:32:28 INF reloading configuration (file changed)
+2026/05/02 10:32:29 INF [WebRTC] [session d9ec206e] created by 10.10.110.2:56646
+2026/05/02 10:32:29 INF [WebRTC] [session d9ec206e] closed: codecs not supported by client
+2026/05/02 10:32:30 INF reloading configuration (file changed)
+2026/05/02 10:32:31 INF [WebRTC] [session 7a03832e] created by 10.10.110.2:56646
+2026/05/02 10:32:31 INF [WebRTC] [session 7a03832e] closed: codecs not supported by client
+2026/05/02 10:32:33 INF [WebRTC] [session 21cee0b7] created by 10.10.110.2:56646
+2026/05/02 10:32:33 INF [WebRTC] [session 21cee0b7] closed: codecs not supported by client
+2026/05/02 10:32:35 INF [WebRTC] [session 17d636d3] created by 10.10.110.2:56646
+2026/05/02 10:32:35 INF [WebRTC] [session 17d636d3] closed: codecs not supported by client
+2026/05/02 10:32:37 INF [WebRTC] [session 0137ed71] created by 10.10.110.2:56646
+2026/05/02 10:32:37 INF [WebRTC] [session 0137ed71] closed: codecs not supported by client
+2026/05/02 10:32:39 INF [WebRTC] [session 4316b804] created by 10.10.110.2:56646
+2026/05/02 10:32:39 INF [WebRTC] [session 4316b804] closed: codecs not supported by client
+2026/05/02 10:32:41 INF [WebRTC] [session 521290d4] created by 10.10.110.2:56646
+2026/05/02 10:32:41 INF [WebRTC] [session 521290d4] closed: codecs not supported by client
+2026/05/02 10:32:43 INF [WebRTC] [session b6f053ee] created by 10.10.110.2:56646
+2026/05/02 10:32:43 INF [WebRTC] [session b6f053ee] closed: codecs not supported by client
+2026/05/02 10:32:43 INF [WebRTC] [session 62358654] created by 10.10.110.5:63398
+2026/05/02 10:32:43 INF [WebRTC] [session 62358654] peer connection established, local candidate: host/udp/192.168.56.1/8189, remote candidate: prflx/udp/10.10.110.5/50388
+2026/05/02 10:32:43 INF [WebRTC] [session 62358654] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 10:32:45 INF [WebRTC] [session d31a76b7] created by 10.10.110.2:56646
+2026/05/02 10:32:45 INF [WebRTC] [session d31a76b7] closed: codecs not supported by client
+2026/05/02 10:32:47 INF [WebRTC] [session 5f680f9d] created by 10.10.110.2:56646
+2026/05/02 10:32:47 INF [WebRTC] [session 5f680f9d] closed: codecs not supported by client
+2026/05/02 10:32:48 INF reloading configuration (file changed)
+2026/05/02 10:32:49 INF [WebRTC] [session 4cdb9f97] created by 10.10.110.2:56646
+2026/05/02 10:32:49 INF [WebRTC] [session 4cdb9f97] closed: codecs not supported by client
+2026/05/02 10:32:51 INF [WebRTC] [session aff77c34] created by 10.10.110.2:56646
+2026/05/02 10:32:51 INF [WebRTC] [session aff77c34] closed: codecs not supported by client
+2026/05/02 10:32:53 INF [WebRTC] [session b4d6560e] created by 10.10.110.2:56646
+2026/05/02 10:32:53 INF [WebRTC] [session b4d6560e] closed: codecs not supported by client
+2026/05/02 10:32:55 INF [WebRTC] [session 7af23a1d] created by 10.10.110.2:56646
+2026/05/02 10:32:55 INF [WebRTC] [session 7af23a1d] closed: codecs not supported by client
+2026/05/02 10:32:57 INF [WebRTC] [session 668b9b55] created by 10.10.110.2:56646
+2026/05/02 10:32:57 INF [WebRTC] [session 668b9b55] closed: codecs not supported by client
+2026/05/02 10:33:41 INF [WebRTC] [session 98327d20] created by 10.10.110.2:56933
+2026/05/02 10:33:41 INF [WebRTC] [session 98327d20] closed: codecs not supported by client
+2026/05/02 10:33:43 INF [WebRTC] [session a59a001e] created by 10.10.110.2:56933
+2026/05/02 10:33:43 INF [WebRTC] [session a59a001e] closed: codecs not supported by client
+2026/05/02 10:33:45 INF [WebRTC] [session b55b5708] created by 10.10.110.2:56933
+2026/05/02 10:33:45 INF [WebRTC] [session b55b5708] closed: codecs not supported by client
+2026/05/02 10:33:47 INF [WebRTC] [session 8b04c41a] created by 10.10.110.2:56933
+2026/05/02 10:33:47 INF [WebRTC] [session 8b04c41a] closed: codecs not supported by client
+2026/05/02 10:33:49 INF [WebRTC] [session e67e1a02] created by 10.10.110.2:56933
+2026/05/02 10:33:49 INF [WebRTC] [session e67e1a02] closed: codecs not supported by client
+2026/05/02 10:33:51 INF [WebRTC] [session aa3106ab] created by 10.10.110.2:56933
+2026/05/02 10:33:51 INF [WebRTC] [session aa3106ab] closed: codecs not supported by client
+2026/05/02 10:33:53 INF [WebRTC] [session ae1cbc4f] created by 10.10.110.2:56933
+2026/05/02 10:33:53 INF [WebRTC] [session ae1cbc4f] closed: codecs not supported by client
+2026/05/02 10:33:55 INF [WebRTC] [session 97ef3ad9] created by 10.10.110.2:56933
+2026/05/02 10:33:55 INF [WebRTC] [session 97ef3ad9] closed: codecs not supported by client
+2026/05/02 10:33:57 INF [WebRTC] [session becbb551] created by 10.10.110.2:56933
+2026/05/02 10:33:57 INF [WebRTC] [session becbb551] closed: codecs not supported by client
+2026/05/02 10:33:59 INF [WebRTC] [session 246b2196] created by 10.10.110.2:56933
+2026/05/02 10:33:59 INF [WebRTC] [session 246b2196] closed: codecs not supported by client
+2026/05/02 10:34:02 INF [WebRTC] [session 28b562b0] created by 10.10.110.2:56933
+2026/05/02 10:34:02 INF [WebRTC] [session 28b562b0] closed: codecs not supported by client
+2026/05/02 10:34:04 INF [WebRTC] [session 3f45f84b] created by 10.10.110.2:56933
+2026/05/02 10:34:04 INF [WebRTC] [session 3f45f84b] closed: codecs not supported by client
+2026/05/02 10:34:06 INF [WebRTC] [session 4b9d28c5] created by 10.10.110.2:56933
+2026/05/02 10:34:06 INF [WebRTC] [session 4b9d28c5] closed: codecs not supported by client
+2026/05/02 10:34:08 INF [WebRTC] [session 53037222] created by 10.10.110.2:56933
+2026/05/02 10:34:08 INF [WebRTC] [session 53037222] closed: codecs not supported by client
+2026/05/02 10:34:10 INF [WebRTC] [session 8923e959] created by 10.10.110.2:56933
+2026/05/02 10:34:10 INF [WebRTC] [session 8923e959] closed: codecs not supported by client
+2026/05/02 10:34:12 INF [WebRTC] [session 0ab5960a] created by 10.10.110.2:56933
+2026/05/02 10:34:12 INF [WebRTC] [session 0ab5960a] closed: codecs not supported by client
+2026/05/02 10:34:14 INF [WebRTC] [session dc640048] created by 10.10.110.2:56933
+2026/05/02 10:34:14 INF [WebRTC] [session dc640048] closed: codecs not supported by client
+2026/05/02 10:34:16 INF [WebRTC] [session 3a122c38] created by 10.10.110.2:56933
+2026/05/02 10:34:16 INF [WebRTC] [session 3a122c38] closed: codecs not supported by client
+2026/05/02 10:34:18 INF [WebRTC] [session b203e1fa] created by 10.10.110.2:56933
+2026/05/02 10:34:18 INF [WebRTC] [session b203e1fa] closed: codecs not supported by client
+2026/05/02 10:34:20 INF [WebRTC] [session 43d3042c] created by 10.10.110.2:56933
+2026/05/02 10:34:20 INF [WebRTC] [session 43d3042c] closed: codecs not supported by client
+2026/05/02 10:34:22 INF [WebRTC] [session 409a5a8d] created by 10.10.110.2:56933
+2026/05/02 10:34:22 INF [WebRTC] [session 409a5a8d] closed: codecs not supported by client
+2026/05/02 10:34:24 INF [WebRTC] [session 2701111f] created by 10.10.110.2:56933
+2026/05/02 10:34:24 INF [WebRTC] [session 2701111f] closed: codecs not supported by client
+2026/05/02 10:34:26 INF [WebRTC] [session ac01b92c] created by 10.10.110.2:56933
+2026/05/02 10:34:26 INF [WebRTC] [session ac01b92c] closed: codecs not supported by client
+2026/05/02 10:34:28 INF [WebRTC] [session 32f40c99] created by 10.10.110.2:56933
+2026/05/02 10:34:28 INF [WebRTC] [session 32f40c99] closed: codecs not supported by client
+2026/05/02 10:34:30 INF [WebRTC] [session eff98247] created by 10.10.110.2:56933
+2026/05/02 10:34:30 INF [WebRTC] [session eff98247] closed: codecs not supported by client
+2026/05/02 10:34:32 INF [WebRTC] [session f9aa1773] created by 10.10.110.2:56933
+2026/05/02 10:34:32 INF [WebRTC] [session f9aa1773] closed: codecs not supported by client
+2026/05/02 10:34:34 INF [WebRTC] [session 8003bb94] created by 10.10.110.2:56933
+2026/05/02 10:34:34 INF [WebRTC] [session 8003bb94] closed: codecs not supported by client
+2026/05/02 10:34:36 INF [WebRTC] [session cf46704f] created by 10.10.110.2:56933
+2026/05/02 10:34:36 INF [WebRTC] [session cf46704f] closed: codecs not supported by client
+2026/05/02 10:34:38 INF [WebRTC] [session bf21c248] created by 10.10.110.2:56933
+2026/05/02 10:34:38 INF [WebRTC] [session bf21c248] closed: codecs not supported by client
+2026/05/02 10:34:40 INF [WebRTC] [session 02894914] created by 10.10.110.2:56933
+2026/05/02 10:34:40 INF [WebRTC] [session 02894914] closed: codecs not supported by client
+2026/05/02 10:34:42 INF [WebRTC] [session 02f77139] created by 10.10.110.2:56933
+2026/05/02 10:34:42 INF [WebRTC] [session 02f77139] closed: codecs not supported by client
+2026/05/02 10:34:44 INF [WebRTC] [session 058e3a60] created by 10.10.110.2:56933
+2026/05/02 10:34:44 INF [WebRTC] [session 058e3a60] closed: codecs not supported by client
+2026/05/02 10:34:46 INF [WebRTC] [session 6afb7684] created by 10.10.110.2:56933
+2026/05/02 10:34:46 INF [WebRTC] [session 6afb7684] closed: codecs not supported by client
+2026/05/02 10:34:48 INF [WebRTC] [session efcc1079] created by 10.10.110.2:56933
+2026/05/02 10:34:48 INF [WebRTC] [session efcc1079] closed: codecs not supported by client
+2026/05/02 10:34:50 INF [WebRTC] [session 20e2d1d7] created by 10.10.110.2:56933
+2026/05/02 10:34:50 INF [WebRTC] [session 20e2d1d7] closed: codecs not supported by client
+2026/05/02 10:34:52 INF [WebRTC] [session 33906298] created by 10.10.110.2:56933
+2026/05/02 10:34:52 INF [WebRTC] [session 33906298] closed: codecs not supported by client
+2026/05/02 10:34:54 INF [WebRTC] [session d917dc6a] created by 10.10.110.2:56933
+2026/05/02 10:34:54 INF [WebRTC] [session d917dc6a] closed: codecs not supported by client
+2026/05/02 10:34:57 INF [WebRTC] [session e22d7621] created by 10.10.110.2:56933
+2026/05/02 10:34:57 INF [WebRTC] [session e22d7621] closed: codecs not supported by client
+2026/05/02 10:34:59 INF [WebRTC] [session 1ae3313a] created by 10.10.110.2:56933
+2026/05/02 10:34:59 INF [WebRTC] [session 1ae3313a] closed: codecs not supported by client
+2026/05/02 10:35:01 INF [WebRTC] [session 90932b93] created by 10.10.110.2:56933
+2026/05/02 10:35:01 INF [WebRTC] [session 90932b93] closed: codecs not supported by client
+2026/05/02 10:35:03 INF [WebRTC] [session 4e3dc6c0] created by 10.10.110.2:56933
+2026/05/02 10:35:03 INF [WebRTC] [session 4e3dc6c0] closed: codecs not supported by client
+2026/05/02 10:35:05 INF [WebRTC] [session 5db17d18] created by 10.10.110.2:56933
+2026/05/02 10:35:05 INF [WebRTC] [session 5db17d18] closed: codecs not supported by client
+2026/05/02 10:35:07 INF [WebRTC] [session ce1216d1] created by 10.10.110.2:56933
+2026/05/02 10:35:07 INF [WebRTC] [session ce1216d1] closed: codecs not supported by client
+2026/05/02 10:35:09 INF [WebRTC] [session 3d0095a4] created by 10.10.110.2:56933
+2026/05/02 10:35:09 INF [WebRTC] [session 3d0095a4] closed: codecs not supported by client
+2026/05/02 10:35:11 INF [WebRTC] [session 228c5e66] created by 10.10.110.2:56933
+2026/05/02 10:35:11 INF [WebRTC] [session 228c5e66] closed: codecs not supported by client
+2026/05/02 10:35:13 INF [WebRTC] [session 33be1288] created by 10.10.110.2:56933
+2026/05/02 10:35:13 INF [WebRTC] [session 33be1288] closed: codecs not supported by client
+2026/05/02 10:35:15 INF [WebRTC] [session 5a2f271a] created by 10.10.110.2:56933
+2026/05/02 10:35:15 INF [WebRTC] [session 5a2f271a] closed: codecs not supported by client
+2026/05/02 10:35:17 INF [WebRTC] [session 478a9564] created by 10.10.110.2:56933
+2026/05/02 10:35:17 INF [WebRTC] [session 478a9564] closed: codecs not supported by client
+2026/05/02 10:35:19 INF [WebRTC] [session 27fb3d45] created by 10.10.110.2:56933
+2026/05/02 10:35:19 INF [WebRTC] [session 27fb3d45] closed: codecs not supported by client
+2026/05/02 10:35:21 INF [WebRTC] [session ad6ad924] created by 10.10.110.2:56933
+2026/05/02 10:35:21 INF [WebRTC] [session ad6ad924] closed: codecs not supported by client
+2026/05/02 10:35:23 INF [WebRTC] [session 6c7f643d] created by 10.10.110.2:56933
+2026/05/02 10:35:23 INF [WebRTC] [session 6c7f643d] closed: codecs not supported by client
+2026/05/02 10:35:25 INF [WebRTC] [session fa8ccc96] created by 10.10.110.2:56933
+2026/05/02 10:35:25 INF [WebRTC] [session fa8ccc96] closed: codecs not supported by client
+2026/05/02 10:35:27 INF [WebRTC] [session 3f1f16d9] created by 10.10.110.2:56933
+2026/05/02 10:35:27 INF [WebRTC] [session 3f1f16d9] closed: codecs not supported by client
+2026/05/02 10:35:41 INF reloading configuration (file changed)
+2026/05/02 10:35:58 INF [WebRTC] [session c7bdf18f] created by 10.10.110.2:57041
+2026/05/02 10:35:58 INF [WebRTC] [session c7bdf18f] closed: codecs not supported by client
+2026/05/02 10:36:00 INF [WebRTC] [session b415f558] created by 10.10.110.2:57041
+2026/05/02 10:36:00 INF [WebRTC] [session b415f558] closed: codecs not supported by client
+2026/05/02 10:36:02 INF [WebRTC] [session 55a5acff] created by 10.10.110.2:57041
+2026/05/02 10:36:02 INF [WebRTC] [session 55a5acff] closed: codecs not supported by client
+2026/05/02 10:36:04 INF [WebRTC] [session c781f91e] created by 10.10.110.2:57041
+2026/05/02 10:36:04 INF [WebRTC] [session c781f91e] closed: codecs not supported by client
+2026/05/02 10:36:06 INF [WebRTC] [session 81d25706] created by 10.10.110.2:57041
+2026/05/02 10:36:06 INF [WebRTC] [session 81d25706] closed: codecs not supported by client
+2026/05/02 10:36:08 INF [WebRTC] [session d23729a2] created by 10.10.110.2:57041
+2026/05/02 10:36:09 INF [WebRTC] [session d23729a2] closed: codecs not supported by client
+2026/05/02 10:36:11 INF [WebRTC] [session 6cfd3a5d] created by 10.10.110.2:57041
+2026/05/02 10:36:11 INF [WebRTC] [session 6cfd3a5d] closed: codecs not supported by client
+2026/05/02 10:36:13 INF [WebRTC] [session 556b2c1b] created by 10.10.110.2:57041
+2026/05/02 10:36:13 INF [WebRTC] [session 556b2c1b] closed: codecs not supported by client
+2026/05/02 10:36:15 INF [WebRTC] [session 607406ea] created by 10.10.110.2:57041
+2026/05/02 10:36:15 INF [WebRTC] [session 607406ea] closed: codecs not supported by client
+2026/05/02 10:36:17 INF [WebRTC] [session 8528fcee] created by 10.10.110.2:57041
+2026/05/02 10:36:17 INF [WebRTC] [session 8528fcee] closed: codecs not supported by client
+2026/05/02 10:36:19 INF [WebRTC] [session b9c2079e] created by 10.10.110.2:57041
+2026/05/02 10:36:19 INF [WebRTC] [session b9c2079e] closed: codecs not supported by client
+2026/05/02 10:36:21 INF [WebRTC] [session 6140cc0a] created by 10.10.110.2:57041
+2026/05/02 10:36:21 INF [WebRTC] [session 6140cc0a] closed: codecs not supported by client
+2026/05/02 10:36:23 INF [WebRTC] [session 32dc5417] created by 10.10.110.2:57041
+2026/05/02 10:36:23 INF [WebRTC] [session 32dc5417] closed: codecs not supported by client
+2026/05/02 10:36:25 INF [WebRTC] [session 3278831e] created by 10.10.110.2:57041
+2026/05/02 10:36:25 INF [WebRTC] [session 3278831e] closed: codecs not supported by client
+2026/05/02 10:36:27 INF [WebRTC] [session 251d954d] created by 10.10.110.2:57041
+2026/05/02 10:36:27 INF [WebRTC] [session 251d954d] closed: codecs not supported by client
+2026/05/02 10:36:29 INF [WebRTC] [session aff93ef1] created by 10.10.110.2:57041
+2026/05/02 10:36:29 INF [WebRTC] [session aff93ef1] closed: codecs not supported by client
+2026/05/02 10:36:31 INF [WebRTC] [session 92ada5ef] created by 10.10.110.2:57041
+2026/05/02 10:36:31 INF [WebRTC] [session 92ada5ef] closed: codecs not supported by client
+2026/05/02 10:36:33 INF [WebRTC] [session b8fa907b] created by 10.10.110.2:57041
+2026/05/02 10:36:33 INF [WebRTC] [session b8fa907b] closed: codecs not supported by client
+2026/05/02 10:36:35 INF [WebRTC] [session 560b4b29] created by 10.10.110.2:57041
+2026/05/02 10:36:35 INF [WebRTC] [session 560b4b29] closed: codecs not supported by client
+2026/05/02 10:36:37 INF [WebRTC] [session e104150b] created by 10.10.110.2:57041
+2026/05/02 10:36:37 INF [WebRTC] [session e104150b] closed: codecs not supported by client
+2026/05/02 10:36:39 INF [WebRTC] [session 20fedde9] created by 10.10.110.2:57041
+2026/05/02 10:36:39 INF [WebRTC] [session 20fedde9] closed: codecs not supported by client
+2026/05/02 10:36:41 INF [WebRTC] [session 7fbf3968] created by 10.10.110.2:57041
+2026/05/02 10:36:41 INF [WebRTC] [session 7fbf3968] closed: codecs not supported by client
+2026/05/02 10:36:43 INF [WebRTC] [session 87684761] created by 10.10.110.2:57041
+2026/05/02 10:36:43 INF [WebRTC] [session 87684761] closed: codecs not supported by client
+2026/05/02 10:36:45 INF [WebRTC] [session ded9f6d7] created by 10.10.110.2:57041
+2026/05/02 10:36:45 INF [WebRTC] [session ded9f6d7] closed: codecs not supported by client
+2026/05/02 10:36:47 INF [WebRTC] [session fb3c7b6a] created by 10.10.110.2:57041
+2026/05/02 10:36:47 INF [WebRTC] [session fb3c7b6a] closed: codecs not supported by client
+2026/05/02 10:36:49 INF [WebRTC] [session 9a0fd63a] created by 10.10.110.2:57041
+2026/05/02 10:36:49 INF [WebRTC] [session 9a0fd63a] closed: codecs not supported by client
+2026/05/02 10:36:51 INF [WebRTC] [session 6ce01963] created by 10.10.110.2:57041
+2026/05/02 10:36:51 INF [WebRTC] [session 6ce01963] closed: codecs not supported by client
+2026/05/02 10:36:54 INF [WebRTC] [session df178625] created by 10.10.110.2:57041
+2026/05/02 10:36:54 INF [WebRTC] [session df178625] closed: codecs not supported by client
+2026/05/02 10:36:56 INF [WebRTC] [session 53e9b3f8] created by 10.10.110.2:57041
+2026/05/02 10:36:56 INF [WebRTC] [session 53e9b3f8] closed: codecs not supported by client
+2026/05/02 10:36:58 INF [WebRTC] [session 5502322e] created by 10.10.110.2:57041
+2026/05/02 10:36:58 INF [WebRTC] [session 5502322e] closed: codecs not supported by client
+2026/05/02 10:37:00 INF [WebRTC] [session e02ea246] created by 10.10.110.2:57041
+2026/05/02 10:37:00 INF [WebRTC] [session e02ea246] closed: codecs not supported by client
+2026/05/02 10:37:02 INF [WebRTC] [session c6999621] created by 10.10.110.2:57041
+2026/05/02 10:37:02 INF [WebRTC] [session c6999621] closed: codecs not supported by client
+2026/05/02 10:37:04 INF [WebRTC] [session a8caa485] created by 10.10.110.2:57041
+2026/05/02 10:37:04 INF [WebRTC] [session a8caa485] closed: codecs not supported by client
+2026/05/02 10:37:06 INF [WebRTC] [session a3262186] created by 10.10.110.2:57041
+2026/05/02 10:37:06 INF [WebRTC] [session a3262186] closed: codecs not supported by client
+2026/05/02 10:37:08 INF [WebRTC] [session bd48733b] created by 10.10.110.2:57041
+2026/05/02 10:37:08 INF [WebRTC] [session bd48733b] closed: codecs not supported by client
+2026/05/02 10:37:10 INF [WebRTC] [session 8cd3ea38] created by 10.10.110.2:57041
+2026/05/02 10:37:10 INF [WebRTC] [session 8cd3ea38] closed: codecs not supported by client
+2026/05/02 10:37:12 INF [WebRTC] [session 7c4ec689] created by 10.10.110.2:57041
+2026/05/02 10:37:12 INF [WebRTC] [session 7c4ec689] closed: codecs not supported by client
+2026/05/02 10:37:14 INF [WebRTC] [session d3970984] created by 10.10.110.2:57041
+2026/05/02 10:37:14 INF [WebRTC] [session d3970984] closed: codecs not supported by client
+2026/05/02 10:37:16 INF [WebRTC] [session ee5f2a00] created by 10.10.110.2:57041
+2026/05/02 10:37:16 INF [WebRTC] [session ee5f2a00] closed: codecs not supported by client
+2026/05/02 10:37:18 INF [WebRTC] [session 42db0560] created by 10.10.110.2:57041
+2026/05/02 10:37:18 INF [WebRTC] [session 42db0560] closed: codecs not supported by client
+2026/05/02 10:37:20 INF [WebRTC] [session 567060ed] created by 10.10.110.2:57041
+2026/05/02 10:37:20 INF [WebRTC] [session 567060ed] closed: codecs not supported by client
+2026/05/02 10:37:22 INF [WebRTC] [session 1a1fb9a4] created by 10.10.110.2:57041
+2026/05/02 10:37:22 INF [WebRTC] [session 1a1fb9a4] closed: codecs not supported by client
+2026/05/02 10:37:24 INF [WebRTC] [session d155569e] created by 10.10.110.2:57041
+2026/05/02 10:37:24 INF [WebRTC] [session d155569e] closed: codecs not supported by client
+2026/05/02 10:37:26 INF [WebRTC] [session 7c4bca01] created by 10.10.110.2:57041
+2026/05/02 10:37:26 INF [WebRTC] [session 7c4bca01] closed: codecs not supported by client
+2026/05/02 10:37:28 INF [WebRTC] [session 1cb54d1b] created by 10.10.110.2:57041
+2026/05/02 10:37:28 INF [WebRTC] [session 1cb54d1b] closed: codecs not supported by client
+2026/05/02 10:37:30 INF [WebRTC] [session d036bbb2] created by 10.10.110.2:57041
+2026/05/02 10:37:30 INF [WebRTC] [session d036bbb2] closed: codecs not supported by client
+2026/05/02 10:37:32 INF [WebRTC] [session 3239a1d2] created by 10.10.110.2:57041
+2026/05/02 10:37:32 INF [WebRTC] [session 3239a1d2] closed: codecs not supported by client
+2026/05/02 10:37:34 INF [WebRTC] [session 793cd8a1] created by 10.10.110.2:57041
+2026/05/02 10:37:34 INF [WebRTC] [session 793cd8a1] closed: codecs not supported by client
+2026/05/02 10:37:36 INF [WebRTC] [session bd6a54ee] created by 10.10.110.2:57041
+2026/05/02 10:37:36 INF [WebRTC] [session bd6a54ee] closed: codecs not supported by client
+2026/05/02 10:37:39 INF [WebRTC] [session 1f7713bb] created by 10.10.110.2:57041
+2026/05/02 10:37:39 INF [WebRTC] [session 1f7713bb] closed: codecs not supported by client
+2026/05/02 10:37:41 INF [WebRTC] [session 3c3a9125] created by 10.10.110.2:57041
+2026/05/02 10:37:41 INF [WebRTC] [session 3c3a9125] closed: codecs not supported by client
+2026/05/02 10:37:43 INF [WebRTC] [session 84eb96f8] created by 10.10.110.2:57041
+2026/05/02 10:37:43 INF [WebRTC] [session 84eb96f8] closed: codecs not supported by client
+2026/05/02 10:37:45 INF [WebRTC] [session 66844c26] created by 10.10.110.2:57041
+2026/05/02 10:37:45 INF [WebRTC] [session 66844c26] closed: codecs not supported by client
+2026/05/02 10:37:47 INF [WebRTC] [session 0b4dd4c2] created by 10.10.110.2:57041
+2026/05/02 10:37:47 INF [WebRTC] [session 0b4dd4c2] closed: codecs not supported by client
+2026/05/02 10:37:49 INF [WebRTC] [session e7047e98] created by 10.10.110.2:57041
+2026/05/02 10:37:49 INF [WebRTC] [session e7047e98] closed: codecs not supported by client
+2026/05/02 10:37:51 INF [WebRTC] [session b717da7b] created by 10.10.110.2:57041
+2026/05/02 10:37:51 INF [WebRTC] [session b717da7b] closed: codecs not supported by client
+2026/05/02 10:37:53 INF [WebRTC] [session 27ee5111] created by 10.10.110.2:57041
+2026/05/02 10:37:53 INF [WebRTC] [session 27ee5111] closed: codecs not supported by client
+2026/05/02 10:37:55 INF [WebRTC] [session f03752fd] created by 10.10.110.2:57041
+2026/05/02 10:37:55 INF [WebRTC] [session f03752fd] closed: codecs not supported by client
+2026/05/02 10:37:57 INF [WebRTC] [session cf06fa28] created by 10.10.110.2:57041
+2026/05/02 10:37:57 INF [WebRTC] [session cf06fa28] closed: codecs not supported by client
+2026/05/02 10:37:59 INF [WebRTC] [session 39a362b0] created by 10.10.110.2:57041
+2026/05/02 10:37:59 INF [WebRTC] [session 39a362b0] closed: codecs not supported by client
+2026/05/02 10:38:01 INF [WebRTC] [session 18cd84a6] created by 10.10.110.2:57041
+2026/05/02 10:38:01 INF [WebRTC] [session 18cd84a6] closed: codecs not supported by client
+2026/05/02 10:38:03 INF [WebRTC] [session f58a7e7f] created by 10.10.110.2:57041
+2026/05/02 10:38:03 INF [WebRTC] [session f58a7e7f] closed: codecs not supported by client
+2026/05/02 10:38:05 INF [WebRTC] [session bcdfe5ca] created by 10.10.110.2:57041
+2026/05/02 10:38:05 INF [WebRTC] [session bcdfe5ca] closed: codecs not supported by client
+2026/05/02 10:38:07 INF [WebRTC] [session 0da6548e] created by 10.10.110.2:57041
+2026/05/02 10:38:07 INF [WebRTC] [session 0da6548e] closed: codecs not supported by client
+2026/05/02 10:38:09 INF [WebRTC] [session e0aff1a3] created by 10.10.110.2:57041
+2026/05/02 10:38:09 INF [WebRTC] [session e0aff1a3] closed: codecs not supported by client
+2026/05/02 10:38:11 INF [WebRTC] [session 590eee68] created by 10.10.110.2:57041
+2026/05/02 10:38:11 INF [WebRTC] [session 590eee68] closed: codecs not supported by client
+2026/05/02 10:38:13 INF [WebRTC] [session adab2fcc] created by 10.10.110.2:57041
+2026/05/02 10:38:13 INF [WebRTC] [session adab2fcc] closed: codecs not supported by client
+2026/05/02 10:38:15 INF [WebRTC] [session d7491830] created by 10.10.110.2:57041
+2026/05/02 10:38:15 INF [WebRTC] [session d7491830] closed: codecs not supported by client
+2026/05/02 10:38:17 INF [WebRTC] [session 7a60b793] created by 10.10.110.2:57041
+2026/05/02 10:38:17 INF [WebRTC] [session 7a60b793] closed: codecs not supported by client
+2026/05/02 10:38:19 INF [WebRTC] [session 7bc45640] created by 10.10.110.2:57041
+2026/05/02 10:38:19 INF [WebRTC] [session 7bc45640] closed: codecs not supported by client
+2026/05/02 10:38:21 INF [WebRTC] [session d4721f84] created by 10.10.110.2:57041
+2026/05/02 10:38:21 INF [WebRTC] [session d4721f84] closed: codecs not supported by client
+2026/05/02 10:38:23 INF [WebRTC] [session 8c507841] created by 10.10.110.2:57041
+2026/05/02 10:38:23 INF [WebRTC] [session 8c507841] closed: codecs not supported by client
+2026/05/02 10:38:26 INF [WebRTC] [session b559856c] created by 10.10.110.2:57041
+2026/05/02 10:38:26 INF [WebRTC] [session b559856c] closed: codecs not supported by client
+2026/05/02 10:38:28 INF [WebRTC] [session 693c1bbd] created by 10.10.110.2:57041
+2026/05/02 10:38:28 INF [WebRTC] [session 693c1bbd] closed: codecs not supported by client
+2026/05/02 10:38:28 INF [WebRTC] [session 757441bb] created by 10.10.110.6:49427
+2026/05/02 10:38:28 INF [WebRTC] [session 757441bb] peer connection established, local candidate: host/udp/10.10.110.5/8189, remote candidate: prflx/udp/10.10.110.6/56140
+2026/05/02 10:38:28 INF [WebRTC] [session 757441bb] is reading from path 'cctv1', 2 tracks (H265, G711)
+2026/05/02 10:38:30 INF [WebRTC] [session 038b6569] created by 10.10.110.2:57041
+2026/05/02 10:38:30 INF [WebRTC] [session 038b6569] closed: codecs not supported by client
+2026/05/02 10:38:32 INF [WebRTC] [session 347a0832] created by 10.10.110.2:57041
+2026/05/02 10:38:32 INF [WebRTC] [session 347a0832] closed: codecs not supported by client
+2026/05/02 10:38:34 INF [WebRTC] [session ec789eb6] created by 10.10.110.2:57041
+2026/05/02 10:38:34 INF [WebRTC] [session ec789eb6] closed: codecs not supported by client
+2026/05/02 10:38:36 INF [WebRTC] [session 9f13250b] created by 10.10.110.2:57041
+2026/05/02 10:38:36 INF [WebRTC] [session 9f13250b] closed: codecs not supported by client
+2026/05/02 10:38:38 INF [WebRTC] [session fac47642] created by 10.10.110.2:57041
+2026/05/02 10:38:38 INF [WebRTC] [session fac47642] closed: codecs not supported by client
+2026/05/02 10:38:40 INF [WebRTC] [session 045665f0] created by 10.10.110.2:57041
+2026/05/02 10:38:40 INF [WebRTC] [session 045665f0] closed: codecs not supported by client
+2026/05/02 10:38:42 INF [WebRTC] [session 5f19d28b] created by 10.10.110.2:57041
+2026/05/02 10:38:42 INF [WebRTC] [session 5f19d28b] closed: codecs not supported by client
+2026/05/02 10:38:44 INF [WebRTC] [session 62e0fe97] created by 10.10.110.2:57041
+2026/05/02 10:38:44 INF [WebRTC] [session 62e0fe97] closed: codecs not supported by client
+2026/05/02 10:38:46 INF [WebRTC] [session 205af9ff] created by 10.10.110.2:57041
+2026/05/02 10:38:46 INF [WebRTC] [session 205af9ff] closed: codecs not supported by client
+2026/05/02 10:38:48 INF [WebRTC] [session 30468e9e] created by 10.10.110.2:57041
+2026/05/02 10:38:48 INF [WebRTC] [session 30468e9e] closed: codecs not supported by client
+2026/05/02 10:38:50 INF [WebRTC] [session 77a6649b] created by 10.10.110.2:57041
+2026/05/02 10:38:50 INF [WebRTC] [session 77a6649b] closed: codecs not supported by client
+2026/05/02 10:38:52 INF [WebRTC] [session bd45f7ec] created by 10.10.110.2:57041
+2026/05/02 10:38:52 INF [WebRTC] [session bd45f7ec] closed: codecs not supported by client
+2026/05/02 10:38:54 INF [WebRTC] [session 6e80707c] created by 10.10.110.2:57041
+2026/05/02 10:38:54 INF [WebRTC] [session 6e80707c] closed: codecs not supported by client
+2026/05/02 10:38:56 INF [WebRTC] [session 1344ef15] created by 10.10.110.2:57041
+2026/05/02 10:38:56 INF [WebRTC] [session 1344ef15] closed: codecs not supported by client
+2026/05/02 10:38:58 INF [WebRTC] [session af28196e] created by 10.10.110.2:57041
+2026/05/02 10:38:58 INF [WebRTC] [session af28196e] closed: codecs not supported by client
+2026/05/02 10:39:00 INF [WebRTC] [session e06b521b] created by 10.10.110.2:57041
+2026/05/02 10:39:00 INF [WebRTC] [session e06b521b] closed: codecs not supported by client
+2026/05/02 10:39:02 INF [WebRTC] [session 3906ea5e] created by 10.10.110.2:57041
+2026/05/02 10:39:02 INF [WebRTC] [session 3906ea5e] closed: codecs not supported by client
+2026/05/02 10:39:04 INF [WebRTC] [session 44727df0] created by 10.10.110.2:57041
+2026/05/02 10:39:04 INF [WebRTC] [session 44727df0] closed: codecs not supported by client
+2026/05/02 10:39:06 INF [WebRTC] [session a89b181e] created by 10.10.110.2:57041
+2026/05/02 10:39:06 INF [WebRTC] [session a89b181e] closed: codecs not supported by client
+2026/05/02 10:39:09 INF [WebRTC] [session a8582fb4] created by 10.10.110.2:57041
+2026/05/02 10:39:09 INF [WebRTC] [session a8582fb4] closed: codecs not supported by client
+2026/05/02 10:39:11 INF [WebRTC] [session 0da83f05] created by 10.10.110.2:57041
+2026/05/02 10:39:11 INF [WebRTC] [session 0da83f05] closed: codecs not supported by client
+2026/05/02 10:39:13 INF [WebRTC] [session f357e925] created by 10.10.110.2:57041
+2026/05/02 10:39:13 INF [WebRTC] [session f357e925] closed: codecs not supported by client
+2026/05/02 10:39:58 INF [WebRTC] [session 004e301a] created by 10.10.110.2:57203
+2026/05/02 10:39:58 INF [WebRTC] [session 004e301a] closed: codecs not supported by client
+2026/05/02 10:40:00 INF [WebRTC] [session 1e61305a] created by 10.10.110.2:57203
+2026/05/02 10:40:00 INF [WebRTC] [session 1e61305a] closed: codecs not supported by client
+2026/05/02 10:40:02 INF [WebRTC] [session 6b43d49e] created by 10.10.110.2:57203
+2026/05/02 10:40:02 INF [WebRTC] [session 6b43d49e] closed: codecs not supported by client
+2026/05/02 10:40:04 INF [WebRTC] [session cecaf980] created by 10.10.110.2:57203
+2026/05/02 10:40:04 INF [WebRTC] [session cecaf980] closed: codecs not supported by client
+2026/05/02 10:40:06 INF [WebRTC] [session 45ddbf86] created by 10.10.110.2:57203
+2026/05/02 10:40:06 INF [WebRTC] [session 45ddbf86] closed: codecs not supported by client
+2026/05/02 10:40:08 INF [WebRTC] [session f3b58b3f] created by 10.10.110.2:57203
+2026/05/02 10:40:08 INF [WebRTC] [session f3b58b3f] closed: codecs not supported by client
+2026/05/02 10:40:10 INF [WebRTC] [session 22e54d89] created by 10.10.110.2:57203
+2026/05/02 10:40:10 INF [WebRTC] [session 22e54d89] closed: codecs not supported by client
+2026/05/02 10:40:13 INF [WebRTC] [session a1b12f8b] created by 10.10.110.2:57203
+2026/05/02 10:40:13 INF [WebRTC] [session a1b12f8b] closed: codecs not supported by client
+2026/05/02 10:40:16 INF [WebRTC] [session 2f71b623] created by 10.10.110.2:57203
+2026/05/02 10:40:16 INF [WebRTC] [session 2f71b623] closed: codecs not supported by client
+2026/05/02 10:40:19 INF [WebRTC] [session 3551fec9] created by 10.10.110.2:57203
+2026/05/02 10:40:19 INF [WebRTC] [session 3551fec9] closed: codecs not supported by client
+2026/05/02 10:40:22 INF [WebRTC] [session f34ddad3] created by 10.10.110.2:57203
+2026/05/02 10:40:22 INF [WebRTC] [session f34ddad3] closed: codecs not supported by client
+2026/05/02 10:40:25 INF [WebRTC] [session 907d6fd4] created by 10.10.110.2:57203
+2026/05/02 10:40:25 INF [WebRTC] [session 907d6fd4] closed: codecs not supported by client
+2026/05/02 10:40:28 INF [WebRTC] [session 2009fa5e] created by 10.10.110.2:57203
+2026/05/02 10:40:28 INF [WebRTC] [session 2009fa5e] closed: codecs not supported by client
+2026/05/02 10:40:31 INF [WebRTC] [session 03449646] created by 10.10.110.2:57203
+2026/05/02 10:40:31 INF [WebRTC] [session 03449646] closed: codecs not supported by client
+2026/05/02 10:40:34 INF [WebRTC] [session ff71937b] created by 10.10.110.2:57203
+2026/05/02 10:40:34 INF [WebRTC] [session ff71937b] closed: codecs not supported by client
+2026/05/02 10:40:36 INF [WebRTC] [session d7703979] created by 10.10.110.2:57203
+2026/05/02 10:40:36 INF [WebRTC] [session d7703979] closed: codecs not supported by client
+2026/05/02 10:40:39 INF [WebRTC] [session 7dfe5044] created by 10.10.110.2:57203
+2026/05/02 10:40:39 INF [WebRTC] [session 7dfe5044] closed: codecs not supported by client
+2026/05/02 10:40:41 INF [WebRTC] [session e941c023] created by 10.10.110.2:57203
+2026/05/02 10:40:41 INF [WebRTC] [session e941c023] closed: codecs not supported by client
+2026/05/02 10:40:43 INF [WebRTC] [session 82c876d5] created by 10.10.110.2:57203
+2026/05/02 10:40:43 INF [WebRTC] [session 82c876d5] closed: codecs not supported by client
+2026/05/02 10:40:45 INF [WebRTC] [session 2d5f2a92] created by 10.10.110.2:57203
+2026/05/02 10:40:45 INF [WebRTC] [session 2d5f2a92] closed: codecs not supported by client
+2026/05/02 10:40:47 INF [WebRTC] [session 0018b220] created by 10.10.110.2:57203
+2026/05/02 10:40:47 INF [WebRTC] [session 0018b220] closed: codecs not supported by client
+2026/05/02 10:40:49 INF [WebRTC] [session 4a2ab05e] created by 10.10.110.2:57203
+2026/05/02 10:40:49 INF [WebRTC] [session 4a2ab05e] closed: codecs not supported by client
+2026/05/02 10:40:51 INF [WebRTC] [session 4602b53f] created by 10.10.110.2:57203
+2026/05/02 10:40:51 INF [WebRTC] [session 4602b53f] closed: codecs not supported by client
+2026/05/02 10:40:53 INF [WebRTC] [session 9d1db028] created by 10.10.110.2:57203
+2026/05/02 10:40:53 INF [WebRTC] [session 9d1db028] closed: codecs not supported by client
+2026/05/02 10:40:55 INF [WebRTC] [session a506e462] created by 10.10.110.2:57203
+2026/05/02 10:40:55 INF [WebRTC] [session a506e462] closed: codecs not supported by client
+2026/05/02 10:40:57 INF [WebRTC] [session a030b7ba] created by 10.10.110.2:57203
+2026/05/02 10:40:57 INF [WebRTC] [session a030b7ba] closed: codecs not supported by client
+2026/05/02 10:40:59 INF [WebRTC] [session 465b923f] created by 10.10.110.2:57203
+2026/05/02 10:40:59 INF [WebRTC] [session 465b923f] closed: codecs not supported by client
+2026/05/02 10:41:01 INF [WebRTC] [session 0df75c26] created by 10.10.110.2:57203
+2026/05/02 10:41:01 INF [WebRTC] [session 0df75c26] closed: codecs not supported by client
+2026/05/02 10:41:03 INF [WebRTC] [session 62814ed6] created by 10.10.110.2:57203
+2026/05/02 10:41:03 INF [WebRTC] [session 62814ed6] closed: codecs not supported by client
+2026/05/02 10:41:05 INF [WebRTC] [session ae678124] created by 10.10.110.2:57203
+2026/05/02 10:41:05 INF [WebRTC] [session ae678124] closed: codecs not supported by client
+2026/05/02 10:41:07 INF [WebRTC] [session da10c5d7] created by 10.10.110.2:57203
+2026/05/02 10:41:07 INF [WebRTC] [session da10c5d7] closed: codecs not supported by client
+2026/05/02 10:41:09 INF [WebRTC] [session fd6e48c9] created by 10.10.110.2:57203
+2026/05/02 10:41:09 INF [WebRTC] [session fd6e48c9] closed: codecs not supported by client
+2026/05/02 10:41:12 INF [WebRTC] [session c8a92fde] created by 10.10.110.2:57203
+2026/05/02 10:41:12 INF [WebRTC] [session c8a92fde] closed: codecs not supported by client
+2026/05/02 10:41:14 INF [WebRTC] [session ee0e55b4] created by 10.10.110.2:57203
+2026/05/02 10:41:14 INF [WebRTC] [session ee0e55b4] closed: codecs not supported by client
+2026/05/02 10:41:16 INF [WebRTC] [session bd2b8206] created by 10.10.110.2:57203
+2026/05/02 10:41:16 INF [WebRTC] [session bd2b8206] closed: codecs not supported by client
+2026/05/02 10:41:18 INF [WebRTC] [session ac8bf2a8] created by 10.10.110.2:57203
+2026/05/02 10:41:18 INF [WebRTC] [session ac8bf2a8] closed: codecs not supported by client
+2026/05/02 10:41:20 INF [WebRTC] [session aa0a2a84] created by 10.10.110.2:57203
+2026/05/02 10:41:20 INF [WebRTC] [session aa0a2a84] closed: codecs not supported by client
+2026/05/02 10:41:22 INF [WebRTC] [session 7e28583b] created by 10.10.110.2:57203
+2026/05/02 10:41:22 INF [WebRTC] [session 7e28583b] closed: codecs not supported by client
+2026/05/02 10:41:24 INF [WebRTC] [session 2b149424] created by 10.10.110.2:57203
+2026/05/02 10:41:24 INF [WebRTC] [session 2b149424] closed: codecs not supported by client
+2026/05/02 10:41:26 INF [WebRTC] [session fee28953] created by 10.10.110.2:57203
+2026/05/02 10:41:26 INF [WebRTC] [session fee28953] closed: codecs not supported by client
+2026/05/02 10:41:28 INF [WebRTC] [session 14a98b7c] created by 10.10.110.2:57203
+2026/05/02 10:41:28 INF [WebRTC] [session 14a98b7c] closed: codecs not supported by client
+2026/05/02 10:41:30 INF [WebRTC] [session 2a573dff] created by 10.10.110.2:57203
+2026/05/02 10:41:30 INF [WebRTC] [session 2a573dff] closed: codecs not supported by client
+2026/05/02 10:41:32 INF [WebRTC] [session 3bb117ed] created by 10.10.110.2:57203
+2026/05/02 10:41:32 INF [WebRTC] [session 3bb117ed] closed: codecs not supported by client
+2026/05/02 10:41:34 INF [WebRTC] [session 539f478d] created by 10.10.110.2:57203
+2026/05/02 10:41:34 INF [WebRTC] [session 539f478d] closed: codecs not supported by client
+2026/05/02 10:41:36 INF [WebRTC] [session 8c62ba4c] created by 10.10.110.2:57203
+2026/05/02 10:41:36 INF [WebRTC] [session 8c62ba4c] closed: codecs not supported by client
+2026/05/02 10:41:38 INF [WebRTC] [session 948ba13d] created by 10.10.110.2:57203
+2026/05/02 10:41:38 INF [WebRTC] [session 948ba13d] closed: codecs not supported by client
+2026/05/02 10:41:40 INF [WebRTC] [session 655bc72e] created by 10.10.110.2:57203
+2026/05/02 10:41:40 INF [WebRTC] [session 655bc72e] closed: codecs not supported by client
+2026/05/02 10:41:42 INF [WebRTC] [session 732818bd] created by 10.10.110.2:57203
+2026/05/02 10:41:42 INF [WebRTC] [session 732818bd] closed: codecs not supported by client
+2026/05/02 10:41:44 INF [WebRTC] [session a4425486] created by 10.10.110.2:57203
+2026/05/02 10:41:44 INF [WebRTC] [session a4425486] closed: codecs not supported by client
+2026/05/02 10:41:46 INF [WebRTC] [session c849846b] created by 10.10.110.2:57263
+2026/05/02 10:41:46 INF [WebRTC] [session c849846b] peer connection established, local candidate: host/udp/192.168.56.1/8189, remote candidate: prflx/udp/10.10.110.2/50513
+2026/05/02 10:41:46 INF [WebRTC] [session c849846b] is reading from path 'cctv1', 2 tracks (G711, H265)
+2026/05/02 10:41:46 INF [WebRTC] [session fba4e96d] created by 10.10.110.2:57203
+2026/05/02 10:41:46 INF [WebRTC] [session fba4e96d] closed: codecs not supported by client
+2026/05/02 10:41:48 INF [WebRTC] [session 2df45974] created by 10.10.110.2:57203
+2026/05/02 10:41:48 INF [WebRTC] [session 2df45974] closed: codecs not supported by client
+2026/05/02 10:41:50 INF [WebRTC] [session fed1cd99] created by 10.10.110.2:57203
+2026/05/02 10:41:50 INF [WebRTC] [session fed1cd99] closed: codecs not supported by client
+2026/05/02 10:41:52 INF [WebRTC] [session 02cbd850] created by 10.10.110.2:57203
+2026/05/02 10:41:52 INF [WebRTC] [session 02cbd850] closed: codecs not supported by client
+2026/05/02 10:41:54 INF [WebRTC] [session 1de55552] created by 10.10.110.2:57203
+2026/05/02 10:41:54 INF [WebRTC] [session 1de55552] closed: codecs not supported by client
+2026/05/02 10:41:56 INF [WebRTC] [session 950eb51b] created by 10.10.110.2:57203
+2026/05/02 10:41:56 INF [WebRTC] [session 950eb51b] closed: codecs not supported by client
+2026/05/02 10:41:58 INF [WebRTC] [session 2d9c22d6] created by 10.10.110.2:57203
+2026/05/02 10:41:58 INF [WebRTC] [session 2d9c22d6] closed: codecs not supported by client
+2026/05/02 10:42:00 INF [WebRTC] [session d9d8d3fd] created by 10.10.110.2:57203
+2026/05/02 10:42:00 INF [WebRTC] [session d9d8d3fd] closed: codecs not supported by client
+2026/05/02 10:42:03 INF [WebRTC] [session af84fecb] created by 10.10.110.2:57203
+2026/05/02 10:42:03 INF [WebRTC] [session af84fecb] closed: codecs not supported by client
+2026/05/02 10:42:05 INF [WebRTC] [session e74a36b8] created by 10.10.110.2:57203
+2026/05/02 10:42:05 INF [WebRTC] [session e74a36b8] closed: codecs not supported by client
+2026/05/02 10:42:07 INF [WebRTC] [session a76d448f] created by 10.10.110.2:57203
+2026/05/02 10:42:07 INF [WebRTC] [session a76d448f] closed: codecs not supported by client
+2026/05/02 10:42:09 INF [WebRTC] [session 4fd18fa5] created by 10.10.110.2:57203
+2026/05/02 10:42:09 INF [WebRTC] [session 4fd18fa5] closed: codecs not supported by client
+2026/05/02 10:42:12 INF [WebRTC] [session 67335227] created by 10.10.110.2:57203
+2026/05/02 10:42:12 INF [WebRTC] [session 67335227] closed: codecs not supported by client
+2026/05/02 10:42:15 INF [WebRTC] [session 0ae6d77a] created by 10.10.110.2:57203
+2026/05/02 10:42:15 INF [WebRTC] [session 0ae6d77a] closed: codecs not supported by client
+2026/05/02 10:42:18 INF [WebRTC] [session 1458016b] created by 10.10.110.2:57203
+2026/05/02 10:42:18 INF [WebRTC] [session 1458016b] closed: codecs not supported by client
+2026/05/02 10:42:21 INF [WebRTC] [session 9732c4c7] created by 10.10.110.2:57203
+2026/05/02 10:42:21 INF [WebRTC] [session 9732c4c7] closed: codecs not supported by client
+2026/05/02 10:42:24 INF [WebRTC] [session c24c5cf5] created by 10.10.110.2:57203
+2026/05/02 10:42:24 INF [WebRTC] [session c24c5cf5] closed: codecs not supported by client
+2026/05/02 10:42:27 INF [WebRTC] [session fe465fb8] created by 10.10.110.2:57203
+2026/05/02 10:42:27 INF [WebRTC] [session fe465fb8] closed: codecs not supported by client
+2026/05/02 10:42:30 INF [WebRTC] [session 8a798132] created by 10.10.110.2:57203
+2026/05/02 10:42:30 INF [WebRTC] [session 8a798132] closed: codecs not supported by client
+2026/05/02 10:42:33 INF [WebRTC] [session 5396aa12] created by 10.10.110.2:57203
+2026/05/02 10:42:33 INF [WebRTC] [session 5396aa12] closed: codecs not supported by client
+2026/05/02 10:42:36 INF [WebRTC] [session a02345d8] created by 10.10.110.2:57203
+2026/05/02 10:42:36 INF [WebRTC] [session a02345d8] closed: codecs not supported by client
+2026/05/02 10:42:39 INF [WebRTC] [session cbc541af] created by 10.10.110.2:57203
+2026/05/02 10:42:39 INF [WebRTC] [session cbc541af] closed: codecs not supported by client
+2026/05/02 10:42:42 INF [WebRTC] [session 1d2363a0] created by 10.10.110.2:57203
+2026/05/02 10:42:42 INF [WebRTC] [session 1d2363a0] closed: codecs not supported by client
+2026/05/02 10:42:45 INF [WebRTC] [session e0a9e88c] created by 10.10.110.2:57203
+2026/05/02 10:42:45 INF [WebRTC] [session e0a9e88c] closed: codecs not supported by client
+2026/05/02 10:42:48 INF [WebRTC] [session c2c75941] created by 10.10.110.2:57203
+2026/05/02 10:42:48 INF [WebRTC] [session c2c75941] closed: codecs not supported by client
+2026/05/02 10:42:51 INF [WebRTC] [session fb743d07] created by 10.10.110.2:57203
+2026/05/02 10:42:51 INF [WebRTC] [session fb743d07] closed: codecs not supported by client
+2026/05/02 10:42:54 INF [WebRTC] [session f76dbf51] created by 10.10.110.2:57203
+2026/05/02 10:42:54 INF [WebRTC] [session f76dbf51] closed: codecs not supported by client
+2026/05/02 10:45:50 INF reloading configuration (file changed)
+2026/05/02 10:46:59 INF reloading configuration (file changed)
+2026/05/02 11:34:01 INF [WebRTC] [session c849846b] closed: peer connection closed
+2026/05/02 11:35:26 INF [WebRTC] [session 62358654] closed: peer connection closed
+2026/05/02 11:35:35 ERR [path cctv1] [RTSP source] TCP timeout
+2026/05/02 11:35:35 INF [WebRTC] [session 757441bb] closed: terminated
+2026/05/02 11:35:50 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:35:55 INF [WebRTC] [session c2e7d19a] created by 10.10.110.6:53916
+2026/05/02 11:35:55 INF [WebRTC] [session c2e7d19a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:35:57 INF [WebRTC] [session 3fd3f7a8] created by 10.10.110.6:53916
+2026/05/02 11:35:57 INF [WebRTC] [session 3fd3f7a8] closed: no stream is available on path 'cctv1'
+2026/05/02 11:35:59 INF [WebRTC] [session 5cf66210] created by 10.10.110.6:53916
+2026/05/02 11:35:59 INF [WebRTC] [session 5cf66210] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:01 INF [WebRTC] [session de9d863e] created by 10.10.110.6:53916
+2026/05/02 11:36:01 INF [WebRTC] [session de9d863e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:03 INF [WebRTC] [session 9b5abe13] created by 10.10.110.6:53916
+2026/05/02 11:36:03 INF [WebRTC] [session 9b5abe13] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:05 INF [WebRTC] [session c2f42bb5] created by 10.10.110.6:53916
+2026/05/02 11:36:05 INF [WebRTC] [session c2f42bb5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:05 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:36:07 INF [WebRTC] [session 50624243] created by 10.10.110.6:53916
+2026/05/02 11:36:07 INF [WebRTC] [session 50624243] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:09 INF [WebRTC] [session a20efb09] created by 10.10.110.6:53916
+2026/05/02 11:36:09 INF [WebRTC] [session a20efb09] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:11 INF [WebRTC] [session 5bb092d9] created by 10.10.110.6:53916
+2026/05/02 11:36:11 INF [WebRTC] [session 5bb092d9] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:13 INF [WebRTC] [session ee313cbe] created by 10.10.110.6:53916
+2026/05/02 11:36:13 INF [WebRTC] [session ee313cbe] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:15 INF [WebRTC] [session e7e2875c] created by 10.10.110.6:53916
+2026/05/02 11:36:15 INF [WebRTC] [session e7e2875c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:17 INF [WebRTC] [session 7053ec24] created by 10.10.110.6:53916
+2026/05/02 11:36:17 INF [WebRTC] [session 7053ec24] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:19 INF [WebRTC] [session c86f8535] created by 10.10.110.6:53916
+2026/05/02 11:36:19 INF [WebRTC] [session c86f8535] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:20 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:36:21 INF [WebRTC] [session 51b47efb] created by 10.10.110.6:53916
+2026/05/02 11:36:21 INF [WebRTC] [session 51b47efb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:23 INF [WebRTC] [session 87e439de] created by 10.10.110.6:53916
+2026/05/02 11:36:23 INF [WebRTC] [session 87e439de] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:24 INF [WebRTC] [session 99b7c340] created by 10.10.110.5:61407
+2026/05/02 11:36:24 INF [WebRTC] [session 99b7c340] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:25 INF [WebRTC] [session 771005ba] created by 10.10.110.6:53916
+2026/05/02 11:36:25 INF [WebRTC] [session 771005ba] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:26 INF [WebRTC] [session 4ef39e55] created by 10.10.110.5:61407
+2026/05/02 11:36:26 INF [WebRTC] [session 4ef39e55] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:27 INF [WebRTC] [session 730b8da0] created by 10.10.110.6:53916
+2026/05/02 11:36:27 INF [WebRTC] [session 730b8da0] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:28 INF [WebRTC] [session 6b35de40] created by 10.10.110.5:61407
+2026/05/02 11:36:28 INF [WebRTC] [session 6b35de40] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:29 INF [WebRTC] [session 54544fcd] created by 10.10.110.6:53916
+2026/05/02 11:36:29 INF [WebRTC] [session 54544fcd] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:30 INF [WebRTC] [session ee57d4a6] created by 10.10.110.5:61407
+2026/05/02 11:36:30 INF [WebRTC] [session ee57d4a6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:31 INF [WebRTC] [session 8554f16e] created by 10.10.110.6:53916
+2026/05/02 11:36:31 INF [WebRTC] [session 8554f16e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:32 INF [WebRTC] [session da668079] created by 10.10.110.5:61407
+2026/05/02 11:36:32 INF [WebRTC] [session da668079] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:33 INF [WebRTC] [session 501a0014] created by 10.10.110.6:53916
+2026/05/02 11:36:33 INF [WebRTC] [session 501a0014] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:34 INF [WebRTC] [session f502e0b7] created by 10.10.110.5:61407
+2026/05/02 11:36:34 INF [WebRTC] [session f502e0b7] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:35 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:36:35 INF [WebRTC] [session 7f24fed8] created by 10.10.110.6:53916
+2026/05/02 11:36:35 INF [WebRTC] [session 7f24fed8] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:36 INF [WebRTC] [session d4550020] created by 10.10.110.5:61407
+2026/05/02 11:36:36 INF [WebRTC] [session d4550020] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:37 INF [WebRTC] [session 6a971f38] created by 10.10.110.6:53916
+2026/05/02 11:36:37 INF [WebRTC] [session 6a971f38] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:38 INF [WebRTC] [session 633b7e84] created by 10.10.110.5:61407
+2026/05/02 11:36:38 INF [WebRTC] [session 633b7e84] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:39 INF [WebRTC] [session cd2e82c6] created by 10.10.110.6:53916
+2026/05/02 11:36:39 INF [WebRTC] [session cd2e82c6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:40 INF [WebRTC] [session 8946b337] created by 10.10.110.5:61407
+2026/05/02 11:36:40 INF [WebRTC] [session 8946b337] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:41 INF [WebRTC] [session 619baccb] created by 10.10.110.6:53916
+2026/05/02 11:36:41 INF [WebRTC] [session 619baccb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:43 INF [WebRTC] [session c71ef203] created by 10.10.110.6:53916
+2026/05/02 11:36:43 INF [WebRTC] [session c71ef203] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:45 INF [WebRTC] [session cfbf79e4] created by 10.10.110.6:53916
+2026/05/02 11:36:45 INF [WebRTC] [session cfbf79e4] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:47 INF [WebRTC] [session 1ea8908d] created by 10.10.110.6:53916
+2026/05/02 11:36:47 INF [WebRTC] [session 1ea8908d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:49 INF [WebRTC] [session 601d2dea] created by 10.10.110.6:53916
+2026/05/02 11:36:49 INF [WebRTC] [session 601d2dea] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:50 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:36:51 INF [WebRTC] [session 70e08d9b] created by 10.10.110.6:53916
+2026/05/02 11:36:51 INF [WebRTC] [session 70e08d9b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:54 INF [WebRTC] [session 96daa3df] created by 10.10.110.6:53916
+2026/05/02 11:36:54 INF [WebRTC] [session 96daa3df] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:56 INF [WebRTC] [session 59842e4e] created by 10.10.110.6:53916
+2026/05/02 11:36:56 INF [WebRTC] [session 59842e4e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:36:58 INF [WebRTC] [session 60726cc6] created by 10.10.110.6:53916
+2026/05/02 11:36:58 INF [WebRTC] [session 60726cc6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:00 INF [WebRTC] [session 1f80ba6a] created by 10.10.110.6:53916
+2026/05/02 11:37:00 INF [WebRTC] [session 1f80ba6a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:02 INF [WebRTC] [session aa0739f9] created by 10.10.110.6:53916
+2026/05/02 11:37:02 INF [WebRTC] [session aa0739f9] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:04 INF [WebRTC] [session 837fc140] created by 10.10.110.6:53916
+2026/05/02 11:37:04 INF [WebRTC] [session 837fc140] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:05 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:37:06 INF [WebRTC] [session c3adbd7f] created by 10.10.110.6:53916
+2026/05/02 11:37:06 INF [WebRTC] [session c3adbd7f] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:08 INF [WebRTC] [session ba828826] created by 10.10.110.6:53916
+2026/05/02 11:37:08 INF [WebRTC] [session ba828826] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:10 INF [WebRTC] [session a3b0f5ec] created by 10.10.110.6:53916
+2026/05/02 11:37:10 INF [WebRTC] [session a3b0f5ec] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:12 INF [WebRTC] [session 1b7cb784] created by 10.10.110.6:53916
+2026/05/02 11:37:12 INF [WebRTC] [session 1b7cb784] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:12 INF [WebRTC] [session 3259f986] created by 10.10.110.5:61596
+2026/05/02 11:37:12 INF [WebRTC] [session 3259f986] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:14 INF [WebRTC] [session df3991ef] created by 10.10.110.6:53916
+2026/05/02 11:37:14 INF [WebRTC] [session df3991ef] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:15 INF [WebRTC] [session ea6db81b] created by 10.10.110.5:61596
+2026/05/02 11:37:15 INF [WebRTC] [session ea6db81b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:16 INF [WebRTC] [session 40b86736] created by 10.10.110.6:53916
+2026/05/02 11:37:16 INF [WebRTC] [session 40b86736] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:18 INF [WebRTC] [session 6cb46ea8] created by 10.10.110.6:53916
+2026/05/02 11:37:18 INF [WebRTC] [session 6cb46ea8] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:18 INF [WebRTC] [session ecc4bf24] created by 10.10.110.5:61596
+2026/05/02 11:37:18 INF [WebRTC] [session ecc4bf24] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:20 INF [WebRTC] [session 2e4a41ae] created by 10.10.110.6:53916
+2026/05/02 11:37:20 INF [WebRTC] [session 2e4a41ae] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:20 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:37:21 INF [WebRTC] [session f58dde16] created by 10.10.110.5:61596
+2026/05/02 11:37:21 INF [WebRTC] [session f58dde16] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:22 INF [WebRTC] [session 4864e7d4] created by 10.10.110.6:53916
+2026/05/02 11:37:22 INF [WebRTC] [session 4864e7d4] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:24 INF [WebRTC] [session dfe7e308] created by 10.10.110.6:53916
+2026/05/02 11:37:24 INF [WebRTC] [session dfe7e308] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:24 INF [WebRTC] [session 6c7917a1] created by 10.10.110.5:61596
+2026/05/02 11:37:24 INF [WebRTC] [session 6c7917a1] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:26 INF [WebRTC] [session 6888fe21] created by 10.10.110.6:53916
+2026/05/02 11:37:26 INF [WebRTC] [session 6888fe21] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:27 INF [WebRTC] [session 28080c00] created by 10.10.110.5:61596
+2026/05/02 11:37:27 INF [WebRTC] [session 28080c00] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:28 INF [WebRTC] [session e546ebf2] created by 10.10.110.6:53916
+2026/05/02 11:37:28 INF [WebRTC] [session e546ebf2] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:30 INF [WebRTC] [session bf2cc5bb] created by 10.10.110.5:61596
+2026/05/02 11:37:30 INF [WebRTC] [session bf2cc5bb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:30 INF [WebRTC] [session e70fcead] created by 10.10.110.6:53916
+2026/05/02 11:37:30 INF [WebRTC] [session e70fcead] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:32 INF [WebRTC] [session 463b238f] created by 10.10.110.6:53916
+2026/05/02 11:37:32 INF [WebRTC] [session 463b238f] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:33 INF [WebRTC] [session ba5491bc] created by 10.10.110.5:61596
+2026/05/02 11:37:33 INF [WebRTC] [session ba5491bc] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:34 INF [WebRTC] [session 3907111e] created by 10.10.110.6:53916
+2026/05/02 11:37:34 INF [WebRTC] [session 3907111e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:35 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:37:36 INF [WebRTC] [session 01f32d35] created by 10.10.110.5:61596
+2026/05/02 11:37:36 INF [WebRTC] [session 01f32d35] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:36 INF [WebRTC] [session 20a5044c] created by 10.10.110.6:53916
+2026/05/02 11:37:36 INF [WebRTC] [session 20a5044c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:38 INF [WebRTC] [session b755f017] created by 10.10.110.5:61596
+2026/05/02 11:37:38 INF [WebRTC] [session b755f017] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:38 INF [WebRTC] [session 28094d6b] created by 10.10.110.6:53916
+2026/05/02 11:37:38 INF [WebRTC] [session 28094d6b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:40 INF [WebRTC] [session 2619f209] created by 10.10.110.5:61596
+2026/05/02 11:37:40 INF [WebRTC] [session 2619f209] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:40 INF [WebRTC] [session afddcc32] created by 10.10.110.6:53916
+2026/05/02 11:37:40 INF [WebRTC] [session afddcc32] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:42 INF [WebRTC] [session c2abe4b2] created by 10.10.110.5:61596
+2026/05/02 11:37:42 INF [WebRTC] [session c2abe4b2] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:42 INF [WebRTC] [session b2e43033] created by 10.10.110.6:53916
+2026/05/02 11:37:42 INF [WebRTC] [session b2e43033] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:44 INF [WebRTC] [session f3b4dc26] created by 10.10.110.5:61596
+2026/05/02 11:37:44 INF [WebRTC] [session f3b4dc26] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:44 INF [WebRTC] [session 140c75d1] created by 10.10.110.6:53916
+2026/05/02 11:37:44 INF [WebRTC] [session 140c75d1] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:46 INF [WebRTC] [session 33155858] created by 10.10.110.5:61596
+2026/05/02 11:37:46 INF [WebRTC] [session 33155858] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:46 INF [WebRTC] [session 2f54d170] created by 10.10.110.6:53916
+2026/05/02 11:37:46 INF [WebRTC] [session 2f54d170] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:48 INF [WebRTC] [session 9e904d16] created by 10.10.110.5:61596
+2026/05/02 11:37:48 INF [WebRTC] [session 9e904d16] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:48 INF [WebRTC] [session 5d8a4896] created by 10.10.110.6:53916
+2026/05/02 11:37:48 INF [WebRTC] [session 5d8a4896] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:50 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:37:50 INF [WebRTC] [session 59232c41] created by 10.10.110.5:61596
+2026/05/02 11:37:50 INF [WebRTC] [session 59232c41] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:50 INF [WebRTC] [session 20444918] created by 10.10.110.6:53916
+2026/05/02 11:37:50 INF [WebRTC] [session 20444918] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:52 INF [WebRTC] [session 38a7d9e1] created by 10.10.110.5:61596
+2026/05/02 11:37:52 INF [WebRTC] [session 38a7d9e1] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:52 INF [WebRTC] [session a238c143] created by 10.10.110.6:53916
+2026/05/02 11:37:52 INF [WebRTC] [session a238c143] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:54 INF [WebRTC] [session fd32b39b] created by 10.10.110.5:61596
+2026/05/02 11:37:54 INF [WebRTC] [session fd32b39b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:54 INF [WebRTC] [session 5521c861] created by 10.10.110.6:53916
+2026/05/02 11:37:54 INF [WebRTC] [session 5521c861] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:56 INF [WebRTC] [session 6d0cf157] created by 10.10.110.5:61596
+2026/05/02 11:37:56 INF [WebRTC] [session 6d0cf157] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:56 INF [WebRTC] [session cf1c9e72] created by 10.10.110.6:53916
+2026/05/02 11:37:56 INF [WebRTC] [session cf1c9e72] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:58 INF [WebRTC] [session 8972ae35] created by 10.10.110.5:61596
+2026/05/02 11:37:58 INF [WebRTC] [session 8972ae35] closed: no stream is available on path 'cctv1'
+2026/05/02 11:37:58 INF [WebRTC] [session c853e0fe] created by 10.10.110.6:53916
+2026/05/02 11:37:58 INF [WebRTC] [session c853e0fe] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:00 INF [WebRTC] [session 2f6aa647] created by 10.10.110.5:61596
+2026/05/02 11:38:00 INF [WebRTC] [session 2f6aa647] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:00 INF [WebRTC] [session eab7e98d] created by 10.10.110.6:53916
+2026/05/02 11:38:00 INF [WebRTC] [session eab7e98d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:02 INF [WebRTC] [session 57e1d051] created by 10.10.110.5:61596
+2026/05/02 11:38:02 INF [WebRTC] [session 57e1d051] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:02 INF [WebRTC] [session 3f0a7a5c] created by 10.10.110.6:53916
+2026/05/02 11:38:02 INF [WebRTC] [session 3f0a7a5c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:04 INF [WebRTC] [session 49d8f3d2] created by 10.10.110.5:61596
+2026/05/02 11:38:04 INF [WebRTC] [session 49d8f3d2] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:04 INF [WebRTC] [session 23fe4f8a] created by 10.10.110.6:53916
+2026/05/02 11:38:04 INF [WebRTC] [session 23fe4f8a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:05 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:38:06 INF [WebRTC] [session 637ba951] created by 10.10.110.5:61596
+2026/05/02 11:38:06 INF [WebRTC] [session 637ba951] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:06 INF [WebRTC] [session ed047569] created by 10.10.110.6:53916
+2026/05/02 11:38:06 INF [WebRTC] [session ed047569] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:08 INF [WebRTC] [session bee11266] created by 10.10.110.5:61596
+2026/05/02 11:38:08 INF [WebRTC] [session bee11266] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:08 INF [WebRTC] [session 11f5979b] created by 10.10.110.6:53916
+2026/05/02 11:38:08 INF [WebRTC] [session 11f5979b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:10 INF [WebRTC] [session 801a37bd] created by 10.10.110.5:61596
+2026/05/02 11:38:10 INF [WebRTC] [session 801a37bd] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:10 INF [WebRTC] [session 0f7c909f] created by 10.10.110.6:53916
+2026/05/02 11:38:10 INF [WebRTC] [session 0f7c909f] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:12 INF [WebRTC] [session 6b0695ee] created by 10.10.110.5:61596
+2026/05/02 11:38:12 INF [WebRTC] [session 6b0695ee] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:13 INF [WebRTC] [session def5d4fb] created by 10.10.110.6:53916
+2026/05/02 11:38:13 INF [WebRTC] [session def5d4fb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:14 INF [WebRTC] [session 648ee0cd] created by 10.10.110.5:61596
+2026/05/02 11:38:14 INF [WebRTC] [session 648ee0cd] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:15 INF [WebRTC] [session 581c1c65] created by 10.10.110.6:53916
+2026/05/02 11:38:15 INF [WebRTC] [session 581c1c65] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:16 INF [WebRTC] [session 2a80036b] created by 10.10.110.5:61596
+2026/05/02 11:38:16 INF [WebRTC] [session 2a80036b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:17 INF [WebRTC] [session f8cfdff4] created by 10.10.110.6:53916
+2026/05/02 11:38:17 INF [WebRTC] [session f8cfdff4] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:18 INF [WebRTC] [session a8563c45] created by 10.10.110.5:61596
+2026/05/02 11:38:18 INF [WebRTC] [session a8563c45] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:19 INF [WebRTC] [session 11c12bb8] created by 10.10.110.6:53916
+2026/05/02 11:38:19 INF [WebRTC] [session 11c12bb8] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:20 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:38:20 INF [WebRTC] [session f3fe82e4] created by 10.10.110.5:61596
+2026/05/02 11:38:20 INF [WebRTC] [session f3fe82e4] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:21 INF [WebRTC] [session a0fbab85] created by 10.10.110.6:53916
+2026/05/02 11:38:21 INF [WebRTC] [session a0fbab85] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:22 INF [WebRTC] [session bb32f33e] created by 10.10.110.5:61596
+2026/05/02 11:38:22 INF [WebRTC] [session bb32f33e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:23 INF [WebRTC] [session b1c58deb] created by 10.10.110.6:53916
+2026/05/02 11:38:23 INF [WebRTC] [session b1c58deb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:24 INF [WebRTC] [session 453bde03] created by 10.10.110.5:61596
+2026/05/02 11:38:24 INF [WebRTC] [session 453bde03] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:25 INF [WebRTC] [session 27fb0816] created by 10.10.110.6:53916
+2026/05/02 11:38:25 INF [WebRTC] [session 27fb0816] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:26 INF [WebRTC] [session 30a7b6a0] created by 10.10.110.5:61596
+2026/05/02 11:38:26 INF [WebRTC] [session 30a7b6a0] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:27 INF [WebRTC] [session cd58aa5f] created by 10.10.110.6:53916
+2026/05/02 11:38:27 INF [WebRTC] [session cd58aa5f] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:28 INF [WebRTC] [session e34d098a] created by 10.10.110.5:61596
+2026/05/02 11:38:28 INF [WebRTC] [session e34d098a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:29 INF [WebRTC] [session 5cb54416] created by 10.10.110.6:53916
+2026/05/02 11:38:29 INF [WebRTC] [session 5cb54416] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:30 INF [WebRTC] [session c3d2604f] created by 10.10.110.5:61596
+2026/05/02 11:38:30 INF [WebRTC] [session c3d2604f] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:31 INF [WebRTC] [session 6144fcaf] created by 10.10.110.6:53916
+2026/05/02 11:38:31 INF [WebRTC] [session 6144fcaf] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:32 INF [WebRTC] [session f47d8941] created by 10.10.110.5:61596
+2026/05/02 11:38:32 INF [WebRTC] [session f47d8941] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:33 INF [WebRTC] [session 0b5b19bc] created by 10.10.110.6:53916
+2026/05/02 11:38:33 INF [WebRTC] [session 0b5b19bc] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:34 INF [WebRTC] [session 5ccd59e6] created by 10.10.110.5:61596
+2026/05/02 11:38:34 INF [WebRTC] [session 5ccd59e6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:35 INF [WebRTC] [session 8b0bf1e8] created by 10.10.110.6:53916
+2026/05/02 11:38:35 INF [WebRTC] [session 8b0bf1e8] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:35 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:38:36 INF [WebRTC] [session 4adf514b] created by 10.10.110.5:61596
+2026/05/02 11:38:36 INF [WebRTC] [session 4adf514b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:37 INF [WebRTC] [session 8cc9f44a] created by 10.10.110.6:53916
+2026/05/02 11:38:37 INF [WebRTC] [session 8cc9f44a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:38 INF [WebRTC] [session cb4ccf65] created by 10.10.110.5:61596
+2026/05/02 11:38:38 INF [WebRTC] [session cb4ccf65] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:39 INF [WebRTC] [session bc1be6df] created by 10.10.110.6:53916
+2026/05/02 11:38:39 INF [WebRTC] [session bc1be6df] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:40 INF [WebRTC] [session 3114db5d] created by 10.10.110.5:61596
+2026/05/02 11:38:40 INF [WebRTC] [session 3114db5d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:41 INF [WebRTC] [session fff9c6c0] created by 10.10.110.6:53916
+2026/05/02 11:38:41 INF [WebRTC] [session fff9c6c0] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:42 INF [WebRTC] [session c1f1e40c] created by 10.10.110.5:61596
+2026/05/02 11:38:42 INF [WebRTC] [session c1f1e40c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:43 INF [WebRTC] [session a837627b] created by 10.10.110.6:53916
+2026/05/02 11:38:43 INF [WebRTC] [session a837627b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:44 INF [WebRTC] [session 37f345c1] created by 10.10.110.5:61596
+2026/05/02 11:38:44 INF [WebRTC] [session 37f345c1] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:45 INF [WebRTC] [session ddadd23e] created by 10.10.110.6:53916
+2026/05/02 11:38:45 INF [WebRTC] [session ddadd23e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:46 INF [WebRTC] [session 1f937a84] created by 10.10.110.5:61596
+2026/05/02 11:38:46 INF [WebRTC] [session 1f937a84] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:47 INF [WebRTC] [session dcbacb7d] created by 10.10.110.6:53916
+2026/05/02 11:38:47 INF [WebRTC] [session dcbacb7d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:48 INF [WebRTC] [session 91e734aa] created by 10.10.110.5:61596
+2026/05/02 11:38:48 INF [WebRTC] [session 91e734aa] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:49 INF [WebRTC] [session f41facf0] created by 10.10.110.6:53916
+2026/05/02 11:38:49 INF [WebRTC] [session f41facf0] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:50 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:38:50 INF [WebRTC] [session 6b1cac65] created by 10.10.110.5:61596
+2026/05/02 11:38:50 INF [WebRTC] [session 6b1cac65] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:51 INF [WebRTC] [session 8b05320c] created by 10.10.110.6:53916
+2026/05/02 11:38:51 INF [WebRTC] [session 8b05320c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:52 INF [WebRTC] [session fea45469] created by 10.10.110.5:61596
+2026/05/02 11:38:52 INF [WebRTC] [session fea45469] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:53 INF [WebRTC] [session 14da74ff] created by 10.10.110.6:53916
+2026/05/02 11:38:53 INF [WebRTC] [session 14da74ff] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:55 INF [WebRTC] [session 4c2e195e] created by 10.10.110.5:61596
+2026/05/02 11:38:55 INF [WebRTC] [session 4c2e195e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:55 INF [WebRTC] [session a998b9d5] created by 10.10.110.6:53916
+2026/05/02 11:38:55 INF [WebRTC] [session a998b9d5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:57 INF [WebRTC] [session c2f3ed83] created by 10.10.110.5:61596
+2026/05/02 11:38:57 INF [WebRTC] [session c2f3ed83] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:57 INF [WebRTC] [session c640f6f9] created by 10.10.110.6:53916
+2026/05/02 11:38:57 INF [WebRTC] [session c640f6f9] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:59 INF [WebRTC] [session 17ff8ce9] created by 10.10.110.5:61596
+2026/05/02 11:38:59 INF [WebRTC] [session 17ff8ce9] closed: no stream is available on path 'cctv1'
+2026/05/02 11:38:59 INF [WebRTC] [session 5cc64d1b] created by 10.10.110.6:53916
+2026/05/02 11:38:59 INF [WebRTC] [session 5cc64d1b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:01 INF [WebRTC] [session befb87c5] created by 10.10.110.5:61596
+2026/05/02 11:39:01 INF [WebRTC] [session befb87c5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:01 INF [WebRTC] [session f054a83f] created by 10.10.110.6:53916
+2026/05/02 11:39:01 INF [WebRTC] [session f054a83f] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:03 INF [WebRTC] [session 24bda8a6] created by 10.10.110.5:61596
+2026/05/02 11:39:03 INF [WebRTC] [session 24bda8a6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:03 INF [WebRTC] [session c38f77c1] created by 10.10.110.6:53916
+2026/05/02 11:39:03 INF [WebRTC] [session c38f77c1] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:05 INF [WebRTC] [session 0750a191] created by 10.10.110.5:61596
+2026/05/02 11:39:05 INF [WebRTC] [session 0750a191] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:05 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:39:05 INF [WebRTC] [session 16baaf14] created by 10.10.110.6:53916
+2026/05/02 11:39:05 INF [WebRTC] [session 16baaf14] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:07 INF [WebRTC] [session 2098e4d6] created by 10.10.110.5:61596
+2026/05/02 11:39:07 INF [WebRTC] [session 2098e4d6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:07 INF [WebRTC] [session 523c81f2] created by 10.10.110.6:53916
+2026/05/02 11:39:07 INF [WebRTC] [session 523c81f2] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:09 INF [WebRTC] [session 77a41a0a] created by 10.10.110.5:61596
+2026/05/02 11:39:09 INF [WebRTC] [session 77a41a0a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:09 INF [WebRTC] [session eac13d35] created by 10.10.110.6:53916
+2026/05/02 11:39:09 INF [WebRTC] [session eac13d35] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:11 INF [WebRTC] [session 316a0ab4] created by 10.10.110.5:61596
+2026/05/02 11:39:11 INF [WebRTC] [session 316a0ab4] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:11 INF [WebRTC] [session de7133a9] created by 10.10.110.6:53916
+2026/05/02 11:39:11 INF [WebRTC] [session de7133a9] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:13 INF [WebRTC] [session c0425b2f] created by 10.10.110.5:61596
+2026/05/02 11:39:13 INF [WebRTC] [session c0425b2f] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:13 INF [WebRTC] [session 6964c5ce] created by 10.10.110.6:53916
+2026/05/02 11:39:13 INF [WebRTC] [session 6964c5ce] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:15 INF [WebRTC] [session 05a7343d] created by 10.10.110.5:61596
+2026/05/02 11:39:15 INF [WebRTC] [session 05a7343d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:15 INF [WebRTC] [session b98f640d] created by 10.10.110.6:53916
+2026/05/02 11:39:15 INF [WebRTC] [session b98f640d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:17 INF [WebRTC] [session 95dc4fe5] created by 10.10.110.5:61596
+2026/05/02 11:39:17 INF [WebRTC] [session 95dc4fe5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:17 INF [WebRTC] [session a5f952ea] created by 10.10.110.6:53916
+2026/05/02 11:39:17 INF [WebRTC] [session a5f952ea] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:19 INF [WebRTC] [session 0d77c3c8] created by 10.10.110.5:61596
+2026/05/02 11:39:19 INF [WebRTC] [session 0d77c3c8] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:19 INF [WebRTC] [session bbc50abd] created by 10.10.110.6:53916
+2026/05/02 11:39:19 INF [WebRTC] [session bbc50abd] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:20 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:39:21 INF [WebRTC] [session 3740ace5] created by 10.10.110.6:53916
+2026/05/02 11:39:21 INF [WebRTC] [session 3740ace5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:22 INF [WebRTC] [session 939a280d] created by 10.10.110.5:61596
+2026/05/02 11:39:22 INF [WebRTC] [session 939a280d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:23 INF [WebRTC] [session 60b767c7] created by 10.10.110.6:53916
+2026/05/02 11:39:23 INF [WebRTC] [session 60b767c7] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:24 INF [WebRTC] [session 232a2f13] created by 10.10.110.5:61596
+2026/05/02 11:39:24 INF [WebRTC] [session 232a2f13] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:25 INF [WebRTC] [session b0aa4bac] created by 10.10.110.6:53916
+2026/05/02 11:39:25 INF [WebRTC] [session b0aa4bac] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:26 INF [WebRTC] [session 30cb3d20] created by 10.10.110.5:61596
+2026/05/02 11:39:26 INF [WebRTC] [session 30cb3d20] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:27 INF [WebRTC] [session aa390edd] created by 10.10.110.6:53916
+2026/05/02 11:39:27 INF [WebRTC] [session aa390edd] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:28 INF [WebRTC] [session ac7e6d9d] created by 10.10.110.5:61596
+2026/05/02 11:39:28 INF [WebRTC] [session ac7e6d9d] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:29 INF [WebRTC] [session 8b8ac46a] created by 10.10.110.6:53916
+2026/05/02 11:39:29 INF [WebRTC] [session 8b8ac46a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:30 INF [WebRTC] [session bb1204eb] created by 10.10.110.5:61596
+2026/05/02 11:39:30 INF [WebRTC] [session bb1204eb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:31 INF [WebRTC] [session 154b155c] created by 10.10.110.6:53916
+2026/05/02 11:39:31 INF [WebRTC] [session 154b155c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:32 INF [WebRTC] [session 9db9d30a] created by 10.10.110.5:61596
+2026/05/02 11:39:32 INF [WebRTC] [session 9db9d30a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:33 INF [WebRTC] [session 90378aef] created by 10.10.110.6:53916
+2026/05/02 11:39:33 INF [WebRTC] [session 90378aef] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:34 INF [WebRTC] [session 8fb49c9c] created by 10.10.110.5:61596
+2026/05/02 11:39:34 INF [WebRTC] [session 8fb49c9c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:35 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:39:36 INF [WebRTC] [session ee804163] created by 10.10.110.6:53916
+2026/05/02 11:39:36 INF [WebRTC] [session ee804163] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:37 INF [WebRTC] [session b99d5f46] created by 10.10.110.5:61596
+2026/05/02 11:39:37 INF [WebRTC] [session b99d5f46] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:38 INF [WebRTC] [session 9cda51f6] created by 10.10.110.6:53916
+2026/05/02 11:39:38 INF [WebRTC] [session 9cda51f6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:40 INF [WebRTC] [session da4d6242] created by 10.10.110.6:53916
+2026/05/02 11:39:40 INF [WebRTC] [session da4d6242] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:40 INF [WebRTC] [session e57a0b50] created by 10.10.110.5:61596
+2026/05/02 11:39:40 INF [WebRTC] [session e57a0b50] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:42 INF [WebRTC] [session a81479c5] created by 10.10.110.6:53916
+2026/05/02 11:39:42 INF [WebRTC] [session a81479c5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:43 INF [WebRTC] [session f8041332] created by 10.10.110.5:61596
+2026/05/02 11:39:43 INF [WebRTC] [session f8041332] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:44 INF [WebRTC] [session ce3049fe] created by 10.10.110.6:53916
+2026/05/02 11:39:44 INF [WebRTC] [session ce3049fe] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:46 INF [WebRTC] [session 259a68d6] created by 10.10.110.6:53916
+2026/05/02 11:39:46 INF [WebRTC] [session 259a68d6] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:46 INF [WebRTC] [session f5bada57] created by 10.10.110.5:61596
+2026/05/02 11:39:46 INF [WebRTC] [session f5bada57] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:48 INF [WebRTC] [session 7fa1513e] created by 10.10.110.6:53916
+2026/05/02 11:39:48 INF [WebRTC] [session 7fa1513e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:49 INF [WebRTC] [session 10d56136] created by 10.10.110.5:61596
+2026/05/02 11:39:49 INF [WebRTC] [session 10d56136] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:50 INF [WebRTC] [session bc507b9a] created by 10.10.110.6:53916
+2026/05/02 11:39:50 INF [WebRTC] [session bc507b9a] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:50 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:39:52 INF [WebRTC] [session ccb11870] created by 10.10.110.6:53916
+2026/05/02 11:39:52 INF [WebRTC] [session ccb11870] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:52 INF [WebRTC] [session dd395bcc] created by 10.10.110.5:61596
+2026/05/02 11:39:52 INF [WebRTC] [session dd395bcc] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:54 INF [WebRTC] [session ad1823cb] created by 10.10.110.6:53916
+2026/05/02 11:39:54 INF [WebRTC] [session ad1823cb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:55 INF [WebRTC] [session 3a1f504c] created by 10.10.110.5:61596
+2026/05/02 11:39:55 INF [WebRTC] [session 3a1f504c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:56 INF [WebRTC] [session efb0b370] created by 10.10.110.6:53916
+2026/05/02 11:39:56 INF [WebRTC] [session efb0b370] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:58 INF [WebRTC] [session 03b268b8] created by 10.10.110.6:53916
+2026/05/02 11:39:58 INF [WebRTC] [session 03b268b8] closed: no stream is available on path 'cctv1'
+2026/05/02 11:39:58 INF [WebRTC] [session da1ed7af] created by 10.10.110.5:61596
+2026/05/02 11:39:58 INF [WebRTC] [session da1ed7af] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:00 INF [WebRTC] [session a53e1ccc] created by 10.10.110.6:53916
+2026/05/02 11:40:00 INF [WebRTC] [session a53e1ccc] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:00 INF [WebRTC] [session 60c07dc9] created by 10.10.110.5:61596
+2026/05/02 11:40:00 INF [WebRTC] [session 60c07dc9] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:02 INF [WebRTC] [session 31e5c417] created by 10.10.110.6:53916
+2026/05/02 11:40:02 INF [WebRTC] [session 31e5c417] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:02 INF [WebRTC] [session d6058d46] created by 10.10.110.5:61596
+2026/05/02 11:40:02 INF [WebRTC] [session d6058d46] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:04 INF [WebRTC] [session 6dd41696] created by 10.10.110.6:53916
+2026/05/02 11:40:04 INF [WebRTC] [session 6dd41696] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:04 INF [WebRTC] [session e179d918] created by 10.10.110.5:61596
+2026/05/02 11:40:04 INF [WebRTC] [session e179d918] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:05 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:40:06 INF [WebRTC] [session 5c5ececd] created by 10.10.110.6:53916
+2026/05/02 11:40:06 INF [WebRTC] [session 5c5ececd] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:06 INF [WebRTC] [session 26a35735] created by 10.10.110.5:61596
+2026/05/02 11:40:06 INF [WebRTC] [session 26a35735] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:08 INF [WebRTC] [session 3d52f17c] created by 10.10.110.6:53916
+2026/05/02 11:40:08 INF [WebRTC] [session 3d52f17c] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:10 INF [WebRTC] [session 2a44372e] created by 10.10.110.6:53916
+2026/05/02 11:40:10 INF [WebRTC] [session 2a44372e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:12 INF [WebRTC] [session e7458d22] created by 10.10.110.6:53916
+2026/05/02 11:40:12 INF [WebRTC] [session e7458d22] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:14 INF [WebRTC] [session 21f5fc86] created by 10.10.110.6:53916
+2026/05/02 11:40:14 INF [WebRTC] [session 21f5fc86] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:16 INF [WebRTC] [session d34001d5] created by 10.10.110.6:53916
+2026/05/02 11:40:16 INF [WebRTC] [session d34001d5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:18 INF [WebRTC] [session ec7af5d5] created by 10.10.110.6:53916
+2026/05/02 11:40:18 INF [WebRTC] [session ec7af5d5] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:20 ERR [path cctv1] [RTSP source] dial tcp 192.168.99.253:554: i/o timeout
+2026/05/02 11:40:20 INF [WebRTC] [session 0cd7916b] created by 10.10.110.6:53916
+2026/05/02 11:40:20 INF [WebRTC] [session 0cd7916b] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:22 INF [WebRTC] [session 2c8f3297] created by 10.10.110.6:53916
+2026/05/02 11:40:22 INF [WebRTC] [session 2c8f3297] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:24 INF [WebRTC] [session 897fc31e] created by 10.10.110.6:53916
+2026/05/02 11:40:24 INF [WebRTC] [session 897fc31e] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:26 INF [WebRTC] [session d46de6fb] created by 10.10.110.6:53916
+2026/05/02 11:40:26 INF [WebRTC] [session d46de6fb] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:28 INF [WebRTC] [session 929c07d1] created by 10.10.110.6:53916
+2026/05/02 11:40:28 INF [WebRTC] [session 929c07d1] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:30 INF [WebRTC] [session bcd323db] created by 10.10.110.6:53916
+2026/05/02 11:40:30 INF [WebRTC] [session bcd323db] closed: no stream is available on path 'cctv1'
+2026/05/02 11:40:32 INF [WebRTC] [session e3decb0f] created by 10.10.110.6:53916
+2026/05/02 11:40:32 INF [WebRTC] [session e3decb0f] closed: no stream is available on path 'cctv1'
