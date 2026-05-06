@@ -27,6 +27,9 @@ WORKDIR /var/www
 # Copy application files
 COPY . .
 
+# Remove existing caches to prevent "Class not found" errors
+RUN rm -f bootstrap/cache/*.php
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
