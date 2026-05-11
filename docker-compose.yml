@@ -25,6 +25,11 @@ services:
       - db
     networks:
       - noc-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   db:
     image: mysql:8.0
@@ -39,6 +44,11 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - noc-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -58,6 +68,11 @@ services:
       - app
     networks:
       - noc-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   mediamtx:
     image: bluenviron/mediamtx:latest
@@ -66,6 +81,11 @@ services:
     network_mode: host
     volumes:
       - ./mediamtx/mediamtx.yml:/mediamtx.yml:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   noc-network:
