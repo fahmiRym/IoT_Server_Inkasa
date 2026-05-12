@@ -1291,7 +1291,7 @@
         window.onload = () => {
             initMasterCharts();
             syncCore();
-            setInterval(syncCore, 1000);
+            setInterval(syncCore, 5000);
             if (window.Notification && Notification.permission !== "denied") Notification.requestPermission();
 
             // Auto-refresh CCTV iframe every 60 seconds to recover from "stream not found"
