@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
     netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /var/log/supervisor && chown -R www-data:www-data /var/log/supervisor
+
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip
 

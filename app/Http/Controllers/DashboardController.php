@@ -181,7 +181,7 @@ class DashboardController extends Controller
         $chartSrc2 = null;
 
         try {
-            $client = \Illuminate\Support\Facades\Http::withoutVerifying()->timeout(25);
+            $client = \Illuminate\Support\Facades\Http::withoutVerifying()->timeout(10);
 
             // Fetch Air Chart
             $res1 = $client->post('https://quickchart.io/chart', ['chart' => $chartAir, 'width' => 700, 'height' => 250, 'backgroundColor' => 'white']);
