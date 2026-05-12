@@ -18,10 +18,12 @@ class DashboardController extends Controller
         // 1. Data Terakhir (Live)
         $latest = SensorLog::latest()->first();
 
-        // 2. Statistik Hari Ini
-        $stats = SensorLog::whereDate('created_at', Carbon::today())
-            ->selectRaw('MAX(temp) as max_temp, MIN(temp) as min_temp, AVG(hum) as avg_hum, MAX(smoke) as max_smoke')
-            ->first();
+        // 2. Statistik Hari Ini (Optimasi: Gunakan Cache & Index Friendly Query)
+        $stats = \Illuminate\Support\Facades\Cache::remember('daily_sensor_stats', 120, function () {
+            return SensorLog::where('created_at', '>=', \Carbon\Carbon::today())
+                ->selectRaw('MAX(temp) as max_temp, MIN(temp) as min_temp, AVG(hum) as avg_hum, MAX(smoke) as max_smoke')
+                ->first();
+        });
 
         // 3. History Grafik — ambil 120 titik terbaru
         $history = SensorLog::latest()->take(120)->get(['id', 'temp', 'hum', 'smoke', 'fire', 'smoke1', 'smoke2', 'smoke3', 'flame1', 'flame2', 'created_at'])->reverse()->values();
@@ -29,10 +31,15 @@ class DashboardController extends Controller
         // 4. Recent Logs (5 data terakhir untuk tabel)
         $recentLogs = SensorLog::latest()->take(5)->get(['id', 'temp', 'hum', 'smoke', 'fire', 'smoke1', 'smoke2', 'smoke3', 'flame1', 'flame2', 'created_at']);
 
+        // 5. Total Count (Optimasi: Cache selama 5 menit karena ini sangat berat)
+        $totalCount = \Illuminate\Support\Facades\Cache::remember('total_sensor_count', 300, function () {
+            return SensorLog::count();
+        });
+
         return response()->json([
             'status' => 'success',
             'latest' => $latest,
-            'total_count' => SensorLog::count(),
+            'total_count' => $totalCount,
             'stats' => [
                 'max_temp' => round($stats->max_temp ?? 0, 1),
                 'min_temp' => round($stats->min_temp ?? 0, 1),

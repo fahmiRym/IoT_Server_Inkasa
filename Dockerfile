@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     gettext \
     libzip-dev \
     netcat-openbsd \
+    default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/log/supervisor && chown -R www-data:www-data /var/log/supervisor

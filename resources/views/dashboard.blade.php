@@ -609,6 +609,22 @@
         </header>
 
         <aside>
+            {{-- Flash Messages --}}
+            @if(session('success'))
+                <div class="glass-card" style="border-color: var(--green); margin-bottom: 10px;">
+                    <span style="color: var(--green); font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+                        <i class="fas fa-check-circle"></i> {{ session('success') }}
+                    </span>
+                </div>
+            @endif
+            @if(session('error'))
+                <div class="glass-card" style="border-color: var(--pink); margin-bottom: 10px;">
+                    <span style="color: var(--pink); font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+                        <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+                    </span>
+                </div>
+            @endif
+
             <div class="glass-card">
                 <span class="card-title">SYSTEM MATRIX</span>
                 <div id="status-hero" style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
@@ -683,6 +699,26 @@
                         </button>
                     </div>
                 </form>
+            </div>
+
+            <div class="glass-card">
+                <span class="card-title">DATABASE MANAGEMENT</span>
+                <div style="margin-bottom: 15px;">
+                    <label class="label-caps"><i class="fas fa-download" style="margin-right:5px"></i> EXPORT SQL</label>
+                    <a href="{{ route('db.export') }}" class="cyber-btn" style="margin-top: 8px;">
+                        <i class="fas fa-database"></i> DOWNLOAD BACKUP
+                    </a>
+                </div>
+                <div>
+                    <label class="label-caps"><i class="fas fa-upload" style="margin-right:5px"></i> RESTORE SQL</label>
+                    <form action="{{ route('db.import') }}" method="POST" enctype="multipart/form-data" style="margin-top: 8px;">
+                        @csrf
+                        <input type="file" name="backup_file" accept=".sql" style="margin-bottom: 10px;">
+                        <button type="submit" class="cyber-btn pdf">
+                            <i class="fas fa-file-import"></i> UPLOAD & RESTORE
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <div class="glass-card" style="border-bottom: 2px solid var(--border);">
