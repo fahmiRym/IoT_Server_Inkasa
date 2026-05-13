@@ -87,6 +87,16 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: noc-dashboard-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    depends_on:
+      - nginx
+    networks:
+      - noc-network
+
 networks:
   noc-network:
     driver: bridge
