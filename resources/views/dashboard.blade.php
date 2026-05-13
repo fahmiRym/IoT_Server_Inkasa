@@ -856,7 +856,7 @@
                         </span>
 
                         <!-- MediaMTX WebRTC Iframe -->
-                        <iframe id="cctv-frame" src="http://{{ request()->getHost() }}:8889/cctv1/"
+                        <iframe id="cctv-frame" src="https://cctv.inkalum.com/cctv1/"
                             style="width: 100%; height: 100%; border: none; position: relative; z-index: 2;"
                             allowfullscreen></iframe>
 
@@ -1298,7 +1298,7 @@
             setInterval(() => {
                 const cctvFrame = document.getElementById('cctv-frame');
                 if (cctvFrame) {
-                    const baseUrl = "http://{{ request()->getHost() }}:8889/cctv1/";
+                    const baseUrl = "https://cctv.inkalum.com/cctv1/";
                     cctvFrame.src = baseUrl + "?t=" + Date.now();
                 }
             }, 60000);
