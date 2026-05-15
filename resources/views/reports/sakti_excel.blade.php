@@ -121,43 +121,5 @@
                 </td>
             </tr>
         @endforeach
-
-        <tr>
-            <td colspan="6"></td>
-        </tr>
-
-        <!-- Ringkasan -->
-        <tr>
-            <td colspan="5"
-                style="font-weight: bold; background-color: #004d60; color: #ffffff; border: 2px solid #000000; text-align: center;">
-                ENVIRONMENTAL ANALYSIS</td>
-            <td colspan="6" style="border: 2px solid #000000; background-color: #f1f1f1;"></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="font-weight: bold; border: 1px solid #000000;">Max Temperature</td>
-            <td colspan="9" style="border: 1px solid #000000; color: #d32f2f;">
-                {{ number_format($data->max('temp'), 1) }} °C</td>
-        </tr>
-        <tr>
-            <td colspan="2" style="font-weight: bold; border: 1px solid #000000;">Avg Humidity</td>
-            <td colspan="9" style="border: 1px solid #000000; color: #0077b6;">{{ number_format($data->avg('hum'), 1) }}
-                %</td>
-        </tr>
-        <tr>
-            <td colspan="2" style="font-weight: bold; border: 1px solid #000000;">Danger Incidents (Total)</td>
-            <td colspan="9" style="border: 1px solid #000000; font-weight: bold;">
-                {{ $data->filter(fn($r) => $r->temp > $tLimit || $r->smoke > $sLimit)->count() }} Occurrences</td>
-        </tr>
-        @php
-            $dangerCount = $data->filter(fn($r) => $r->temp > $tLimit || $r->smoke > $sLimit)->count();
-        @endphp
-        <tr>
-            <td colspan="2" style="font-weight: bold; border: 1px solid #000000; background-color: #f8f9fa;">OVERALL
-                ASSESSMENT:</td>
-            <td colspan="9"
-                style="font-weight: bold; border: 1px solid #000000; background-color: {{ $dangerCount > 0 ? '#fff0f3' : '#f0fff4' }}; color: {{ $dangerCount > 0 ? '#d32f2f' : '#2e7d32' }}">
-                {{ $dangerCount > 0 ? 'ATTENTION REQUIRED: ANOMALIES DETECTED' : 'SYSTEM OPERATING WITHIN NORMAL PARAMETERS' }}
-            </td>
-        </tr>
     </tbody>
 </table>
