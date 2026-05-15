@@ -904,7 +904,14 @@
 
         function setExportFormat(format) {
             const form = document.getElementById('reportForm');
-            form.action = format === 'pdf' ? "{{ route('export.pdf') }}" : "{{ route('export.csv') }}";
+            let actionUrl = format === 'pdf' ? "{{ route('export.pdf') }}" : "{{ route('export.csv') }}";
+            
+            // Client-side safety: Force HTTPS if the current page is secure
+            if (window.location.protocol === 'https:') {
+                actionUrl = actionUrl.replace('http://', 'https://');
+            }
+            
+            form.action = actionUrl;
             if (format === 'pdf') form.submit();
         }
 

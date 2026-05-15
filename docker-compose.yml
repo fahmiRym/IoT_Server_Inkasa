@@ -27,6 +27,8 @@ services:
       - ./.env:/var/www/.env
       - ./storage:/var/www/storage
       - ./bootstrap/cache:/var/www/bootstrap/cache
+      - ./app/Providers/AppServiceProvider.php:/var/www/app/Providers/AppServiceProvider.php
+      - ./bootstrap/app.php:/var/www/bootstrap/app.php
 
     depends_on:
       db:
@@ -63,7 +65,7 @@ services:
       - noc-network
 
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
       retries: 5
