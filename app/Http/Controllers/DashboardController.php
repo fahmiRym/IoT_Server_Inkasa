@@ -85,6 +85,11 @@ class DashboardController extends Controller
     {
         [$query, $label] = $this->applyFilters($request);
         $data = $query->orderBy('created_at', 'ASC')->get();
+
+        if ($data->isEmpty()) {
+            return redirect()->back()->with('error', 'Tidak ada data untuk rentang waktu ini.');
+        }
+
         // Use a very unique filename to prevent cache issues
         $filename = "Report_Excel_NOC_Inkasa" . now()->format('His') . "_" . uniqid() . ".xlsx";
 
