@@ -28,9 +28,11 @@ class SensorLive extends Command
         while (true) {
             $count++;
             try {
-                $response = Http::timeout(5)->get("https://{$server}/external/api/getAll", [
-                    'token' => $token,
-                ]);
+                // Tarik data V0 sampai V6 sekaligus dengan format yang didukung Blynk
+                $pins = ['v0', 'v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
+                $queryString = "token=" . $token . "&" . implode("&", $pins);
+
+                $response = Http::timeout(5)->get("https://{$server}/external/api/get?" . $queryString);
 
                 if ($response->successful()) {
                     $raw = $response->json();
