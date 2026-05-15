@@ -28,15 +28,8 @@ class SensorLive extends Command
         while (true) {
             $count++;
             try {
-                $response = Http::timeout(5)->get("https://{$server}/external/api/get", [
+                $response = Http::timeout(5)->get("https://{$server}/external/api/getAll", [
                     'token' => $token,
-                    'v0' => '',
-                    'v1' => '',
-                    'v2' => '',
-                    'v3' => '',
-                    'v4' => '',
-                    'v5' => '',
-                    'v6' => '',
                 ]);
 
                 if ($response->successful()) {
