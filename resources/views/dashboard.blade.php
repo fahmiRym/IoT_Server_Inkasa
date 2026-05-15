@@ -690,7 +690,7 @@
                     </div>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                        <button type="submit" class="cyber-btn" onclick="setExportFormat('excel')">
+                        <button type="button" class="cyber-btn" onclick="setExportFormat('excel')">
                             <i class="fas fa-file-excel"></i> EXCEL
                         </button>
 
@@ -904,7 +904,7 @@
 
         function setExportFormat(format) {
             const form = document.getElementById('reportForm');
-            let actionUrl = format === 'pdf' ? "{{ route('export.pdf') }}" : "{{ route('export.csv') }}";
+            let actionUrl = (format === 'pdf') ? "{{ route('export.pdf') }}" : "{{ route('export.csv') }}";
             
             // Client-side safety: Force HTTPS if the current page is secure
             if (window.location.protocol === 'https:') {
@@ -912,7 +912,7 @@
             }
             
             form.action = actionUrl;
-            if (format === 'pdf') form.submit();
+            form.submit();
         }
 
         // --- CHART CONFIG ---
