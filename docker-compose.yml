@@ -1,30 +1,40 @@
 version: '3.8'
 
 services:
+
   app:
     build:
       context: .
       dockerfile: Dockerfile
+
     container_name: noc-dashboard-app
+
     restart: unless-stopped
+
     ports:
       - "8080:80"
+
     environment:
-      - APP_ENV=production
-      - APP_DEBUG=false
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_DATABASE=noc_dashboard
-      - DB_USERNAME=noc_user
-      - DB_PASSWORD=alhamdulillah
+      APP_ENV: production
+      APP_DEBUG: false
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: noc_dashboard
+      DB_USERNAME: noc_user
+      DB_PASSWORD: alhamdulillah
+
     volumes:
       - ./.env:/var/www/.env
       - ./storage:/var/www/storage
       - ./bootstrap/cache:/var/www/bootstrap/cache
+
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+
     networks:
       - noc-network
+
     logging:
       driver: "json-file"
       options:
@@ -33,41 +43,57 @@ services:
 
   db:
     image: mysql:8.0
+
     container_name: noc-dashboard-db
+
     restart: unless-stopped
+
     environment:
-      - MYSQL_ROOT_PASSWORD=alhamdulillah
-      - MYSQL_DATABASE=noc_dashboard
-      - MYSQL_USER=noc_user
-      - MYSQL_PASSWORD=alhamdulillah
+      MYSQL_ROOT_PASSWORD: alhamdulillah
+      MYSQL_DATABASE: noc_dashboard
+      MYSQL_USER: noc_user
+      MYSQL_PASSWORD: alhamdulillah
+
+    command: --default-authentication-plugin=mysql_native_password
+
     volumes:
       - db_data:/var/lib/mysql
+
     networks:
       - noc-network
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   nginx:
     image: nginx:alpine
+
     container_name: noc-dashboard-nginx
+
     restart: unless-stopped
+
     ports:
       - "80:80"
+
     volumes:
       - ./public:/var/www/public
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+
     depends_on:
       - app
+
     networks:
       - noc-network
+
     logging:
       driver: "json-file"
       options:
@@ -76,11 +102,16 @@ services:
 
   mediamtx:
     image: bluenviron/mediamtx:latest
+
     container_name: noc-dashboard-mediamtx
+
     restart: unless-stopped
+
     network_mode: host
+
     volumes:
       - ./mediamtx/mediamtx.yml:/mediamtx.yml:ro
+
     logging:
       driver: "json-file"
       options:
@@ -89,13 +120,24 @@ services:
 
   tunnel:
     image: cloudflare/cloudflared:latest
+
     container_name: noc-dashboard-tunnel
+
     restart: unless-stopped
+
     command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+
     depends_on:
       - nginx
+
     networks:
       - noc-network
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   noc-network:
