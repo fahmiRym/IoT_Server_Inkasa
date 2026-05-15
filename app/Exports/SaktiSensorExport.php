@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Illuminate\Contracts\View\View;
 
-class SaktiSensorExport implements FromView, WithColumnWidths, WithEvents, WithDrawings
+class SaktiSensorExport implements FromView, WithColumnWidths, WithEvents
 {
     protected $data;
     protected $periode;
@@ -42,6 +42,7 @@ class SaktiSensorExport implements FromView, WithColumnWidths, WithEvents, WithD
         ];
     }
 
+    /*
     public function drawings()
     {
         $drawing = new Drawing();
@@ -53,6 +54,7 @@ class SaktiSensorExport implements FromView, WithColumnWidths, WithEvents, WithD
         $drawing->setOffsetY(5);
         return $drawing;
     }
+    */
 
     public function registerEvents(): array
     {
