@@ -660,7 +660,7 @@
 
             <div class="glass-card">
                 <span class="card-title">REPORT GENERATOR</span>
-                <form id="reportForm" action="{{ route('export.csv') }}" method="GET">
+                <form id="reportForm" action="/export" method="GET">
                     <div style="margin-bottom: 15px;">
                         <label class="label-caps"><i class="fas fa-calendar-alt" style="margin-right:5px"></i> DATE
                             RANGE SELECTION</label>
@@ -706,13 +706,13 @@
                 <div style="margin-bottom: 15px;">
                     <label class="label-caps"><i class="fas fa-download" style="margin-right:5px"></i> EXPORT
                         SQL</label>
-                    <a href="{{ route('db.export') }}" class="cyber-btn" style="margin-top: 8px;">
+                    <a href="/db/export" class="cyber-btn" style="margin-top: 8px;">
                         <i class="fas fa-database"></i> DOWNLOAD BACKUP
                     </a>
                 </div>
                 <div>
                     <label class="label-caps"><i class="fas fa-upload" style="margin-right:5px"></i> RESTORE SQL</label>
-                    <form action="{{ route('db.import') }}" method="POST" enctype="multipart/form-data"
+                    <form action="/db/import" method="POST" enctype="multipart/form-data"
                         style="margin-top: 8px;">
                         @csrf
                         <input type="file" name="backup_file" accept=".sql" style="margin-bottom: 10px;">
@@ -904,14 +904,7 @@
 
         function setExportFormat(format) {
             const form = document.getElementById('reportForm');
-            let actionUrl = (format === 'pdf') ? "{{ route('export.pdf') }}" : "{{ route('export.csv') }}";
-            
-            // Client-side safety: Force HTTPS if the current page is secure
-            if (window.location.protocol === 'https:') {
-                actionUrl = actionUrl.replace('http://', 'https://');
-            }
-            
-            form.action = actionUrl;
+            form.action = (format === 'pdf') ? '/export/pdf' : '/export';
             form.submit();
         }
 

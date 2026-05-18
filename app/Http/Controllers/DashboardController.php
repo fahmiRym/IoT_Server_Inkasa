@@ -84,17 +84,57 @@ class DashboardController extends Controller
     public function export(Request $request)
     {
         [$query, $label] = $this->applyFilters($request);
-        $data = $query->orderBy('created_at', 'ASC')->get();
 
-        if ($data->isEmpty()) {
+        // Check if there is any data first
+        if (!(clone $query)->exists()) {
             return redirect()->back()->with('error', 'Tidak ada data untuk rentang waktu ini.');
         }
 
+        // Determine timeframe difference in days to apply optimal aggregation
+        $diffDays = 0;
+        if ($request->has('start_date') && $request->has('end_date') && $request->start_date && $request->end_date) {
+            $diffDays = \Carbon\Carbon::parse($request->start_date)->diffInDays(\Carbon\Carbon::parse($request->end_date));
+        } elseif ($request->has('month') && $request->month) {
+            $diffDays = 30;
+        } elseif ($request->has('year') && $request->year) {
+            $diffDays = 365;
+        } else {
+            // Default is Today
+            $diffDays = 1;
+        }
+
+        // Choose appropriate grouping interval (in seconds) to prevent Excel timeout and memory crash
+        if ($diffDays <= 1) {
+            $interval = 300; // 5 Minutes (Max 288 rows per day)
+        } elseif ($diffDays <= 7) {
+            $interval = 900; // 15 Minutes (Max 672 rows per week)
+        } elseif ($diffDays <= 31) {
+            $interval = 3600; // 1 Hour (Max 744 rows per month)
+        } else {
+            $interval = 86400; // 1 Day (Max 365 rows per year)
+        }
+
+        // Aggregate query to prevent massive PHP memory leak and browser timeout
+        $exportQuery = (clone $query)->selectRaw("
+            FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(created_at) / {$interval})) as time_key,
+            AVG(temp) as temp,
+            AVG(hum) as hum,
+            AVG(smoke) as smoke,
+            AVG(smoke1) as smoke1,
+            AVG(smoke2) as smoke2,
+            AVG(smoke3) as smoke3,
+            MAX(flame1) as flame1,
+            MAX(flame2) as flame2,
+            MIN(created_at) as created_at
+        ")
+        ->groupBy('time_key')
+        ->orderBy('time_key', 'ASC');
+
         // Use a very unique filename to prevent cache issues
-        $filename = "Report_Excel_NOC_Inkasa" . now()->format('His') . "_" . uniqid() . ".xlsx";
+        $filename = "Report_Excel_NOC_Inkasa_" . now()->format('Ymd_His') . "_" . uniqid() . ".xlsx";
 
         return \Maatwebsite\Excel\Facades\Excel::download(
-            new \App\Exports\SaktiSensorExport($data, $label),
+            new \App\Exports\SaktiSensorExport($exportQuery, $label),
             $filename
         );
     }

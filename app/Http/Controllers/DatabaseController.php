@@ -19,20 +19,35 @@ class DatabaseController extends Controller
         // Get DB credentials from env
         $host = env('DB_HOST', 'db');
         $user = env('DB_USERNAME', 'noc_user');
-        $pass = env('DB_PASSWORD', 'alhamdulillah');
+        $pass = env('DB_PASSWORD', '');
         $db   = env('DB_DATABASE', 'noc_dashboard');
 
-        // Command to run inside the container or host
-        // Note: We use mysqldump. If running inside the app container, we need the mysql-client installed.
-        $command = "mysqldump --user={$user} --password={$pass} --host={$host} {$db} > {$path}";
+        $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+        $mysqldump = 'mysqldump';
+        
+        if ($isWindows) {
+            $laragonMysqlPath = 'C:\laragon\bin\mysql';
+            if (file_exists($laragonMysqlPath)) {
+                $dirs = glob($laragonMysqlPath . '\mysql-*');
+                if (!empty($dirs)) {
+                    $mysqldump = $dirs[0] . '\bin\mysqldump.exe';
+                }
+            }
+        }
+
+        // Handle empty password carefully
+        $passwordFlag = !empty($pass) ? "--password=\"{$pass}\"" : "";
+        
+        // Command to run
+        $command = "\"{$mysqldump}\" --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" > \"{$path}\"";
 
         try {
             system($command);
 
-            if (file_exists($path)) {
+            if (file_exists($path) && filesize($path) > 0) {
                 return Response::download($path)->deleteFileAfterSend(true);
             } else {
-                return back()->with('error', 'Gagal membuat file backup. Pastikan mysql-client terinstall.');
+                return back()->with('error', 'Gagal membuat file backup. Pastikan mysql-client terinstall dan database berjalan.');
             }
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());
@@ -54,11 +69,27 @@ class DatabaseController extends Controller
 
         $host = env('DB_HOST', 'db');
         $user = env('DB_USERNAME', 'noc_user');
-        $pass = env('DB_PASSWORD', 'alhamdulillah');
+        $pass = env('DB_PASSWORD', '');
         $db   = env('DB_DATABASE', 'noc_dashboard');
 
+        $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+        $mysql = 'mysql';
+        
+        if ($isWindows) {
+            $laragonMysqlPath = 'C:\laragon\bin\mysql';
+            if (file_exists($laragonMysqlPath)) {
+                $dirs = glob($laragonMysqlPath . '\mysql-*');
+                if (!empty($dirs)) {
+                    $mysql = $dirs[0] . '\bin\mysql.exe';
+                }
+            }
+        }
+
+        // Handle empty password carefully
+        $passwordFlag = !empty($pass) ? "--password=\"{$pass}\"" : "";
+
         // Command to restore
-        $command = "mysql --user={$user} --password={$pass} --host={$host} {$db} < {$fullPath}";
+        $command = "\"{$mysql}\" --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" < \"{$fullPath}\"";
 
         try {
             system($command);
