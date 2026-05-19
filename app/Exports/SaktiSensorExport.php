@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class SaktiSensorExport implements FromQuery, WithMapping, WithHeadings, WithColumnWidths, WithEvents, WithCustomStartCell
+class SaktiSensorExport implements FromCollection, WithMapping, WithHeadings, WithColumnWidths, WithEvents, WithCustomStartCell
 {
     protected $query;
     protected $periode;
@@ -26,9 +26,9 @@ class SaktiSensorExport implements FromQuery, WithMapping, WithHeadings, WithCol
         $this->sLimit = env('SENSOR_SMOKE_LIMIT', 1000);
     }
 
-    public function query()
+    public function collection()
     {
-        return $this->query;
+        return $this->query->get();
     }
 
     public function startCell(): string
