@@ -22,10 +22,10 @@ git pull origin main || {
     exit 1
 }
 
-# 2. Jalankan container TANPA rebuild
-echo -e "${BLUE}[2/6] Menjalankan Container Docker...${NC}"
+# 2. Jalankan container DENGAN rebuild agar kode terbaru diterapkan
+echo -e "${BLUE}[2/6] Membangun dan Menjalankan Container Docker...${NC}"
 
-sudo docker compose up -d || {
+sudo docker compose up -d --build || {
     echo -e "${RED}Gagal menjalankan container${NC}"
     exit 1
 }
