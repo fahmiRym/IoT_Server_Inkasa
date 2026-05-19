@@ -20,11 +20,11 @@ class DatabaseController extends Controller
         $host = env('DB_HOST', 'db');
         $user = env('DB_USERNAME', 'noc_user');
         $pass = env('DB_PASSWORD', '');
-        $db   = env('DB_DATABASE', 'noc_dashboard');
+        $db = env('DB_DATABASE', 'noc_dashboard');
 
         $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
         $mysqldump = 'mysqldump';
-        
+
         if ($isWindows) {
             $laragonMysqlPath = 'C:\laragon\bin\mysql';
             if (file_exists($laragonMysqlPath)) {
@@ -37,9 +37,9 @@ class DatabaseController extends Controller
 
         // Handle empty password carefully
         $passwordFlag = !empty($pass) ? "--password=\"{$pass}\"" : "";
-        
+
         // Command to run
-        $command = "\"{$mysqldump}\" --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" > \"{$path}\"";
+        $command = "\"{$mysqldump}\" --ssl-mode=DISABLED --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" > \"{$path}\"";
 
         try {
             system($command);
@@ -70,11 +70,11 @@ class DatabaseController extends Controller
         $host = env('DB_HOST', 'db');
         $user = env('DB_USERNAME', 'noc_user');
         $pass = env('DB_PASSWORD', '');
-        $db   = env('DB_DATABASE', 'noc_dashboard');
+        $db = env('DB_DATABASE', 'noc_dashboard');
 
         $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
         $mysql = 'mysql';
-        
+
         if ($isWindows) {
             $laragonMysqlPath = 'C:\laragon\bin\mysql';
             if (file_exists($laragonMysqlPath)) {
@@ -89,7 +89,7 @@ class DatabaseController extends Controller
         $passwordFlag = !empty($pass) ? "--password=\"{$pass}\"" : "";
 
         // Command to restore
-        $command = "\"{$mysql}\" --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" < \"{$fullPath}\"";
+        $command = "\"{$mysql}\" --ssl-mode=DISABLED --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" < \"{$fullPath}\"";
 
         try {
             system($command);
