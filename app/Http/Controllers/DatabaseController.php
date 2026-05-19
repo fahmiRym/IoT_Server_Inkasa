@@ -39,15 +39,27 @@ class DatabaseController extends Controller
         $passwordFlag = !empty($pass) ? "--password=\"{$pass}\"" : "";
 
         // Command to run
-        $command = "\"{$mysqldump}\" --ssl-mode=DISABLED --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" > \"{$path}\"";
+        $command = "\"{$mysqldump}\" --ssl-mode=DISABLED --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" > \"{$path}\" 2>&1";
 
         try {
-            system($command);
+            $output = [];
+            $retval = null;
+            exec($command, $output, $retval);
 
-            if (file_exists($path) && filesize($path) > 0) {
+            if (file_exists($path) && filesize($path) > 0 && $retval === 0) {
                 return Response::download($path)->deleteFileAfterSend(true);
             } else {
-                return back()->with('error', 'Gagal membuat file backup. Pastikan mysql-client terinstall dan database berjalan.');
+                $errorMsg = 'Gagal membuat file backup. Exit code: ' . $retval;
+                if (!empty($output)) {
+                    $errorMsg .= '. Output: ' . implode(' | ', $output);
+                }
+                if (file_exists($path)) {
+                    if (filesize($path) > 0) {
+                        $errorMsg .= '. File Content: ' . substr(file_get_contents($path), 0, 200);
+                    }
+                    @unlink($path);
+                }
+                return back()->with('error', $errorMsg);
             }
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());
