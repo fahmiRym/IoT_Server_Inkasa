@@ -39,7 +39,7 @@ class DatabaseController extends Controller
         $passwordFlag = !empty($pass) ? "--password=\"{$pass}\"" : "";
 
         // Command to run
-        $command = "\"{$mysqldump}\" --ssl-mode=DISABLED --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" > \"{$path}\" 2>&1";
+        $command = "\"{$mysqldump}\" --skip-ssl --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" > \"{$path}\" 2>&1";
 
         try {
             $output = [];
@@ -101,7 +101,7 @@ class DatabaseController extends Controller
         $passwordFlag = !empty($pass) ? "--password=\"{$pass}\"" : "";
 
         // Command to restore
-        $command = "\"{$mysql}\" --ssl-mode=DISABLED --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" < \"{$fullPath}\"";
+        $command = "\"{$mysql}\" --skip-ssl --user=\"{$user}\" {$passwordFlag} --host=\"{$host}\" \"{$db}\" < \"{$fullPath}\"";
 
         try {
             system($command);
