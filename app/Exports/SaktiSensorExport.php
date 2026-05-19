@@ -39,24 +39,35 @@ class SaktiSensorExport implements FromCollection, WithMapping, WithHeadings, Wi
     public function map($row): array
     {
         $this->rowNumber++;
-        $isBahaya = ($row->temp > $this->tLimit || $row->smoke > $this->sLimit);
-        
+
+        $temp = is_numeric($row->temp) ? (float) $row->temp : 0.0;
+        $hum = is_numeric($row->hum) ? (float) $row->hum : 0.0;
+        $smoke = is_numeric($row->smoke) ? (float) $row->smoke : 0.0;
+        $smoke1 = is_numeric($row->smoke1) ? (float) $row->smoke1 : 0.0;
+        $smoke2 = is_numeric($row->smoke2) ? (float) $row->smoke2 : 0.0;
+        $smoke3 = is_numeric($row->smoke3) ? (float) $row->smoke3 : 0.0;
+
+        $isBahaya = ($temp > $this->tLimit || $smoke > $this->sLimit);
+
         $createdAt = $row->created_at;
         if (is_string($createdAt)) {
             $createdAt = \Carbon\Carbon::parse($createdAt);
         }
-        
+
+        $f1 = (!empty($row->flame1) && $row->flame1 !== 'SAFE' && $row->flame1 != 0) ? 'FIRE' : 'SAFE';
+        $f2 = (!empty($row->flame2) && $row->flame2 !== 'SAFE' && $row->flame2 != 0) ? 'FIRE' : 'SAFE';
+
         return [
             $this->rowNumber,
             $createdAt ? $createdAt->format('d/m/Y H:i:s') : '-',
-            number_format($row->temp, 1),
-            number_format($row->hum, 1),
-            intval(round($row->smoke)),
-            intval(round($row->smoke1 ?? 0)),
-            intval(round($row->smoke2 ?? 0)),
-            intval(round($row->smoke3 ?? 0)),
-            $row->flame1 ? 'FIRE' : 'SAFE',
-            $row->flame2 ? 'FIRE' : 'SAFE',
+            number_format($temp, 1),
+            number_format($hum, 1),
+            intval(round($smoke)),
+            intval(round($smoke1)),
+            intval(round($smoke2)),
+            intval(round($smoke3)),
+            $f1,
+            $f2,
             $isBahaya ? 'CRITICAL' : 'STABLE',
         ];
     }
@@ -98,50 +109,50 @@ class SaktiSensorExport implements FromCollection, WithMapping, WithHeadings, Wi
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function(AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event) {
                 $sheet = $event->sheet->getDelegate();
-                
+
                 // PT INKASA JAYA ALUMINIUM
                 $sheet->mergeCells('C1:F1');
                 $sheet->setCellValue('C1', 'PT. INKASA JAYA ALUMINIUM');
                 $sheet->getStyle('C1')->getFont()->setBold(true)->setSize(14)->getColor()->setARGB('FF004D60');
-                
+
                 $sheet->mergeCells('C2:F2');
                 $sheet->setCellValue('C2', 'Jl. Raya Winong Km 1,5, Pasuruan, Indonesia');
-                
+
                 // Title
                 $sheet->mergeCells('A4:K4');
                 $sheet->setCellValue('A4', 'MONITORING NOC COMMAND CENTER');
                 $sheet->getStyle('A4')->getFont()->setBold(true)->setSize(18)->getColor()->setARGB('FFFFFFFF');
                 $sheet->getStyle('A4')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF004D60');
                 $sheet->getStyle('A4')->getAlignment()->setHorizontal('center');
-                
+
                 // Periode
                 $sheet->mergeCells('A5:K5');
                 $sheet->setCellValue('A5', strtoupper($this->periode));
                 $sheet->getStyle('A5')->getFont()->setBold(true)->setSize(14)->getColor()->setARGB('FFFFFFFF');
                 $sheet->getStyle('A5')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF004D60');
                 $sheet->getStyle('A5')->getAlignment()->setHorizontal('center');
-                
+
                 // Print date
                 $sheet->mergeCells('A7:K7');
-                $sheet->setCellValue('A7', 'Dicetak pada: ' . now()->format('d M Y H:i:s') . ' | Versi: Sakti-ULTIMATE');
+                $sheet->setCellValue('A7', 'Dicetak pada: ' . now()->format('d M Y H:i:s') . ' | Versi: IoT Server Inkasa');
                 $sheet->getStyle('A7')->getFont()->setItalic(true);
-                
+
                 // Headings
                 $sheet->getStyle('A11:K11')->getFont()->setBold(true)->getColor()->setARGB('FFFFFFFF');
                 $sheet->getStyle('A11:K11')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF002D33');
                 $sheet->getStyle('A11:K11')->getAlignment()->setHorizontal('center')->setVertical('center');
-                
+
                 $highestRow = $sheet->getHighestRow();
-                
+
                 // Apply conditional formatting background color if needed
                 // It is a bit complex for Excel, we'll just keep the font colors from map() if we wanted, 
                 // but since mapping doesn't allow returning cell styles, we can just apply basic borders.
                 $sheet->getStyle('A11:K' . $highestRow)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-                
+
                 $sheet->getStyle('A:K')->getAlignment()->setVertical('center')->setHorizontal('center');
-                
+
                 $sheet->getHeaderFooter()->setOddFooter('&RPage &P of &N');
             },
         ];
