@@ -27,6 +27,11 @@ echo "Database is up!"
 # Run migrations if not already done
 php artisan migrate --force --no-interaction
 
+# Pastikan storage & cache bisa ditulis oleh www-data (bind-mount sering jadi milik uid host).
+# Tanpa ini, Log/write Laravel gagal -> HTTP 500 di endpoint ingest sensor.
+chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache || true
+chmod -R ug+rwX /var/www/storage /var/www/bootstrap/cache || true
+
 # Clear and cache config
 php artisan config:cache
 php artisan route:cache

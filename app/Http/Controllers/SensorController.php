@@ -9,9 +9,9 @@ class SensorController extends Controller
 {
     public function store(Request $request)
     {
-        \Log::info("Incoming Sensor Data: ", $request->all());
         // Security check: API Key
-        if ($request->api_key !== env('SENSOR_API_KEY')) {
+        // Pakai config() (bukan env()) supaya tetap terbaca saat config:cache aktif.
+        if ($request->api_key !== config('services.sensor.api_key')) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized: Invalid API Key'

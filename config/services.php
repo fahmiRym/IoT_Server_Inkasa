@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    // API key untuk ingest sensor dari ESP32 (POST /api/sensor/store).
+    // Dibaca via config() agar tetap valid saat config:cache aktif (env() jadi null saat runtime).
+    'sensor' => [
+        'api_key' => env('SENSOR_API_KEY'),
+    ],
+
 ];
