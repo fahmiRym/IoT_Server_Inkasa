@@ -22,3 +22,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Catatan/log internal + firmware ESP32 (berisi token/WiFi pass) - jangan di-push ke repo publik
+/docs
