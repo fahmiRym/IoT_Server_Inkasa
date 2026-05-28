@@ -154,6 +154,7 @@ services:
     network_mode: host
 
     environment:
+      TZ: "${TZ:-Asia/Jakarta}"
       RTSP_URL: "${CCTV_RTSP_URL:-rtsp://127.0.0.1:8554/cctv1}"
       TELEGRAM_BOT_TOKEN: "${TELEGRAM_BOT_TOKEN}"
       TELEGRAM_CHAT_ID: "${TELEGRAM_CHAT_ID}"
