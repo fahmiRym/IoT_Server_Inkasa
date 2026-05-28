@@ -141,6 +141,38 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  motion-detector:
+    build:
+      context: ./motion-detector
+      dockerfile: Dockerfile
+
+    container_name: noc-dashboard-motion
+
+    restart: unless-stopped
+
+    # host network: bisa akses mediamtx (127.0.0.1:8554) & jaringan kamera
+    network_mode: host
+
+    environment:
+      RTSP_URL: "${CCTV_RTSP_URL:-rtsp://127.0.0.1:8554/cctv1}"
+      TELEGRAM_BOT_TOKEN: "${TELEGRAM_BOT_TOKEN}"
+      TELEGRAM_CHAT_ID: "${TELEGRAM_CHAT_ID}"
+      LOCATION_LABEL: "${CCTV_LABEL:-Ruang Server}"
+      MIN_AREA: "${MOTION_MIN_AREA:-1500}"
+      CONSEC_FRAMES: "${MOTION_CONSEC:-3}"
+      COOLDOWN_SECONDS: "${MOTION_COOLDOWN:-60}"
+      RECORD_SECONDS: "${MOTION_RECORD_SECS:-8}"
+      CAPTURE_DIR: "/captures"
+
+    volumes:
+      - ./storage/app/motion:/captures
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   noc-network:
     driver: bridge
