@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOC Command Center - Ultimate CORE</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <!-- PWA -->
+    <meta name="theme-color" content="#020408">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="NOC Inkasa">
+    <link rel="manifest" href="{{ asset('manifest.webmanifest') }}">
+    <link rel="apple-touch-icon" href="{{ asset('icons/icon-192.png') }}">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').catch(function () {});
+            });
+        }
+    </script>
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
@@ -568,6 +583,47 @@
             letter-spacing: 2px;
             font-weight: 700;
         }
+
+        /* ===== RESPONSIVE (semua dimensi device) ===== */
+        @media (max-width: 1100px) {
+            .container {
+                grid-template-columns: 1fr;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            header { order: 0; }
+            main { order: 1; }
+            aside { order: 2; }
+
+            .metrics-hud { grid-template-columns: repeat(2, 1fr); }
+            .split-row { grid-template-columns: 1fr !important; }
+        }
+
+        @media (max-width: 700px) {
+            * { cursor: auto; }
+
+            .container { padding: 10px; gap: 12px; }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 12px 15px;
+            }
+
+            .brand h1 { font-size: 1.1rem; letter-spacing: 2px; }
+            .metrics-hud { grid-template-columns: 1fr; }
+            .metric-glow { min-height: auto; }
+            .val-large { font-size: 1.8rem; }
+            .grid-overlay { display: none; }
+            .table-wrap { overflow-x: auto; }
+        }
+
+        @media (max-width: 430px) {
+            .health-matrix { grid-template-columns: 1fr; }
+            .brand-container { gap: 12px; }
+        }
     </style>
 </head>
 
@@ -836,7 +892,7 @@
                 </div>
             </div>
             <!-- MASTER LOG STREAM & CCTV PREVIEW ROW -->
-            <div
+            <div class="split-row"
                 style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; align-items: start;">
                 <!-- CCTV PREVIEW -->
                 <div class="glass-card" style="height: 100%; display: flex; flex-direction: column;">
