@@ -584,6 +584,59 @@
             font-weight: 700;
         }
 
+        /* ===== CCTV (multi-cam) ===== */
+        .cctv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .cctv-tile {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .cctv-label {
+            font-size: 0.6rem;
+            font-family: 'JetBrains Mono';
+            color: var(--cyan);
+            letter-spacing: 1px;
+        }
+
+        .cctv-stage {
+            position: relative;
+            width: 100%;
+            flex-grow: 1;
+            min-height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cctv-stage iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cctv-loading {
+            position: absolute;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono';
+            font-size: 0.7rem;
+            text-align: center;
+            z-index: 1;
+            animation: pulse-green 1.5s infinite;
+        }
+
         /* ===== RESPONSIVE (semua dimensi device) ===== */
         @media (max-width: 1100px) {
             .container {
@@ -618,6 +671,7 @@
             .val-large { font-size: 1.8rem; }
             .grid-overlay { display: none; }
             .table-wrap { overflow-x: auto; }
+            .cctv-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 430px) {
@@ -900,27 +954,27 @@
                         <span class="card-title"><i class="fas fa-video" style="margin-right: 5px;"></i> LIVE CCTV
                             SURVEILLANCE</span>
                         <span class="node-badge active"
-                            style="margin-bottom: 12px; border-color: var(--cyan); color: var(--cyan); background: rgba(0, 243, 255, 0.1);">CAM_01:
-                            192.168.99.253</span>
+                            style="margin-bottom: 12px; border-color: var(--cyan); color: var(--cyan); background: rgba(0, 243, 255, 0.1);">2
+                            CAM</span>
                     </div>
-                    <div
-                        style="width: 100%; flex-grow: 1; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; min-height: 250px; position: relative;">
-                        <!-- Loading Text (Fallback) -->
-                        <span
-                            style="position: absolute; color: var(--text-dim); font-family: 'JetBrains Mono'; animation: pulse-green 1.5s infinite; text-align: center; z-index: 1;">
-                            <i class="fas fa-satellite-dish"
-                                style="display: block; font-size: 2rem; margin-bottom: 10px;"></i> ESTABLISHING WEBRTC
-                            LINK...
-                        </span>
-
-                        <!-- MediaMTX WebRTC Iframe -->
-                        <iframe id="cctv-frame" src="https://cctv.inkalum.com/cctv1/"
-                            style="width: 100%; height: 100%; border: none; position: relative; z-index: 2;"
-                            allowfullscreen></iframe>
-
-                        <!-- Overlay to prevent interaction if needed, and to keep border clean -->
-                        <div
-                            style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); z-index: 3;">
+                    <div class="cctv-grid">
+                        <div class="cctv-tile">
+                            <span class="cctv-label">CAM_01 &middot; 192.168.99.253</span>
+                            <div class="cctv-stage">
+                                <span class="cctv-loading"><i class="fas fa-satellite-dish"
+                                        style="display:block; font-size:1.5rem; margin-bottom:6px;"></i> LINK...</span>
+                                <iframe class="cctv-frame" data-base="https://cctv.inkalum.com/cctv1/"
+                                    src="https://cctv.inkalum.com/cctv1/" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="cctv-tile">
+                            <span class="cctv-label">CAM_02 &middot; 192.168.99.254</span>
+                            <div class="cctv-stage">
+                                <span class="cctv-loading"><i class="fas fa-satellite-dish"
+                                        style="display:block; font-size:1.5rem; margin-bottom:6px;"></i> LINK...</span>
+                                <iframe class="cctv-frame" data-base="https://cctv.inkalum.com/cctv2/"
+                                    src="https://cctv.inkalum.com/cctv2/" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1352,13 +1406,12 @@
             setInterval(syncCore, 5000);
             if (window.Notification && Notification.permission !== "denied") Notification.requestPermission();
 
-            // Auto-refresh CCTV iframe every 60 seconds to recover from "stream not found"
+            // Auto-refresh semua CCTV iframe tiap 60 detik (pulihkan "peer connection closed")
             setInterval(() => {
-                const cctvFrame = document.getElementById('cctv-frame');
-                if (cctvFrame) {
-                    const baseUrl = "https://cctv.inkalum.com/cctv1/";
-                    cctvFrame.src = baseUrl + "?t=" + Date.now();
-                }
+                document.querySelectorAll('.cctv-frame').forEach((f) => {
+                    const base = f.dataset.base;
+                    if (base) f.src = base + "?t=" + Date.now();
+                });
             }, 60000);
         };
 
