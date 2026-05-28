@@ -163,6 +163,8 @@ services:
       CONSEC_FRAMES: "${MOTION_CONSEC:-3}"
       COOLDOWN_SECONDS: "${MOTION_COOLDOWN:-60}"
       RECORD_SECONDS: "${MOTION_RECORD_SECS:-8}"
+      YOLO_CONF: "${YOLO_CONF:-0.4}"
+      ALERT_ONLY_PERSON: "${ALERT_ONLY_PERSON:-false}"
       CAPTURE_DIR: "/captures"
 
     volumes:
