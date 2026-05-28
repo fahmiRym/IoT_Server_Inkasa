@@ -968,7 +968,7 @@
                             </div>
                         </div>
                         <div class="cctv-tile">
-                            <span class="cctv-label">CAM_02 &middot; 192.168.99.254</span>
+                            <span class="cctv-label">CAM_02 &middot; 192.168.99.252</span>
                             <div class="cctv-stage">
                                 <span class="cctv-loading"><i class="fas fa-satellite-dish"
                                         style="display:block; font-size:1.5rem; margin-bottom:6px;"></i> LINK...</span>
