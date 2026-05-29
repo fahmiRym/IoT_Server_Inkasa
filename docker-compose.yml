@@ -83,6 +83,10 @@ services:
 
     restart: unless-stopped
 
+    # agar nginx bisa proxy ke mediamtx (HLS :8888) yang jalan di host network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
     ports:
       - "80:80"
 
@@ -103,7 +107,7 @@ services:
         max-file: "3"
 
   mediamtx:
-    image: bluenviron/mediamtx:latest
+    image: bluenviron/mediamtx:latest-ffmpeg
 
     container_name: noc-dashboard-mediamtx
 
