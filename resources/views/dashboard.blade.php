@@ -26,6 +26,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 
     <style>
         :root {
@@ -619,12 +620,15 @@
             justify-content: center;
         }
 
-        .cctv-stage iframe {
+        .cctv-stage iframe,
+        .cctv-stage video {
             width: 100%;
             height: 100%;
             border: none;
             position: relative;
             z-index: 2;
+            object-fit: contain;
+            background: #000;
         }
 
         .cctv-loading {
@@ -963,8 +967,8 @@
                             <div class="cctv-stage">
                                 <span class="cctv-loading"><i class="fas fa-satellite-dish"
                                         style="display:block; font-size:1.5rem; margin-bottom:6px;"></i> LINK...</span>
-                                <iframe class="cctv-frame" data-base="https://cctv.inkalum.com/cctv1/"
-                                    src="https://cctv.inkalum.com/cctv1/" allowfullscreen></iframe>
+                                <video class="cctv-video" data-hls="/cctv-hls/cctv1/index.m3u8?cookieCheck=1"
+                                    muted autoplay playsinline></video>
                             </div>
                         </div>
                         <div class="cctv-tile">
@@ -972,8 +976,8 @@
                             <div class="cctv-stage">
                                 <span class="cctv-loading"><i class="fas fa-satellite-dish"
                                         style="display:block; font-size:1.5rem; margin-bottom:6px;"></i> LINK...</span>
-                                <iframe class="cctv-frame" data-base="https://cctv.inkalum.com/cctv2/"
-                                    src="https://cctv.inkalum.com/cctv2/" allowfullscreen></iframe>
+                                <video class="cctv-video" data-hls="/cctv-hls/cctv2/index.m3u8?cookieCheck=1"
+                                    muted autoplay playsinline></video>
                             </div>
                         </div>
                     </div>
@@ -1406,13 +1410,31 @@
             setInterval(syncCore, 5000);
             if (window.Notification && Notification.permission !== "denied") Notification.requestPermission();
 
-            // Auto-refresh semua CCTV iframe tiap 60 detik (pulihkan "peer connection closed")
-            setInterval(() => {
-                document.querySelectorAll('.cctv-frame').forEach((f) => {
-                    const base = f.dataset.base;
-                    if (base) f.src = base + "?t=" + Date.now();
-                });
-            }, 60000);
+            // ===== CCTV via HLS (andal di HP/tablet & semua jaringan) =====
+            function attachCam(video) {
+                const url = video.dataset.hls;
+                if (!url) return;
+                if (video._hls) { try { video._hls.destroy(); } catch (e) {} video._hls = null; }
+                if (window.Hls && Hls.isSupported()) {
+                    const hls = new Hls({
+                        liveSyncDurationCount: 3,
+                        manifestLoadingMaxRetry: 8,
+                        manifestLoadingRetryDelay: 1000,
+                        levelLoadingMaxRetry: 8
+                    });
+                    hls.loadSource(url);
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.ERROR, (evt, data) => {
+                        if (data && data.fatal) setTimeout(() => attachCam(video), 4000);
+                    });
+                    video._hls = hls;
+                } else {
+                    // Safari / iOS: HLS native
+                    video.src = url;
+                }
+                video.play().catch(() => {});
+            }
+            document.querySelectorAll('.cctv-video').forEach(attachCam);
         };
 
     </script>
