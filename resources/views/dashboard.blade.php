@@ -589,8 +589,8 @@
         .cctv-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            flex-grow: 1;
+            gap: 12px;
+            margin-top: 10px;
         }
 
         .cctv-tile {
@@ -609,12 +609,11 @@
         .cctv-stage {
             position: relative;
             width: 100%;
-            flex-grow: 1;
-            min-height: 200px;
+            aspect-ratio: 16 / 9;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border);
-            background: rgba(0, 0, 0, 0.5);
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -951,9 +950,9 @@
             </div>
             <!-- MASTER LOG STREAM & CCTV PREVIEW ROW -->
             <div class="split-row"
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; align-items: start;">
-                <!-- CCTV PREVIEW -->
-                <div class="glass-card" style="height: 100%; display: flex; flex-direction: column;">
+                style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 15px; align-items: start;">
+                <!-- CCTV PREVIEW (full width) -->
+                <div class="glass-card" style="display: flex; flex-direction: column;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <span class="card-title"><i class="fas fa-video" style="margin-right: 5px;"></i> LIVE CCTV
                             SURVEILLANCE</span>
