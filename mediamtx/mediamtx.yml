@@ -3,7 +3,10 @@ webrtcAddress: :8889
 
 hls: yes
 hlsAddress: :8888
-hlsVariant: mpegts
+# LL-HLS (fmp4) -> latency ~1-3 detik. Browser modern (Chrome/Safari/Firefox/iOS 14+) didukung hls.js auto.
+hlsVariant: lowLatency
+hlsSegmentDuration: 1s
+hlsPartDuration: 200ms
 hlsAllowOrigin: '*'
 
 paths:

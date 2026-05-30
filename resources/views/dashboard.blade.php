@@ -1416,7 +1416,10 @@
                 if (video._hls) { try { video._hls.destroy(); } catch (e) {} video._hls = null; }
                 if (window.Hls && Hls.isSupported()) {
                     const hls = new Hls({
-                        liveSyncDurationCount: 3,
+                        lowLatencyMode: true,
+                        liveSyncDurationCount: 1,
+                        liveMaxLatencyDurationCount: 4,
+                        backBufferLength: 5,
                         manifestLoadingMaxRetry: 8,
                         manifestLoadingRetryDelay: 1000,
                         levelLoadingMaxRetry: 8
