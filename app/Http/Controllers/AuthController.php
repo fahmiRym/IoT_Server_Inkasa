@@ -232,7 +232,47 @@ class AuthController extends Controller
             'otp_expires_at' => now()->addMinutes(5),
         ]);
 
-        Mail::to($user->email)->send(new OtpMail($code, $user->name));
+        // Kirim via email — kalau MAIL_MAILER=log, hanya masuk ke storage/logs
+        try {
+            Mail::to($user->email)->send(new OtpMail($code, $user->name));
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('OTP mail failed: ' . $e->getMessage());
+        }
+
+        // Fallback: kirim ke Telegram bot kalau MAIL_MAILER=log (belum ada SMTP proper)
+        // atau selalu (dobel-notif) — atur via env NOC_OTP_TELEGRAM=1
+        $mailIsLog = strtolower((string) config('mail.default')) === 'log';
+        $forceTele = filter_var(env('NOC_OTP_TELEGRAM', false), FILTER_VALIDATE_BOOLEAN);
+
+        if ($mailIsLog || $forceTele) {
+            $this->sendOtpTelegram($user, $code);
+        }
+    }
+
+    private function sendOtpTelegram(User $user, string $code): void
+    {
+        $token  = config('services.telegram.bot_token');
+        $chatId = config('services.telegram.chat_id');
+        if (!$token || !$chatId) return;
+
+        $msg = sprintf(
+            "🔐 *NOC OTP LOGIN*\nUser: `%s` (%s)\nKode: `%s`\nBerlaku: 5 menit\nWaktu: %s",
+            $user->username ?? '-',
+            $user->name,
+            $code,
+            now()->format('Y-m-d H:i:s')
+        );
+
+        try {
+            \Illuminate\Support\Facades\Http::timeout(5)->retry(2, 250)
+                ->post("https://api.telegram.org/bot{$token}/sendMessage", [
+                    'chat_id'    => $chatId,
+                    'text'       => $msg,
+                    'parse_mode' => 'Markdown',
+                ]);
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('OTP telegram send failed: ' . $e->getMessage());
+        }
     }
 
     private function maskEmail(string $email): string
