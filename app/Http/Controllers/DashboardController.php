@@ -15,23 +15,28 @@ class DashboardController extends Controller
 
     public function getLiveMetrics()
     {
-        // 1. Data Terakhir (Live)
-        $latest = SensorLog::latest()->first();
+        // 1. Data Terakhir (Live) — cached 3 detik biar tahan burst polling
+        $latest = \Illuminate\Support\Facades\Cache::remember('latest_sensor_reading', 3, function () {
+            return SensorLog::latest()->first();
+        });
 
-        // 2. Statistik Hari Ini (Optimasi: Gunakan Cache & Index Friendly Query)
-        $stats = \Illuminate\Support\Facades\Cache::remember('daily_sensor_stats', 120, function () {
+        // 2. Statistik Hari Ini — cache key include tanggal biar auto-reset saat ganti hari
+        $todayKey = 'daily_sensor_stats:' . \Carbon\Carbon::today()->toDateString();
+        $stats = \Illuminate\Support\Facades\Cache::remember($todayKey, 60, function () {
             return SensorLog::where('created_at', '>=', \Carbon\Carbon::today())
                 ->selectRaw('MAX(temp) as max_temp, MIN(temp) as min_temp, AVG(hum) as avg_hum, MAX(smoke) as max_smoke')
                 ->first();
         });
 
+        $cols = ['id', 'temp', 'hum', 'smoke', 'fire', 'smoke1', 'smoke2', 'smoke3', 'flame1', 'flame2', 'created_at'];
+
         // 3. History Grafik — ambil 120 titik terbaru
-        $history = SensorLog::latest()->take(120)->get(['id', 'temp', 'hum', 'smoke', 'fire', 'smoke1', 'smoke2', 'smoke3', 'flame1', 'flame2', 'created_at'])->reverse()->values();
+        $history = SensorLog::latest()->take(120)->get($cols)->reverse()->values();
 
         // 4. Recent Logs (5 data terakhir untuk tabel)
-        $recentLogs = SensorLog::latest()->take(5)->get(['id', 'temp', 'hum', 'smoke', 'fire', 'smoke1', 'smoke2', 'smoke3', 'flame1', 'flame2', 'created_at']);
+        $recentLogs = SensorLog::latest()->take(5)->get($cols);
 
-        // 5. Total Count (Optimasi: Cache selama 5 menit karena ini sangat berat)
+        // 5. Total Count (cache 5 menit karena COUNT(*) berat di MySQL)
         $totalCount = \Illuminate\Support\Facades\Cache::remember('total_sensor_count', 300, function () {
             return SensorLog::count();
         });
@@ -49,10 +54,12 @@ class DashboardController extends Controller
             'history' => $history,
             'recent' => $recentLogs,
             'config' => [
-                'temp_limit' => (float) env('SENSOR_TEMP_LIMIT', 35),
-                'smoke_limit' => (int) env('SENSOR_SMOKE_LIMIT', 1000),
-                'timeout' => (int) env('SENSOR_TIMEOUT', 120),
-            ]
+                'temp_limit'  => (float) config('services.sensor.temp_limit', 35),
+                'smoke_limit' => (int)   config('services.sensor.smoke_limit', 600),
+                'timeout'     => (int)   env('SENSOR_TIMEOUT', 120),
+            ],
+            'alarm_state'   => (bool) \Illuminate\Support\Facades\Cache::get('sensor.alarm.state', false),
+            'server_time'   => now()->toIso8601String(),
         ]);
     }
 
@@ -85,182 +92,305 @@ class DashboardController extends Controller
     {
         [$query, $label] = $this->applyFilters($request);
 
-        // Check if there is any data first
         if (!(clone $query)->exists()) {
             return redirect()->back()->with('error', 'Tidak ada data untuk rentang waktu ini.');
         }
 
-        // Determine timeframe difference in days to apply optimal aggregation
-        $diffDays = 0;
-        if ($request->has('start_date') && $request->has('end_date') && $request->start_date && $request->end_date) {
-            $diffDays = \Carbon\Carbon::parse($request->start_date)->diffInDays(\Carbon\Carbon::parse($request->end_date));
-        } elseif ($request->has('month') && $request->month) {
-            $diffDays = 30;
-        } elseif ($request->has('year') && $request->year) {
-            $diffDays = 365;
-        } else {
-            // Default is Today
-            $diffDays = 1;
-        }
+        $ctx = $this->buildReportContext($request, $query, $label);
 
-        // Choose appropriate grouping interval (in seconds) to prevent Excel timeout and memory crash
-        if ($diffDays <= 1) {
-            $interval = 300; // 5 Minutes (Max 288 rows per day)
-        } elseif ($diffDays <= 7) {
-            $interval = 900; // 15 Minutes (Max 672 rows per week)
-        } elseif ($diffDays <= 31) {
-            $interval = 3600; // 1 Hour (Max 744 rows per month)
-        } else {
-            $interval = 86400; // 1 Day (Max 365 rows per year)
-        }
+        $filename = "NOC_Report_" . now()->format('Ymd_His') . ".xlsx";
 
-        // Aggregate query to prevent massive PHP memory leak and browser timeout
-        $exportQuery = (clone $query)->selectRaw("
-            FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(created_at) / {$interval})) as time_key,
-            AVG(temp) as temp,
-            AVG(hum) as hum,
-            AVG(smoke) as smoke,
+        return \Maatwebsite\Excel\Facades\Excel::download(
+            new \App\Exports\NocSensorReport($ctx),
+            $filename
+        );
+    }
+
+    /**
+     * Bangun konteks lengkap untuk Excel & PDF report.
+     * Menghasilkan: overall stats, threshold breach, aggregated series, hourly rekap, incidents.
+     */
+    private function buildReportContext(Request $request, $query, string $label): array
+    {
+        $tLimit = (float) config('services.sensor.temp_limit', 35);
+        $sLimit = (int)   config('services.sensor.smoke_limit', 600);
+
+        // Hitung rentang hari & interval agregasi
+        $diffDays = $this->estimateDiffDays($request);
+        [$interval, $aggLabel] = $this->pickAggregation($diffDays);
+
+        // Aggregated detail (untuk sheet Detail Data & chart)
+        $aggregated = (clone $query)->selectRaw("
+            FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(created_at) / {$interval})) as bucket,
+            AVG(temp)   as temp,
+            MAX(temp)   as temp_max,
+            AVG(hum)    as hum,
+            AVG(smoke)  as smoke,
+            MAX(smoke)  as smoke_max,
             AVG(smoke1) as smoke1,
             AVG(smoke2) as smoke2,
             AVG(smoke3) as smoke3,
             MAX(flame1) as flame1,
             MAX(flame2) as flame2,
             MIN(created_at) as created_at
-        ")
-        ->groupBy('time_key')
-        ->orderBy('time_key', 'ASC');
+        ")->groupBy('bucket')->orderBy('bucket', 'ASC')->get();
 
-        // Use a very unique filename to prevent cache issues
-        $filename = "Report_Excel_NOC_Inkasa_" . now()->format('Ymd_His') . "_" . uniqid() . ".xlsx";
+        // Rekap per periode (jam/hari) untuk sheet HourlySheet dan PDF trend
+        $groupFmt   = $diffDays > 3 ? "%Y-%m-%d" : "%Y-%m-%d %H:00";
+        $groupLabel = $diffDays > 3 ? 'Per Hari' : 'Per Jam';
 
-        return \Maatwebsite\Excel\Facades\Excel::download(
-            new \App\Exports\SaktiSensorExport($exportQuery, $label),
-            $filename
-        );
+        $hourly = (clone $query)->selectRaw("
+            DATE_FORMAT(created_at, '{$groupFmt}') as label,
+            AVG(temp)   as avg_temp,
+            MAX(temp)   as max_temp,
+            MIN(temp)   as min_temp,
+            AVG(hum)    as avg_hum,
+            AVG(smoke)  as avg_smoke,
+            MAX(smoke)  as max_smoke,
+            AVG(smoke1) as avg_s1,
+            AVG(smoke2) as avg_s2,
+            AVG(smoke3) as avg_s3,
+            SUM(CASE WHEN flame1 = 1 OR flame2 = 1 THEN 1 ELSE 0 END) as flame_count,
+            SUM(CASE WHEN temp > {$tLimit} OR smoke > {$sLimit} OR flame1 = 1 OR flame2 = 1 THEN 1 ELSE 0 END) as critical_count,
+            COUNT(*) as total
+        ")->groupBy('label')->orderBy('label', 'ASC')->get();
+
+        // Overall stats
+        $totalRecords = (clone $query)->count();
+        $overall = [
+            'max_temp'    => (float) ((clone $query)->max('temp') ?? 0),
+            'min_temp'    => (float) ((clone $query)->min('temp') ?? 0),
+            'avg_temp'    => (float) ((clone $query)->avg('temp') ?? 0),
+            'avg_hum'     => (float) ((clone $query)->avg('hum') ?? 0),
+            'max_smoke'   => (int)   ((clone $query)->max('smoke') ?? 0),
+            'max_s1'      => (int)   ((clone $query)->max('smoke1') ?? 0),
+            'max_s2'      => (int)   ((clone $query)->max('smoke2') ?? 0),
+            'max_s3'      => (int)   ((clone $query)->max('smoke3') ?? 0),
+            'flame1_count'=> (clone $query)->where('flame1', 1)->count(),
+            'flame2_count'=> (clone $query)->where('flame2', 1)->count(),
+            'fired'       => (clone $query)->where('fire', 1)->exists(),
+            'critical_count' => (clone $query)->where(function ($q) use ($tLimit, $sLimit) {
+                $q->where('temp', '>', $tLimit)
+                  ->orWhere('smoke', '>', $sLimit)
+                  ->orWhere('fire', 1);
+            })->count(),
+        ];
+
+        // Threshold breach percentages
+        $tempBreach  = (clone $query)->where('temp', '>', $tLimit)->count();
+        $smokeBreach = (clone $query)->where('smoke', '>', $sLimit)->count();
+        $fireBreach  = (clone $query)->where('fire', 1)->count();
+        $pct = fn($n) => $totalRecords > 0 ? round(($n / $totalRecords) * 100, 2) : 0;
+        $breach = [
+            'temp' => $tempBreach, 'temp_pct' => $pct($tempBreach),
+            'smoke' => $smokeBreach, 'smoke_pct' => $pct($smokeBreach),
+            'fire' => $fireBreach,  'fire_pct'  => $pct($fireBreach),
+        ];
+
+        // Incidents (max 200, sorted by severity heuristic — flame first, then most critical)
+        $incidents = (clone $query)
+            ->where(function ($q) use ($tLimit, $sLimit) {
+                $q->where('temp', '>', $tLimit)
+                  ->orWhere('smoke', '>', $sLimit)
+                  ->orWhere('fire', 1);
+            })
+            ->orderByDesc('fire')
+            ->orderByDesc('smoke')
+            ->orderByDesc('temp')
+            ->orderBy('created_at')
+            ->limit(200)
+            ->get(['created_at', 'temp', 'hum', 'smoke', 'fire', 'flame1', 'flame2']);
+
+        return [
+            'periode'      => $label,
+            'tLimit'       => $tLimit,
+            'sLimit'       => $sLimit,
+            'diffDays'     => $diffDays,
+            'aggLabel'     => $aggLabel,
+            'groupLabel'   => $groupLabel,
+            'totalRecords' => $totalRecords,
+            'aggregated'   => $aggregated,
+            'hourly'       => $hourly,
+            'overall'      => $overall,
+            'breach'       => $breach,
+            'incidents'    => $incidents,
+        ];
+    }
+
+    private function estimateDiffDays(Request $request): int
+    {
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            return max(1, (int) \Carbon\Carbon::parse($request->start_date)
+                ->diffInDays(\Carbon\Carbon::parse($request->end_date)));
+        }
+        if ($request->filled('month')) return 30;
+        if ($request->filled('year'))  return 365;
+        return 1;
+    }
+
+    private function pickAggregation(int $diffDays): array
+    {
+        if ($diffDays <= 1)  return [300,  '5 Menit'];
+        if ($diffDays <= 7)  return [900,  '15 Menit'];
+        if ($diffDays <= 31) return [3600, '1 Jam'];
+        return [86400, '1 Hari'];
     }
 
     public function exportPdf(Request $request)
     {
         [$query, $label] = $this->applyFilters($request);
 
-        $tLimit = env('SENSOR_TEMP_LIMIT', 35);
-        $sLimit = env('SENSOR_SMOKE_LIMIT', 600);
-
-        $diffDays = 0;
-        if ($request->has('start_date') && $request->has('end_date') && $request->start_date && $request->end_date) {
-            $diffDays = \Carbon\Carbon::parse($request->start_date)->diffInDays(\Carbon\Carbon::parse($request->end_date));
-        } elseif ($request->has('month') && $request->month) {
-            $diffDays = 30;
-        } elseif ($request->has('year') && $request->year) {
-            $diffDays = 365;
-        }
-
-        $groupByFormat = $diffDays > 3 ? "%Y-%m-%d" : "%Y-%m-%d %H:00";
-
-        // Aggregate for Chart and Summary Tabular Data
-        $stats = (clone $query)->selectRaw("
-            DATE_FORMAT(created_at, '{$groupByFormat}') as label,
-            AVG(temp) as temp,
-            AVG(hum) as hum,
-            AVG(smoke) as smoke_avg,
-            MAX(smoke) as smoke_max,
-            AVG(smoke1) as s1,
-            AVG(smoke2) as s2,
-            AVG(smoke3) as s3,
-            MAX(flame1) as f1,
-            MAX(flame2) as f2
-        ")->groupBy('label')->orderBy('label', 'ASC')->get();
-
-        $totalRecords = (clone $query)->count();
-        if ($totalRecords == 0) {
+        if (!(clone $query)->exists()) {
             return redirect()->back()->with('error', 'Tidak ada data untuk rentang waktu ini.');
         }
 
-        $overallStats = [
-            'max_temp' => (clone $query)->max('temp') ?? 0,
-            'min_temp' => (clone $query)->min('temp') ?? 0,
-            'avg_hum' => (clone $query)->avg('hum') ?? 0,
-            'max_smoke' => (clone $query)->max('smoke') ?? 0,
-            'max_s1' => (clone $query)->max('smoke1') ?? 0,
-            'max_s2' => (clone $query)->max('smoke2') ?? 0,
-            'max_s3' => (clone $query)->max('smoke3') ?? 0,
-            'fired' => (clone $query)->where('fire', 1)->count() > 0,
-            'critical_count' => (clone $query)->where(function ($q) use ($tLimit, $sLimit) {
-                $q->where('temp', '>', $tLimit)
-                    ->orWhere('smoke', '>', $sLimit)
-                    ->orWhere('fire', 1);
-            })->count()
-        ];
+        $ctx = $this->buildReportContext($request, $query, $label);
+        $charts = $this->renderReportCharts($ctx);
 
-        // --- CHART 1: AIR QUALITY (SENSOR BREAKDOWN) ---
-        $chartAir = [
-            'type' => 'line',
-            'data' => [
-                'labels' => $stats->pluck('label')->toArray(),
-                'datasets' => [
-                    ['label' => 'S1 (PPM)', 'data' => $stats->pluck('s1')->map(fn($v) => round($v, 1))->toArray(), 'borderColor' => '#00d4ff', 'fill' => false, 'borderWidth' => 1.5, 'pointRadius' => 0],
-                    ['label' => 'S2 (PPM)', 'data' => $stats->pluck('s2')->map(fn($v) => round($v, 1))->toArray(), 'borderColor' => '#ff0055', 'fill' => false, 'borderWidth' => 1.5, 'pointRadius' => 0],
-                    ['label' => 'S3 (PPM)', 'data' => $stats->pluck('s3')->map(fn($v) => round($v, 1))->toArray(), 'borderColor' => '#ffcc00', 'fill' => false, 'borderWidth' => 1.5, 'pointRadius' => 0],
-                    ['label' => 'TOTAL (MAX)', 'data' => $stats->pluck('smoke_max')->toArray(), 'borderColor' => '#00ff00', 'backgroundColor' => 'rgba(0,255,0,0.1)', 'fill' => true, 'borderWidth' => 3, 'pointRadius' => 0]
-                ]
-            ],
-            'options' => [
-                'title' => ['display' => true, 'text' => 'AIR QUALITY ANALYTICS (PPM)'],
-                'elements' => ['line' => ['tension' => 0.4]]
-            ]
-        ];
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('reports.sensor_pdf', [
+            'ctx'    => $ctx,
+            'charts' => $charts,
+            'now'    => now(),
+        ])->setPaper('a4', 'portrait');
 
-        // --- CHART 2: TEMP & HUMIDITY ---
+        $filename = "NOC_Report_" . now()->format('Ymd_His') . ".pdf";
+        return $pdf->download($filename);
+    }
+
+    /**
+     * Render chart PNG via QuickChart.io — 4 chart untuk PDF.
+     * Return array [envChart, airChart, breachChart, hourlyChart] atau null kalau gagal.
+     */
+    private function renderReportCharts(array $ctx): array
+    {
+        $hourly = $ctx['hourly'];
+        $labels = $hourly->pluck('label')->toArray();
+
+        // Reduce labels di chart supaya tidak terlalu padat (max ~40 titik)
+        if (count($labels) > 40) {
+            $step = (int) ceil(count($labels) / 40);
+            $labels = array_values(array_filter($labels, fn($_, $i) => $i % $step === 0, ARRAY_FILTER_USE_BOTH));
+            $hourly = $hourly->filter(fn($_, $i) => $i % $step === 0)->values();
+        }
+
+        $tempData  = $hourly->pluck('avg_temp')->map(fn($v) => round((float) $v, 1))->toArray();
+        $humData   = $hourly->pluck('avg_hum')->map(fn($v) => round((float) $v, 1))->toArray();
+        $smokeMax  = $hourly->pluck('max_smoke')->map(fn($v) => (int) $v)->toArray();
+        $s1        = $hourly->pluck('avg_s1')->map(fn($v) => round((float) $v, 1))->toArray();
+        $s2        = $hourly->pluck('avg_s2')->map(fn($v) => round((float) $v, 1))->toArray();
+        $s3        = $hourly->pluck('avg_s3')->map(fn($v) => round((float) $v, 1))->toArray();
+        $critical  = $hourly->pluck('critical_count')->map(fn($v) => (int) $v)->toArray();
+
+        // Threshold line
+        $tempThreshold = array_fill(0, count($labels), $ctx['tLimit']);
+        $smokeThreshold = array_fill(0, count($labels), $ctx['sLimit']);
+
+        // Chart 1 — Environmental Trend (Temp + Humidity dual axis + threshold line)
         $chartEnv = [
             'type' => 'line',
             'data' => [
-                'labels' => $stats->pluck('label')->toArray(),
+                'labels' => $labels,
                 'datasets' => [
-                    ['label' => 'Temp (°C)', 'data' => $stats->pluck('temp')->map(fn($v) => round($v, 1))->toArray(), 'borderColor' => '#ff4400', 'yAxisID' => 'y', 'fill' => false],
-                    ['label' => 'Humidity (%)', 'data' => $stats->pluck('hum')->map(fn($v) => round($v, 1))->toArray(), 'borderColor' => '#0088ff', 'yAxisID' => 'y1', 'fill' => false]
-                ]
+                    ['label' => 'Suhu (°C)',  'data' => $tempData, 'borderColor' => '#e65100', 'backgroundColor' => 'rgba(230,81,0,0.1)', 'yAxisID' => 'y1', 'fill' => true, 'tension' => 0.35, 'borderWidth' => 2.5, 'pointRadius' => 0],
+                    ['label' => 'Kelembaban (%)', 'data' => $humData, 'borderColor' => '#0277bd', 'yAxisID' => 'y2', 'fill' => false, 'tension' => 0.35, 'borderWidth' => 2, 'pointRadius' => 0],
+                    ['label' => 'Batas Suhu', 'data' => $tempThreshold, 'borderColor' => '#c62828', 'borderDash' => [6,4], 'yAxisID' => 'y1', 'fill' => false, 'borderWidth' => 1.5, 'pointRadius' => 0],
+                ],
             ],
             'options' => [
-                'title' => ['display' => true, 'text' => 'ENVIRONMENTAL TRENDS'],
+                'title'  => ['display' => true, 'text' => 'TREND SUHU & KELEMBABAN', 'fontSize' => 14, 'fontStyle' => 'bold'],
+                'legend' => ['position' => 'top', 'labels' => ['fontSize' => 11]],
                 'scales' => [
-                    'y' => ['type' => 'linear', 'display' => true, 'position' => 'left'],
-                    'y1' => ['type' => 'linear', 'display' => true, 'position' => 'right', 'grid' => ['drawOnChartArea' => false]]
-                ]
-            ]
+                    'yAxes' => [
+                        ['id' => 'y1', 'position' => 'left',  'scaleLabel' => ['display' => true, 'labelString' => 'Suhu (°C)'], 'ticks' => ['beginAtZero' => false]],
+                        ['id' => 'y2', 'position' => 'right', 'scaleLabel' => ['display' => true, 'labelString' => 'Kelembaban (%)'], 'gridLines' => ['drawOnChartArea' => false]],
+                    ],
+                ],
+            ],
         ];
 
-        $chartSrc1 = null;
-        $chartSrc2 = null;
+        // Chart 2 — Air Quality Breakdown (S1/S2/S3 + MAX line + threshold)
+        $chartAir = [
+            'type' => 'line',
+            'data' => [
+                'labels' => $labels,
+                'datasets' => [
+                    ['label' => 'S1', 'data' => $s1, 'borderColor' => '#00838f', 'fill' => false, 'borderWidth' => 1.4, 'pointRadius' => 0, 'tension' => 0.3],
+                    ['label' => 'S2', 'data' => $s2, 'borderColor' => '#d84315', 'fill' => false, 'borderWidth' => 1.4, 'pointRadius' => 0, 'tension' => 0.3],
+                    ['label' => 'S3', 'data' => $s3, 'borderColor' => '#f9a825', 'fill' => false, 'borderWidth' => 1.4, 'pointRadius' => 0, 'tension' => 0.3],
+                    ['label' => 'MAX (Total)', 'data' => $smokeMax, 'borderColor' => '#2e7d32', 'backgroundColor' => 'rgba(46,125,50,0.15)', 'fill' => true, 'borderWidth' => 2.5, 'pointRadius' => 0, 'tension' => 0.3],
+                    ['label' => 'Batas Asap', 'data' => $smokeThreshold, 'borderColor' => '#c62828', 'borderDash' => [6,4], 'fill' => false, 'borderWidth' => 1.5, 'pointRadius' => 0],
+                ],
+            ],
+            'options' => [
+                'title'  => ['display' => true, 'text' => 'KUALITAS UDARA — MULTI SENSOR (PPM)', 'fontSize' => 14, 'fontStyle' => 'bold'],
+                'legend' => ['position' => 'top', 'labels' => ['fontSize' => 11]],
+                'scales' => ['yAxes' => [['scaleLabel' => ['display' => true, 'labelString' => 'PPM'], 'ticks' => ['beginAtZero' => true]]]],
+            ],
+        ];
 
+        // Chart 3 — Threshold breach bar
+        $breachChart = [
+            'type' => 'bar',
+            'data' => [
+                'labels' => ['Suhu > ' . $ctx['tLimit'] . '°C', 'Asap > ' . $ctx['sLimit'] . ' PPM', 'Flame Detect'],
+                'datasets' => [
+                    [
+                        'label' => 'Jumlah Event',
+                        'data' => [$ctx['breach']['temp'], $ctx['breach']['smoke'], $ctx['breach']['fire']],
+                        'backgroundColor' => ['#ef6c00', '#c62828', '#6a1b9a'],
+                    ],
+                ],
+            ],
+            'options' => [
+                'title'  => ['display' => true, 'text' => 'ANALISIS PELANGGARAN AMBANG BATAS', 'fontSize' => 14, 'fontStyle' => 'bold'],
+                'legend' => ['display' => false],
+                'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true, 'stepSize' => 1]]]],
+            ],
+        ];
+
+        // Chart 4 — Critical events per periode
+        $criticalChart = [
+            'type' => 'bar',
+            'data' => [
+                'labels' => $labels,
+                'datasets' => [
+                    ['label' => 'Insiden per periode', 'data' => $critical, 'backgroundColor' => 'rgba(198,40,40,0.7)', 'borderColor' => '#c62828', 'borderWidth' => 1],
+                ],
+            ],
+            'options' => [
+                'title'  => ['display' => true, 'text' => 'DISTRIBUSI INSIDEN PER PERIODE', 'fontSize' => 14, 'fontStyle' => 'bold'],
+                'legend' => ['display' => false],
+                'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true, 'stepSize' => 1]]]],
+            ],
+        ];
+
+        return [
+            'env'      => $this->quickChart($chartEnv,      760, 300),
+            'air'      => $this->quickChart($chartAir,      760, 300),
+            'breach'   => $this->quickChart($breachChart,   380, 240),
+            'critical' => $this->quickChart($criticalChart, 380, 240),
+        ];
+    }
+
+    private function quickChart(array $chart, int $w, int $h): ?string
+    {
         try {
-            $client = \Illuminate\Support\Facades\Http::withoutVerifying()->timeout(10);
-
-            // Fetch Air Chart
-            $res1 = $client->post('https://quickchart.io/chart', ['chart' => $chartAir, 'width' => 700, 'height' => 250, 'backgroundColor' => 'white']);
-            if ($res1->successful())
-                $chartSrc1 = 'data:image/png;base64,' . base64_encode($res1->body());
-
-            // Fetch Env Chart
-            $res2 = $client->post('https://quickchart.io/chart', ['chart' => $chartEnv, 'width' => 700, 'height' => 250, 'backgroundColor' => 'white']);
-            if ($res2->successful())
-                $chartSrc2 = 'data:image/png;base64,' . base64_encode($res2->body());
-
-        } catch (\Exception $e) {
-            \Log::error("QuickChart Multi-Chart Fail: " . $e->getMessage());
+            $resp = \Illuminate\Support\Facades\Http::withoutVerifying()
+                ->timeout(15)
+                ->post('https://quickchart.io/chart', [
+                    'chart' => $chart,
+                    'width' => $w,
+                    'height' => $h,
+                    'backgroundColor' => 'white',
+                    'devicePixelRatio' => 2,
+                    'version' => '2.9.4',
+                ]);
+            if ($resp->successful()) {
+                return 'data:image/png;base64,' . base64_encode($resp->body());
+            }
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('QuickChart fail: ' . $e->getMessage());
         }
-
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('reports.sensor_pdf', [
-            'stats' => $stats,
-            'overall' => $overallStats,
-            'totalRecords' => $totalRecords,
-            'periode_label' => $label,
-            'chartSrc1' => $chartSrc1,
-            'chartSrc2' => $chartSrc2,
-            'tLimit' => $tLimit,
-            'sLimit' => $sLimit
-        ])->setPaper('a4', 'portrait');
-
-        $filename = "Report_PDF_NOC_Inkasa" . now()->format('Ymd_His') . ".pdf";
-        return $pdf->download($filename);
+        return null;
     }
 }

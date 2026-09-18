@@ -28,6 +28,13 @@ LABEL     = os.environ.get("LOCATION_LABEL", "Ruang Server")
 YOLO_CONF = float(os.environ.get("YOLO_CONF", "0.4"))
 MODEL_DIR = os.environ.get("MODEL_DIR", "/app/models")
 ALERT_ONLY_PERSON = os.environ.get("ALERT_ONLY_PERSON", "false").lower() in ("1", "true", "yes")
+# Filter lampu mati / scene gelap (anti false-alarm):
+#  - DARK_MIN_BRIGHTNESS : kalau mean brightness frame (0-255) < nilai ini, scene dianggap gelap -> skip alert
+#  - DARK_DELTA          : perubahan brightness mendadak (mean abs diff dari rolling) > nilai ini -> skip + reset BG
+#  - DARK_RESETTLE_SEC   : durasi suppress alert setelah event gelap/perubahan cahaya
+DARK_MIN_BRIGHTNESS = int(os.environ.get("DARK_MIN_BRIGHTNESS", "25"))
+DARK_DELTA          = int(os.environ.get("DARK_DELTA", "40"))
+DARK_RESETTLE_SEC   = int(os.environ.get("DARK_RESETTLE_SEC", "20"))
 
 os.makedirs(CAP_DIR, exist_ok=True)
 TG = f"https://api.telegram.org/bot{BOT_TOKEN}"
@@ -141,11 +148,13 @@ def open_stream():
 
 def main():
     print(f"Motion detector start | YOLOv4-tiny | source={RTSP_URL} | now={datetime.now()}", flush=True)
-    tg_text(f"✅ *Motion detector aktif* (YOLO) — memantau {LABEL}")
+    tg_text(f"✅ *Motion detector aktif* (Inkasa) — memantau {LABEL}")
 
     cap = open_stream()
     backsub = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=40, detectShadows=False)
     motion_run, last_alert, warmup, fail = 0, 0.0, 30, 0
+    prev_brightness = None
+    suppress_until = 0.0   # supress alert sampai timestamp ini (mis. setelah lampu mati/nyala)
 
     while True:
         ok, frame = cap.read()
@@ -162,9 +171,32 @@ def main():
 
         small = cv2.resize(frame, (640, 360))
         gray = cv2.GaussianBlur(cv2.cvtColor(small, cv2.COLOR_BGR2GRAY), (21, 21), 0)
+
+        # ---- Filter lampu mati / perubahan cahaya global ----
+        brightness = float(np.mean(gray))
+        now_ts = time.time()
+        light_event = False
+        if prev_brightness is not None:
+            if abs(brightness - prev_brightness) >= DARK_DELTA:
+                light_event = True
+                print(f"light change: {prev_brightness:.1f} -> {brightness:.1f} (suppress {DARK_RESETTLE_SEC}s, reset BG)", flush=True)
+        prev_brightness = 0.9 * prev_brightness + 0.1 * brightness if prev_brightness is not None else brightness
+
+        if light_event:
+            # Lampu padam/nyala mendadak -> reset background subtractor & jeda alert
+            backsub = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=40, detectShadows=False)
+            suppress_until = now_ts + DARK_RESETTLE_SEC
+            warmup = 15
+            motion_run = 0
+
         mask = backsub.apply(gray)
         if warmup > 0:
             warmup -= 1
+            continue
+
+        # Frame terlalu gelap -> tidak ada visual yg berguna, skip alert
+        if brightness < DARK_MIN_BRIGHTNESS:
+            motion_run = 0
             continue
 
         _, th = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
@@ -173,8 +205,12 @@ def main():
         moving = any(cv2.contourArea(c) > MIN_AREA for c in cnts)
         motion_run = motion_run + 1 if moving else max(0, motion_run - 1)
 
-        if motion_run >= CONSEC and (time.time() - last_alert) > COOLDOWN:
-            last_alert = time.time()
+        if now_ts < suppress_until:
+            motion_run = 0
+            continue
+
+        if motion_run >= CONSEC and (now_ts - last_alert) > COOLDOWN:
+            last_alert = now_ts
             motion_run = 0
             nice = datetime.now().strftime("%d %b %Y %H:%M:%S")
             ts = datetime.now().strftime("%Y%m%d_%H%M%S")

@@ -54,6 +54,9 @@ RUN php artisan config:clear || true
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 storage bootstrap/cache
 
+# PHP tuning utk upload SQL backup besar
+COPY docker/php-uploads.ini /usr/local/etc/php/conf.d/zz-uploads.ini
+
 # Supervisor
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

@@ -38,7 +38,21 @@ return [
     // API key untuk ingest sensor dari ESP32 (POST /api/sensor/store).
     // Dibaca via config() agar tetap valid saat config:cache aktif (env() jadi null saat runtime).
     'sensor' => [
-        'api_key' => env('SENSOR_API_KEY'),
+        'api_key'     => env('SENSOR_API_KEY'),
+        'temp_limit'  => env('SENSOR_TEMP_LIMIT', 35),
+        'smoke_limit' => env('SENSOR_SMOKE_LIMIT', 600),
+    ],
+
+    'telegram' => [
+        'bot_token' => env('TELEGRAM_BOT_TOKEN'),
+        'chat_id'   => env('TELEGRAM_CHAT_ID'),
+    ],
+
+    // Web Push VAPID keys — generate: `web-push generate-vapid-keys`
+    'push' => [
+        'vapid_public'  => env('VAPID_PUBLIC_KEY'),
+        'vapid_private' => env('VAPID_PRIVATE_KEY'),
+        'vapid_subject' => env('VAPID_SUBJECT', 'mailto:it.inkasajayaaluminium@gmail.com'),
     ],
 
 ];

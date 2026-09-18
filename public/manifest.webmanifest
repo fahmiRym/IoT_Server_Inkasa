@@ -1,16 +1,79 @@
 {
-  "name": "NOC Command Center - Inkasa",
+  "name": "NOC Command Center — Inkasa",
   "short_name": "NOC Inkasa",
-  "description": "Dashboard monitoring sensor & CCTV ruang server",
-  "start_url": "/",
+  "description": "Dashboard monitoring sensor suhu, asap, api & CCTV ruang server PT Inkasa Jaya Aluminium — real-time alert Telegram + PWA installable.",
+  "id": "/",
+  "start_url": "/?src=pwa",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
   "orientation": "any",
   "background_color": "#020408",
   "theme_color": "#020408",
+  "lang": "id-ID",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "business"],
+  "prefer_related_applications": false,
   "icons": [
     { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Live Dashboard",
+      "short_name": "Live",
+      "description": "Buka dashboard live-monitoring sensor",
+      "url": "/?src=shortcut#top",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "CCTV Surveillance",
+      "short_name": "CCTV",
+      "description": "Buka live-view kamera CCTV",
+      "url": "/?src=shortcut#cctv",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Master Log",
+      "short_name": "Logs",
+      "description": "Buka stream log sensor terakhir",
+      "url": "/?src=shortcut#logs",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Profil Saya",
+      "short_name": "Profil",
+      "description": "Edit profil & keamanan akun",
+      "url": "/profile?src=shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard NOC Command Center"
+    },
+    {
+      "src": "/icons/screenshot-narrow.png",
+      "sizes": "540x960",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Dashboard mobile"
+    }
+  ],
+  "share_target": {
+    "action": "/share-in",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [],
+  "handle_links": "preferred"
 }

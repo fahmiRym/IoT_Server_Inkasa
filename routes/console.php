@@ -2,7 +2,6 @@
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-
 use Illuminate\Support\Facades\Schedule;
 
 Artisan::command('inspire', function () {
@@ -20,12 +19,17 @@ Artisan::command('inspire', function () {
 | GANTINYA: ESP32 push langsung ke server via POST /api/sensor/store
 | (SensorController@store). Jalur ini TIDAK memakai kuota Blynk sama sekali.
 | Lihat docs/LOG-BLYNK-QUOTA.md untuk detail + firmware ESP32.
-|
-| Schedule::call(function () {
-|     for ($i = 0; $i < 60; $i++) {
-|         Artisan::call('sensor:fetch');
-|         sleep(1);
-|     }
-| })->everyMinute();
 */
 
+// ---- Scheduled maintenance ----
+// Backup DB harian jam 02:15 (idle jam server), simpan 14 versi terakhir.
+Schedule::command('db:backup --keep=14')
+    ->dailyAt('02:15')
+    ->withoutOverlapping()
+    ->onOneServer();
+
+// Prune motion clips harian jam 03:00, umur > 7 hari.
+Schedule::command('motion:prune --days=7')
+    ->dailyAt('03:00')
+    ->withoutOverlapping()
+    ->onOneServer();

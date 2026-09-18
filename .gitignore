@@ -25,3 +25,26 @@ Thumbs.db
 
 # Catatan/log internal + firmware ESP32 (berisi token/WiFi pass) - jangan di-push ke repo publik
 /docs
+
+# Binary tooling lokal (54MB — jangan di-push)
+/cloudflared.exe
+
+# Draft catatan lokal
+/_finish-deploy.txt
+/.claude
+/noc-dashboard.zip
+/*.zip
+
+# Script deploy lokal (berisi password SSH plaintext — jangan di-commit)
+/deploy-maintenance.ps1
+
+# Backup DB & file scratch (jangan commit)
+/storage/app/backups
+/database/*.sqlite
+/test.xlsx
+/tmp_*.php
+/check_db.php
+/deep_scan.php
+/scan_pins.php
+/scan_sgp1.php
+/test_blynk.php

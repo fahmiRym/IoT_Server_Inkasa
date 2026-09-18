@@ -8,5 +8,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Ini pintu gerbang agar ESP32 bisa masuk
-Route::post('/sensor/store', [SensorController::class, 'store']);
+// Pintu gerbang ingest ESP32.
+// Rate-limit: 120 req/menit per IP + 180 req/menit per API key
+// (ESP32 push ~30/menit, jadi buffer 4x untuk retry burst).
+Route::post('/sensor/store', [SensorController::class, 'store'])
+    ->middleware('throttle:sensor-ingest');

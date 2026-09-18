@@ -29,7 +29,7 @@ sudo docker compose exec app php artisan sensor:fetch ||
     echo -e "${RED}Gagal mengeksekusi sensor fetch${NC}"
     exit 1
 }
-screen -S sensor -dm php artisan sensor:live || {
-    echo -e "${RED}Gagal mengeksekusi sensor live${NC}"
-    exit 1
-}
+# screen -S sensor -dm php artisan sensor:live || {
+#     echo -e "${RED}Gagal mengeksekusi sensor live${NC}"
+#     exit 1
+# }
