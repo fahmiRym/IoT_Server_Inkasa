@@ -28,6 +28,16 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // Bot guard: reject kalau User-Agent kosong (browser real selalu kirim UA).
+        // Ini blok auto-script/monitoring tool yang hit /login tiap N detik tanpa UA.
+        $ua = trim((string) $request->userAgent());
+        if ($ua === '' || $ua === '-') {
+            \Illuminate\Support\Facades\Log::warning('Login blocked: empty User-Agent', [
+                'ip' => $request->ip(),
+            ]);
+            return response()->json(['error' => 'invalid request'], 400);
+        }
+
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -234,9 +244,10 @@ class AuthController extends Controller
 
         if ($lastSent) {
             $elapsed = now()->diffInSeconds(\Carbon\Carbon::parse($lastSent));
-            if ($elapsed < 60) {
+            // Window 120s — aman dari scheduled attack per-60-detik
+            if ($elapsed < 120) {
                 \Illuminate\Support\Facades\Log::info(
-                    "OTP dedupe: user={$user->username} elapsed={$elapsed}s < 60s, SKIP send."
+                    "OTP dedupe: user={$user->username} elapsed={$elapsed}s < 120s, SKIP send."
                 );
                 return;
             }
