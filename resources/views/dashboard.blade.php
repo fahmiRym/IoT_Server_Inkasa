@@ -14,7 +14,7 @@
         // ===== CACHE BUSTER =====
         // Cek versi UI. Kalau localStorage versi berbeda, unregister SW + clear caches + reload sekali.
         (function () {
-            var UI_VER = '2026-10-16-r14';   // <- bump saat rilis CSS/JS baru
+            var UI_VER = '2026-10-16-r18';   // <- bump saat rilis CSS/JS baru
             var last = null;
             try { last = localStorage.getItem('noc-ui-ver'); } catch (e) {}
             if (last !== UI_VER) {
@@ -1090,18 +1090,12 @@
            ============================================================ */
         .sys-clock {
             margin-top: 12px;
-            padding: 14px 18px;
-            background:
-                linear-gradient(135deg, rgba(0,243,255,.06), rgba(0,243,255,0) 60%),
-                radial-gradient(ellipse at top, rgba(0,243,255,.08), transparent 60%),
-                #050a12;
-            border: 1px solid rgba(0,243,255,.25);
+            padding: 16px 20px 14px;
+            background: #050a12;
+            border: 1px solid rgba(0,243,255,.2);
             border-radius: 10px;
             position: relative;
             overflow: hidden;
-            box-shadow:
-                inset 0 0 30px rgba(0,243,255,.05),
-                0 0 24px rgba(0,243,255,.06);
         }
         /* corner brackets */
         .sys-clock::before,
@@ -1115,29 +1109,21 @@
         .sys-clock::before { top: 6px; left: 6px; border-right: 0; border-bottom: 0; border-top-left-radius: 3px; }
         .sys-clock::after  { bottom: 6px; right: 6px; border-left: 0; border-top: 0; border-bottom-right-radius: 3px; }
 
-        /* Status bar atas (SYS CLOCK · UTC+7 · SECURE) */
-        .sc-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
+        /* Badges inline di atas aux (gantikan sc-head bar atas) */
+        .sc-badges-inline {
+            display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+            margin-bottom: 8px;
             font-family: 'JetBrains Mono';
-            font-size: .55rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-dim);
         }
-        .sc-head .sc-title { color: var(--cyan); display: flex; align-items: center; gap: 6px; }
-        .sc-head .sc-title i { font-size: .7rem; filter: drop-shadow(0 0 4px var(--cyan)); }
-        .sc-head .sc-badges { display: flex; gap: 8px; align-items: center; }
         .sc-badge {
-            padding: 2px 7px;
+            padding: 3px 8px;
             border: 1px solid rgba(0,243,255,.3);
             border-radius: 3px;
             color: var(--cyan);
             background: rgba(0,243,255,.05);
             font-weight: 700;
-            font-size: .5rem;
+            font-size: .55rem;
+            letter-spacing: 1.5px;
         }
         .sc-badge.sync { color: var(--green); border-color: rgba(10,255,0,.3); background: rgba(10,255,0,.05); }
         .sc-badge.sync::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 5px var(--green); margin-right: 4px; animation: pulse-green 1.3s infinite; vertical-align: middle; }
@@ -1145,80 +1131,82 @@
         /* ===== LED Digital Clock utama ===== */
         .sc-main {
             display: grid;
-            grid-template-columns: 1fr auto;
+            grid-template-columns: minmax(0, 1fr) auto;
             align-items: center;
-            gap: 18px;
+            gap: clamp(16px, 2.5vw, 32px);
         }
         .sc-time {
             font-family: 'JetBrains Mono', 'Courier New', monospace;
             font-weight: 700;
-            font-size: clamp(2rem, 4.5vw, 3.4rem);
-            line-height: 1;
-            color: var(--cyan);
-            text-shadow:
-                0 0 6px rgba(0,243,255,.9),
-                0 0 14px rgba(0,243,255,.6),
-                0 0 28px rgba(0,243,255,.35),
-                0 0 1px #fff;
-            letter-spacing: 2px;
+            font-size: clamp(4.5rem, 9vw, 7.2rem);
+            line-height: .95;
+            color: var(--green);
+            text-shadow: 0 0 2px rgba(10,255,0,.5);
+            letter-spacing: 3px;
             font-variant-numeric: tabular-nums;
             display: flex;
             align-items: baseline;
             gap: 2px;
             position: relative;
+            justify-content: center;
         }
-        /* 7-segment faux background — digit "88:88:88" ghost */
+        /* 7-segment faux background — digit "88:88:88" ghost (lebih subtle) */
         .sc-time::before {
             content: "88:88:88";
             position: absolute; inset: 0;
-            color: rgba(0,243,255,.07);
+            color: rgba(10,255,0,.04);
             text-shadow: none;
             pointer-events: none;
             z-index: 0;
         }
         .sc-time > span { position: relative; z-index: 1; }
-        .sc-time .colon { animation: blink-colon 1s steps(2, start) infinite; color: #fff; text-shadow: 0 0 8px #fff, 0 0 20px var(--cyan); }
+        .sc-time .colon { animation: blink-colon 1s steps(2, start) infinite; color: var(--green); text-shadow: none; }
         .sc-time .ms {
-            font-size: .35em;
+            font-size: .32em;
             color: var(--text-dim);
             letter-spacing: 1px;
-            margin-left: 8px;
-            text-shadow: 0 0 6px rgba(0,243,255,.3);
-            opacity: .85;
+            margin-left: 10px;
+            text-shadow: none;
+            opacity: .7;
             align-self: center;
         }
         @keyframes blink-colon {
             50% { opacity: .25; }
         }
 
-        /* Right side (date + aux info) */
+        /* Right side (date + aux info) — digeser ke kiri (align left) biar menempel ke jam */
         .sc-aux {
-            text-align: right;
+            text-align: left;
             font-family: 'JetBrains Mono';
             line-height: 1.4;
             min-width: 0;
+            padding-left: clamp(8px, 1vw, 20px);
+            border-left: 1px solid rgba(0, 243, 255, 0.15);
         }
         .sc-day {
             font-family: 'Orbitron';
             font-weight: 900;
-            font-size: clamp(.9rem, 1.3vw, 1.2rem);
-            letter-spacing: 3px;
+            font-size: clamp(3.6rem, 5.6vw, 5.4rem);
+            letter-spacing: 7px;
             color: #fff;
-            text-shadow: 0 0 10px rgba(0,243,255,.5);
+            text-shadow: 0 0 2px rgba(255,255,255,.3);
+            line-height: 1;
         }
         .sc-date-full {
             font-family: 'JetBrains Mono';
-            font-size: clamp(.65rem, .78vw, .82rem);
+            font-weight: 700;
+            font-size: clamp(1.6rem, 2.3vw, 2.3rem);
             color: var(--cyan);
-            letter-spacing: 2px;
-            margin-top: 2px;
+            letter-spacing: 3px;
+            margin-top: 14px;
+            line-height: 1;
         }
         .sc-aux-row {
             display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-top: 6px;
-            font-size: .55rem;
+            justify-content: flex-start;
+            gap: 12px;
+            margin-top: 10px;
+            font-size: .62rem;
             letter-spacing: 1.5px;
             color: var(--text-dim);
         }
@@ -2090,22 +2078,16 @@
 
                     {{-- SYS CLOCK — cyber digital clock di bawah CCTV --}}
                     <div class="sys-clock" aria-label="System clock">
-                        <div class="sc-head">
-                            <div class="sc-title">
-                                <i class="fas fa-microchip"></i> SYS_CLOCK · T+0000
-                            </div>
-                            <div class="sc-badges">
-                                <span class="sc-badge">UTC+07</span>
-                                <span class="sc-badge">WIB</span>
-                                <span class="sc-badge sync" id="sc-sync">SYNC</span>
-                            </div>
-                        </div>
-
                         <div class="sc-main">
-                            <div class="sc-time flicker">
+                            <div class="sc-time">
                                 <span id="sc-hh">00</span><span class="colon">:</span><span id="sc-mm">00</span><span class="colon">:</span><span id="sc-ss">00</span><span class="ms" id="sc-ms">.000</span>
                             </div>
                             <div class="sc-aux">
+                                <div class="sc-badges-inline">
+                                    <span class="sc-badge">UTC+07</span>
+                                    <span class="sc-badge">WIB</span>
+                                    <span class="sc-badge sync" id="sc-sync">SYNC</span>
+                                </div>
                                 <div class="sc-day" id="sc-day">JUMAT</div>
                                 <div class="sc-date-full" id="date">16 OKT 2026</div>
                                 <div class="sc-aux-row">

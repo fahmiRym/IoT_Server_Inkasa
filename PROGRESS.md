@@ -9,6 +9,155 @@
 
 ---
 
+## 📋 BACKLOG — IT Helpdesk Integration (Server-Check)
+
+**Ide:** Tombol "SUDAH DICEK" sekarang hanya ack binary (iya/tidak). Perlu dikembangkan
+menjadi diagnostic report yang terintegrasi dengan sistem IT Helpdesk.
+
+### Scope Feature
+1. **Form diagnostic saat ack** (menggantikan tombol langsung):
+   - Siapa yang mengecek (auto-fill dari `auth()->user()`)
+   - Jam pengecekan (auto-fill `now()`)
+   - **Kendala yang ditemukan** (textarea, opsional)
+     - Preset dropdown: Normal · Suhu Tinggi · Bising Fan · Lampu LED Mati · Kabel Longgar · Kebocoran · Lainnya
+   - **Anomali yang terdeteksi** (multi-select checkbox):
+     - [ ] Suhu di atas threshold
+     - [ ] Kipas tidak berputar
+     - [ ] LED indikator warna merah
+     - [ ] Bau terbakar
+     - [ ] Suara abnormal
+     - [ ] Fisik kabel bermasalah
+     - [ ] Lainnya (textarea)
+   - **Foto kondisi** (upload opsional, max 2MB per foto, max 4 foto)
+   - Tombol submit → ack + save report
+
+2. **Backend:**
+   - Tabel baru `server_check_reports`:
+     ```
+     id, user_id, checked_at, kendala_preset, kendala_detail,
+     anomali_json (array), photos_json (paths), created_at
+     ```
+   - Simpan foto di `storage/app/checks/{YYYY-MM}/`
+   - API endpoint `POST /api/server-check/ack` (modify) terima form data
+   - Opsional: webhook push ke IT Helpdesk (misal Freshdesk/Jira/Zendesk)
+     - Hanya kalau ada anomali terdeteksi → auto-create ticket
+     - Payload: title, description, severity (sesuai jumlah anomali), attachments
+
+3. **UI tambahan:**
+   - **Halaman History**: `/server-checks` — list semua report (siapa, kapan, kendala, anomali)
+     - Filter per tanggal, user, severity
+     - Export PDF (reuse QuickChart stack kalau perlu)
+   - **Panel Mini di Dashboard** (ganti ACK banner hijau yg auto-hide):
+     - "Cek terakhir: Fahmi · 15:03 · 0 anomali"
+     - Link "Lihat Detail" → modal dgn full report + foto
+   - **Notifikasi Telegram** jika anomali terdeteksi:
+     - Format: "⚠ ANOMALI TERCATAT: {user} melaporkan {jumlah} anomali · {detail}"
+     - Beda warna/urgency vs ack normal
+
+### Arsitektur Integrasi IT Helpdesk
+
+**Opsi A — Webhook native (recommended):**
+```
+NOC Dashboard → POST /tickets ke IT Helpdesk API
+   payload: { subject, description, priority, custom_fields: { noc_report_id } }
+```
+- Butuh: API key IT Helpdesk sistem Inkasa + endpoint URL
+- Config via `.env`: `HELPDESK_API_URL`, `HELPDESK_API_KEY`
+- Response: ticket_id → simpan di `server_check_reports.ticket_id` untuk tracking
+
+**Opsi B — Email forward (fallback):**
+- Kalau IT Helpdesk tidak expose API, kirim email ke `helpdesk@inkalum.com`
+- Reuse SMTP yang sudah di-config (atau fallback Telegram seperti OTP sekarang)
+
+**Opsi C — Shared DB (kalau helpdesk 1 server dgn NOC):**
+- Insert langsung ke tabel ticket helpdesk via connection kedua
+- Fastest tapi coupling tinggi
+
+### Mitigasi & Prioritas
+- Fitur ini **tidak urgent** — current ack binary cukup untuk daily operation
+- Butuh koordinasi dgn tim IT Helpdesk Inkasa untuk tentukan opsi integrasi (API ada?)
+- Estimasi effort: **2-3 hari** (migration + form + backend + integration + UI history)
+- Prioritas: implement HALF (tanpa helpdesk integration) dulu, lalu pasang integration setelah
+  negosiasi dgn IT Helpdesk team
+
+---
+
+## 🎨 LOKAL TWEAK (2026-10-16 — Round 19: SYS_CLOCK XXL + optimize space)
+
+**Masalah:** Masih banyak space kosong di sys-clock. Jam potongan `.062` (ms) terlihat
+tapi digit utama tidak muat → user minta optimalkan space + perbesar lagi.
+
+### Perubahan
+- **Hapus `.sc-head` bar atas** (SYS_CLOCK · T+0000 label + badges terpisah)
+  → pindah badges jadi inline (`.sc-badges-inline`) **di atas sc-aux** (sejajar JUMAT)
+- `.sc-time` (jam): `clamp(3.6-6rem)` → **`clamp(4.5-7.2rem)`** (+25%)
+  + `justify-content: center` biar jam center di track-nya
+  + `line-height: 1 → .95` biar tidak kemakan ruang vertikal
+- `.sc-day` (JUMAT): `clamp(3-4.4rem)` → **`clamp(3.6-5.4rem)`** (+22%), letter-spacing 6→7px
+- `.sc-date-full` (16 OKT 2026): `clamp(1.4-1.9rem)` → **`clamp(1.6-2.3rem)`** (+21%)
+- `.sc-main` grid gap: 18px fixed → **`clamp(16-32px)`** fluid
+- `.sys-clock` padding: `18px 22px` → `16px 20px 14px` (lebih kompak)
+- `.sc-badge` font-size naik ke .55rem (dari .5rem) + letter-spacing 1.5
+- `UI_VER` → `2026-10-16-r18`
+
+**Hasil:** jam LED jumbo center di kolom kiri, aux (badges + JUMAT + tanggal) stack
+rapat di kolom kanan — tidak ada lagi gap kosong di atas.
+
+---
+
+## 🎨 LOKAL TWEAK (2026-10-16 — Round 18: SYS_CLOCK XL + align-left aux)
+
+- `.sc-time` (jam): `clamp(2.8-4.8rem)` → **`clamp(3.6-6rem)`** (+25%, kenceng!)
+- `.sc-day` (JUMAT): `clamp(2.4-3.4rem)` → **`clamp(3-4.4rem)`** (+30%), letter-spacing 5→6px
+- `.sc-date-full` (16 OKT 2026): `clamp(1.1-1.5rem)` → **`clamp(1.4-1.9rem)`** (+27%)
+- `.sc-aux-row` (WEEK/DOY/EPOCH): `.55rem` → `.62rem`, margin-top 6→10px
+- **Alignment aux: `right` → `left`** (hari+tanggal menempel ke jam dari kiri)
+- Border separator baru: `border-left: 1px solid cyan-faint` di `.sc-aux` + padding-left
+- `UI_VER` → `2026-10-16-r17`
+
+---
+
+## 🎨 LOKAL TWEAK (2026-10-16 — Round 17: SYS_CLOCK hari+tanggal lebih besar)
+
+- `.sc-day` (JUMAT): `clamp(1.6-2.2rem)` → **`clamp(2.4-3.4rem)`** (+55%), letter-spacing 4→5px
+- `.sc-date-full` (16 OKT 2026): `clamp(.75-.95rem)` → **`clamp(1.1-1.5rem)`** (+60%), font-weight 700, letter-spacing 2→3px, margin-top 6→10px
+- `UI_VER` → `2026-10-16-r16`
+
+---
+
+## 🎨 LOKAL TWEAK (2026-10-16 — Round 16: SYS_CLOCK LED Hijau Besar)
+
+**Request user:** Jam cyber yang baru terlalu blur + shadow, warna kurang menarik.
+Minta diperbesar + warna diganti + ukuran hari (JUMAT) juga besar.
+
+### Perubahan ([dashboard.blade.php](resources/views/dashboard.blade.php))
+
+- **`.sc-time`** — jam digital utama:
+  - Warna: cyan → **hijau LED** (`var(--green) = #0aff00`)
+  - Ukuran: `clamp(2rem, 4.5vw, 3.4rem)` → **`clamp(2.8rem, 6.2vw, 4.8rem)`** (lebih besar)
+  - Shadow: multi-layer blur (6+14+28px) → **`0 0 2px rgba(10,255,0,.5)`** (sharp, cuma sentuhan tipis)
+  - Letter-spacing 2px → 3px biar lega
+- **Ghost "88:88:88"** behind clock → opacity turun dari `.07` ke `.04` biar lebih subtle
+- **Colon**: hilangkan multi-layer glow — pakai green solid tanpa shadow
+- **Milliseconds**: shadow dihapus, opacity turun ke `.7`
+- **`.sc-day`** (JUMAT/SENIN dsb):
+  - Ukuran: `clamp(.9rem, 1.3vw, 1.2rem)` → **`clamp(1.6rem, 2.4vw, 2.2rem)`** (hampir 2x)
+  - Shadow: dari multi-glow cyan → `0 0 2px rgba(255,255,255,.3)` sharp white
+- **`.sc-date-full`** (16 OKT 2026): font `.65-.82rem` → `.75-.95rem` + margin-top 6px biar breathing
+- **`.sys-clock` container**:
+  - Hapus `background: linear-gradient + radial-gradient` → pakai `#050a12` solid
+  - Hapus `box-shadow: inset glow + outer glow` → tidak ada glow
+  - Padding naik `14px 18px` → `18px 22px` (card lebih lega)
+- **Hapus flicker animation** di HTML (`class="sc-time flicker"` → `class="sc-time"`)
+
+**Hasil:** jam LED hijau tajam, besar, mudah dibaca dari jauh. Tema server-rack display.
+Hari "JUMAT" sekarang stand-out setara prominence dengan jam.
+
+### 🔄 Cache Buster
+- `UI_VER` → `2026-10-16-r15`
+
+---
+
 ## 🚀 DEPLOY PRODUCTION (2026-10-16 — commit `b04f7bc`)
 
 **Fitur deployed:**
