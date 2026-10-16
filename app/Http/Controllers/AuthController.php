@@ -243,7 +243,8 @@ class AuthController extends Controller
         $lastSent    = \Illuminate\Support\Facades\Cache::get($lastSentKey);
 
         if ($lastSent) {
-            $elapsed = now()->diffInSeconds(\Carbon\Carbon::parse($lastSent));
+            // Carbon versi baru return signed diff; abs() biar aman untuk window check
+            $elapsed = abs((int) now()->diffInSeconds(\Carbon\Carbon::parse($lastSent)));
             // Window 120s — aman dari scheduled attack per-60-detik
             if ($elapsed < 120) {
                 \Illuminate\Support\Facades\Log::info(
