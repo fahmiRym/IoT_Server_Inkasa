@@ -9,6 +9,88 @@
 
 ---
 
+## 🔧 HOTFIX POST-DEPLOY (2026-09-18 — commit `073a1b6`)
+
+**Masalah:** Superadmin (Fahmi) tidak bisa login walau password + OTP benar.
+
+**Root cause:** `.env` prod pakai `MAIL_MAILER=log`. Email OTP HANYA di-tulis ke
+`storage/logs/laravel.log` — TIDAK dikirim ke inbox real. Superadmin tidak pernah dapat
+kode di Gmail.
+
+**Fix** ([AuthController.php `generateAndSendOtp`](app/Http/Controllers/AuthController.php)):
+- `try/catch` di `Mail::send` supaya tidak crash kalau SMTP error
+- **Auto-fallback**: kalau `MAIL_MAILER=log`, kirim OTP ke Telegram bot yang sudah
+  aktif untuk alarm sensor. Format Markdown: user, kode (backtick), expiry, waktu
+- Bisa juga force paralel Email + Telegram via `NOC_OTP_TELEGRAM=1` di `.env`
+- Aman: chat Telegram bot NOC hanya bisa dilihat admin
+
+**Deploy:** `git pull` → `docker build app` (20s) → `up -d` → `config:clear + view:clear +
+route:clear + config:cache`
+
+**Cara pakai:** login pakai `fahmi` / `bismillah` → kode OTP muncul di chat Telegram bot NOC
+
+**Follow-up (belum critical):** setup SMTP proper (Gmail App Password/Postmark) untuk kirim
+OTP ke inbox real, terutama kalau ada admin baru yang belum akses Telegram bot.
+
+---
+
+## 🚀 DEPLOY PRODUCTION (2026-09-18 — Round 11: Live)
+
+**Target:** `noc-suhu@192.168.11.178` · `/home/noc-suhu/IoT_Server_Inkasa`
+**Domain publik:** `https://noc-room.inkalum.com` (via Cloudflare Tunnel)
+**Commit:** `5578646` — feat: major release — auth, PWA, reports, push, role, sec, UI polish
+
+### 📦 Ringkasan Deploy
+- 69 files changed · +10,715 · −925 lines
+- Method: **git push + git pull** (bukan pscp file-by-file — terlalu banyak file)
+
+### 🔧 Langkah yang Dijalankan
+1. **Local** — `.gitignore` update (exclude `cloudflared.exe`, `deploy-maintenance.ps1`,
+   `_finish-deploy.txt`, `.claude/`, `noc-dashboard.zip`)
+2. **Local** — `git add -A` + `git commit` (single big commit) + `git push origin main`
+3. **Server** — Backup DB: `mysqldump` via `docker compose exec -T db` → `backup_pre_deploy_20260918_024458.sql` (161 MB)
+4. **Server** — `git stash --include-untracked` (stash all `.bak.*` + pscp-deployed files)
+5. **Server** — `git pull origin main` (Fast-forward `e8f657a..5578646`)
+6. **Server** — `docker compose build app` (23s, image `iot_server_inkasa-app:latest`)
+7. **Server** — `docker compose up -d app` (recreate container, downtime ~4s)
+8. **Server** — `.env` fixes:
+   - `APP_ENV=local` → **production**
+   - `APP_DEBUG=true` → **false**
+   - Append `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` via `noc:generate-vapid --append`
+   - Sync via `docker exec cat > .env.new && mv` (bind-mount inode issue workaround)
+9. **Server** — `docker compose restart app` + `config:clear && view:clear && config:cache && route:cache`
+
+### ✅ Migrasi Terapply (Batch 4 baru)
+- `2026_09_18_000001_rename_operator_role_to_admin` — enum role updated, data migrated
+- `2026_09_18_000002_create_push_subscriptions_table` — 9 kolom siap terima subscription
+
+**Verifikasi role:** `{"role":"superadmin","c":1},{"role":"admin","c":2}` — rename OK
+
+### ✅ Verifikasi Publik
+```
+GET https://noc-room.inkalum.com/ ................ 302 (redirect to login) · 0.196s
+GET /login ..................................... 200
+GET /up ........................................ 200 (health)
+GET /maintenance.html .......................... 200 (fallback)
+GET /icons/icon-192.png ........................ 200 (PWA icon)
+GET /css/noc-theme.css ......................... 200 (theme baru)
+GET /js/noc-cyber.js ........................... 200 (cyber UI library)
+GET /js/noc-pwa.js ............................. 200 (PWA library)
+```
+
+### 📋 Post-Deploy TODO (belum critical)
+- [ ] Install extension `intl` di Dockerfile (untuk `Number::format` — hanya kena `db:table` command)
+- [ ] User akses browser → buka `/devices` → aktifkan **NOTIFIKASI** → test `php artisan noc:test-push --danger`
+- [ ] Rotasi password default `bismillah` di NocUsersSeeder (semua user WAJIB ganti password)
+- [ ] Bersihkan file `.bak.*` di server (stash bisa di-drop kalau tidak diperlukan)
+
+### 🛡 Rollback Plan (kalau ada masalah)
+1. `mysql < backup_pre_deploy_20260918_024458.sql` (restore DB pre-migrate)
+2. `git reset --hard e8f657a && docker compose build app && docker compose up -d app`
+3. `sed -i 's/APP_ENV=production/APP_ENV=local/' .env && sed -i 's/APP_DEBUG=false/APP_DEBUG=true/' .env`
+
+---
+
 ## ✅ SUDAH DIKERJAKAN (Sesi 2026-09-18 — Round 10: Web Push End-to-End Live)
 
 ### 🔧 Fix VAPID Generator (openssl Windows issue)

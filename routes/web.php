@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\PushController;
+use App\Http\Controllers\ServerCheckController;
 
 // --- AUTH (PUBLIC) ---
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -40,6 +41,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/push/subscribe',   [PushController::class, 'subscribe'])->name('push.subscribe');
     Route::post('/push/unsubscribe', [PushController::class, 'unsubscribe'])->name('push.unsubscribe');
     Route::get('/push/vapid-key',    [PushController::class, 'vapidKey'])->name('push.vapid');
+
+    // Server-check reminder (himbauan cek server CCTV motion)
+    Route::get('/api/server-check/status', [ServerCheckController::class, 'status'])->name('server-check.status');
+    Route::post('/api/server-check/ack',   [ServerCheckController::class, 'acknowledge'])->name('server-check.ack');
 
     // --- SUPERADMIN ONLY ---
     Route::middleware('superadmin')->group(function () {

@@ -33,3 +33,11 @@ Schedule::command('motion:prune --days=7')
     ->dailyAt('03:00')
     ->withoutOverlapping()
     ->onOneServer();
+
+// Himbauan cek server lewat Telegram tiap 15:00 WIB (configurable via NOC_CHECK_HOUR).
+// Trigger kalau tidak ada motion CCTV sejak jam 00:00. Juga set flag dashboard.
+Schedule::command('noc:server-check-reminder')
+    ->dailyAt(env('NOC_CHECK_HOUR', '15') . ':00')
+    ->timezone('Asia/Jakarta')
+    ->withoutOverlapping()
+    ->onOneServer();

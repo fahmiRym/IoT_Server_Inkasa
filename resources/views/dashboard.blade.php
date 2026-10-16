@@ -14,7 +14,7 @@
         // ===== CACHE BUSTER =====
         // Cek versi UI. Kalau localStorage versi berbeda, unregister SW + clear caches + reload sekali.
         (function () {
-            var UI_VER = '2026-09-18-r9';   // <- bump saat rilis CSS/JS baru
+            var UI_VER = '2026-10-16-r14';   // <- bump saat rilis CSS/JS baru
             var last = null;
             try { last = localStorage.getItem('noc-ui-ver'); } catch (e) {}
             if (last !== UI_VER) {
@@ -1085,6 +1085,203 @@
         .cctv-meta .ok { color: var(--green); }
         .cctv-meta .warn { color: var(--pink); }
 
+        /* ============================================================
+           SYS-CLOCK — cyber-security digital clock di bawah CCTV
+           ============================================================ */
+        .sys-clock {
+            margin-top: 12px;
+            padding: 14px 18px;
+            background:
+                linear-gradient(135deg, rgba(0,243,255,.06), rgba(0,243,255,0) 60%),
+                radial-gradient(ellipse at top, rgba(0,243,255,.08), transparent 60%),
+                #050a12;
+            border: 1px solid rgba(0,243,255,.25);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                inset 0 0 30px rgba(0,243,255,.05),
+                0 0 24px rgba(0,243,255,.06);
+        }
+        /* corner brackets */
+        .sys-clock::before,
+        .sys-clock::after {
+            content: ''; position: absolute;
+            width: 14px; height: 14px;
+            border: 2px solid var(--cyan);
+            pointer-events: none;
+            filter: drop-shadow(0 0 3px var(--cyan));
+        }
+        .sys-clock::before { top: 6px; left: 6px; border-right: 0; border-bottom: 0; border-top-left-radius: 3px; }
+        .sys-clock::after  { bottom: 6px; right: 6px; border-left: 0; border-top: 0; border-bottom-right-radius: 3px; }
+
+        /* Status bar atas (SYS CLOCK · UTC+7 · SECURE) */
+        .sc-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono';
+            font-size: .55rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+        .sc-head .sc-title { color: var(--cyan); display: flex; align-items: center; gap: 6px; }
+        .sc-head .sc-title i { font-size: .7rem; filter: drop-shadow(0 0 4px var(--cyan)); }
+        .sc-head .sc-badges { display: flex; gap: 8px; align-items: center; }
+        .sc-badge {
+            padding: 2px 7px;
+            border: 1px solid rgba(0,243,255,.3);
+            border-radius: 3px;
+            color: var(--cyan);
+            background: rgba(0,243,255,.05);
+            font-weight: 700;
+            font-size: .5rem;
+        }
+        .sc-badge.sync { color: var(--green); border-color: rgba(10,255,0,.3); background: rgba(10,255,0,.05); }
+        .sc-badge.sync::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 5px var(--green); margin-right: 4px; animation: pulse-green 1.3s infinite; vertical-align: middle; }
+
+        /* ===== LED Digital Clock utama ===== */
+        .sc-main {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 18px;
+        }
+        .sc-time {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 3.4rem);
+            line-height: 1;
+            color: var(--cyan);
+            text-shadow:
+                0 0 6px rgba(0,243,255,.9),
+                0 0 14px rgba(0,243,255,.6),
+                0 0 28px rgba(0,243,255,.35),
+                0 0 1px #fff;
+            letter-spacing: 2px;
+            font-variant-numeric: tabular-nums;
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+            position: relative;
+        }
+        /* 7-segment faux background — digit "88:88:88" ghost */
+        .sc-time::before {
+            content: "88:88:88";
+            position: absolute; inset: 0;
+            color: rgba(0,243,255,.07);
+            text-shadow: none;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .sc-time > span { position: relative; z-index: 1; }
+        .sc-time .colon { animation: blink-colon 1s steps(2, start) infinite; color: #fff; text-shadow: 0 0 8px #fff, 0 0 20px var(--cyan); }
+        .sc-time .ms {
+            font-size: .35em;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-left: 8px;
+            text-shadow: 0 0 6px rgba(0,243,255,.3);
+            opacity: .85;
+            align-self: center;
+        }
+        @keyframes blink-colon {
+            50% { opacity: .25; }
+        }
+
+        /* Right side (date + aux info) */
+        .sc-aux {
+            text-align: right;
+            font-family: 'JetBrains Mono';
+            line-height: 1.4;
+            min-width: 0;
+        }
+        .sc-day {
+            font-family: 'Orbitron';
+            font-weight: 900;
+            font-size: clamp(.9rem, 1.3vw, 1.2rem);
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0,243,255,.5);
+        }
+        .sc-date-full {
+            font-family: 'JetBrains Mono';
+            font-size: clamp(.65rem, .78vw, .82rem);
+            color: var(--cyan);
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+        .sc-aux-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: .55rem;
+            letter-spacing: 1.5px;
+            color: var(--text-dim);
+        }
+        .sc-aux-row span strong {
+            color: var(--cyan);
+            font-weight: 700;
+            margin-left: 3px;
+        }
+
+        /* Progress day-of-year bar (LED chunks) */
+        .sc-progress {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(0,243,255,.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'JetBrains Mono';
+            font-size: .55rem;
+            letter-spacing: 1.5px;
+            color: var(--text-dim);
+        }
+        .sc-progress .sc-prog-label { white-space: nowrap; }
+        .sc-progress .sc-prog-label strong { color: var(--cyan); font-weight: 700; }
+        .sc-progress .sc-prog-bar {
+            flex: 1;
+            height: 4px;
+            background:
+                repeating-linear-gradient(90deg, rgba(0,243,255,.08) 0 7px, transparent 7px 9px);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        .sc-progress .sc-prog-fill {
+            position: absolute; top: 0; left: 0; bottom: 0;
+            background: linear-gradient(90deg, var(--cyan), rgba(0,243,255,.3));
+            box-shadow: 0 0 8px var(--cyan);
+            border-radius: 2px;
+            transition: width .4s ease;
+        }
+        .sc-progress .sc-prog-pct {
+            color: var(--cyan);
+            font-weight: 700;
+            min-width: 36px;
+            text-align: right;
+        }
+
+        /* Flicker effect (optional, subtle) */
+        .sc-time.flicker { animation: sc-flicker 2.5s infinite; }
+        @keyframes sc-flicker {
+            0%, 100%, 93%, 96% { opacity: 1; }
+            94% { opacity: .85; }
+            95% { opacity: .95; }
+        }
+
+        @media (max-width: 700px) {
+            .sys-clock { padding: 12px 14px; }
+            .sc-main { grid-template-columns: 1fr; gap: 10px; }
+            .sc-aux { text-align: left; }
+            .sc-aux-row { justify-content: flex-start; }
+            .sc-time .ms { display: none; }
+        }
+
         /* Fullscreen styling */
         .cctv-stage:fullscreen,
         .cctv-stage:-webkit-full-screen {
@@ -1217,6 +1414,163 @@
 
             /* Scale FAB naik supaya tidak overlap bottom nav */
             #scale-fab { bottom: 72px !important; }
+        }
+
+        /* ============================================================
+           SERVER-CHECK REMINDER PANEL (di bawah Master Log)
+           ============================================================ */
+        .scheck-panel {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 14px;
+            margin-top: 12px;
+            padding: 14px 16px;
+            background:
+                linear-gradient(135deg, rgba(255,204,0,.08), rgba(255,0,85,.03)),
+                rgba(10,15,25,.65);
+            border: 1px solid rgba(255,204,0,.35);
+            border-left: 4px solid var(--yellow);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 24px rgba(255,204,0,.08), inset 0 0 24px rgba(255,204,0,.03);
+            animation: scheck-pulse 2.4s ease-in-out infinite;
+        }
+        /* Inline variant — di dalam Master Log card (kolom sempit) */
+        .scheck-panel--inline {
+            grid-template-columns: 1fr;
+            padding: 12px 14px;
+            margin-top: 10px;
+        }
+        .scheck-panel--inline .scheck-icon {
+            width: 38px; height: 38px; font-size: 1rem;
+        }
+        .scheck-panel--inline .scheck-title { font-size: .65rem; letter-spacing: 2px; }
+        .scheck-panel--inline .scheck-desc { font-size: .78rem; margin-bottom: 6px; }
+        .scheck-panel--inline .scheck-meta { gap: 10px; font-size: .55rem; }
+        .scheck-panel--inline .scheck-actions { width: 100%; margin-top: 2px; }
+        .scheck-panel--inline .scheck-btn {
+            width: 100%; justify-content: center;
+            padding: 9px 14px; font-size: .68rem; letter-spacing: 1.5px;
+        }
+        @keyframes scheck-pulse {
+            0%, 100% { border-color: rgba(255,204,0,.35); box-shadow: 0 0 24px rgba(255,204,0,.08), inset 0 0 24px rgba(255,204,0,.03); }
+            50%      { border-color: rgba(255,204,0,.6); box-shadow: 0 0 36px rgba(255,204,0,.18), inset 0 0 24px rgba(255,204,0,.05); }
+        }
+        .scheck-panel::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,204,0,.05), transparent);
+            animation: scan 6s linear infinite;
+            pointer-events: none;
+        }
+        .scheck-left {
+            display: flex; align-items: flex-start; gap: 14px;
+            min-width: 0;
+            position: relative; z-index: 1;
+        }
+        .scheck-icon {
+            flex-shrink: 0;
+            width: 48px; height: 48px;
+            border-radius: 10px;
+            background: radial-gradient(circle, rgba(255,204,0,.25), transparent 70%);
+            border: 2px solid var(--yellow);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--yellow);
+            font-size: 1.3rem;
+            filter: drop-shadow(0 0 8px var(--yellow));
+            animation: scheck-shake .5s cubic-bezier(.36,.07,.19,.97) infinite;
+        }
+        @keyframes scheck-shake {
+            0%, 100% { transform: translate(0,0) rotate(0); }
+            25% { transform: translate(-1px, 1px) rotate(-2deg); }
+            75% { transform: translate(1px, -1px) rotate(2deg); }
+        }
+        .scheck-text { min-width: 0; flex: 1; }
+        .scheck-title {
+            font-family: 'Orbitron';
+            font-weight: 900;
+            font-size: .78rem;
+            letter-spacing: 2.5px;
+            color: var(--yellow);
+            text-shadow: 0 0 12px rgba(255,204,0,.5);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .scheck-desc {
+            font-family: 'Rajdhani';
+            font-size: .92rem;
+            color: var(--text-vibrant);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .scheck-meta {
+            display: flex; flex-wrap: wrap; gap: 14px;
+            font-family: 'JetBrains Mono';
+            font-size: .62rem;
+            color: var(--text-dim);
+            letter-spacing: .5px;
+        }
+        .scheck-meta i { margin-right: 4px; color: var(--yellow); opacity: .8; }
+        .scheck-meta strong { color: var(--text-vibrant); font-weight: 700; }
+
+        .scheck-actions { position: relative; z-index: 1; flex-shrink: 0; }
+        .scheck-btn {
+            padding: 12px 22px;
+            border-radius: 10px;
+            border: 2px solid;
+            cursor: pointer;
+            font-family: 'Orbitron';
+            font-weight: 700;
+            font-size: .75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .18s;
+        }
+        .scheck-btn.ok {
+            background: linear-gradient(135deg, rgba(10,255,0,.2), rgba(10,255,0,.05));
+            border-color: var(--green);
+            color: var(--green);
+            box-shadow: 0 0 12px rgba(10,255,0,.2);
+        }
+        .scheck-btn.ok:hover {
+            background: rgba(10,255,0,.35);
+            box-shadow: 0 0 20px rgba(10,255,0,.5);
+            transform: translateY(-2px);
+        }
+        .scheck-btn:disabled {
+            opacity: .5; cursor: not-allowed; transform: none;
+        }
+
+        /* ACK banner (hijau, hilang pelan2) */
+        .scheck-ack {
+            margin-top: 10px;
+            padding: 9px 14px;
+            background: rgba(10,255,0,.08);
+            border: 1px solid rgba(10,255,0,.3);
+            border-left: 3px solid var(--green);
+            border-radius: 8px;
+            color: var(--green);
+            font-family: 'JetBrains Mono';
+            font-size: .62rem;
+            letter-spacing: .5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            line-height: 1.4;
+        }
+        .scheck-ack strong { color: #d4ffcc; font-weight: 700; }
+        .scheck-ack i { font-size: .85rem; flex-shrink: 0; }
+
+        @media (max-width: 700px) {
+            .scheck-panel { grid-template-columns: 1fr; }
+            .scheck-actions { width: 100%; }
+            .scheck-btn { width: 100%; justify-content: center; }
         }
 
         /* ==========================================================
@@ -1420,10 +1774,6 @@
                     </div>
                 </div>
                 @endauth
-                <div style="text-align: right; min-width: 0;">
-                    <div id="clock" style="font-size: clamp(1.4rem, 2vw, 2.2rem); font-family: 'Orbitron'; font-weight: 700; line-height: 1;">00:00:00</div>
-                    <div id="date" style="color: var(--cyan); letter-spacing: clamp(1px, .25vw, 3px); font-weight: 600; font-size: clamp(.65rem, .75vw, .9rem);">...</div>
-                </div>
             </div>
         </header>
 
@@ -1453,9 +1803,8 @@
                             style="font-weight: 900; font-size: 1.2rem; letter-spacing: 2px; color: var(--green); font-family: 'Orbitron';">
                             CORE ACTIVE</div>
                         <div style="display: flex; gap: 10px; margin-top: 4px;">
-                            <span class="sub-val">UPTIME: <span id="uptime-val"
-                                    style="color:#fff">--:--:--</span></span>
                             <span class="sub-val">SYNC: <span id="sync-val" style="color:var(--cyan)">100%</span></span>
+                            <span class="sub-val">PROTO: <span style="color:var(--cyan)">HTTP/REST</span></span>
                         </div>
                     </div>
                 </div>
@@ -1738,6 +2087,44 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- SYS CLOCK — cyber digital clock di bawah CCTV --}}
+                    <div class="sys-clock" aria-label="System clock">
+                        <div class="sc-head">
+                            <div class="sc-title">
+                                <i class="fas fa-microchip"></i> SYS_CLOCK · T+0000
+                            </div>
+                            <div class="sc-badges">
+                                <span class="sc-badge">UTC+07</span>
+                                <span class="sc-badge">WIB</span>
+                                <span class="sc-badge sync" id="sc-sync">SYNC</span>
+                            </div>
+                        </div>
+
+                        <div class="sc-main">
+                            <div class="sc-time flicker">
+                                <span id="sc-hh">00</span><span class="colon">:</span><span id="sc-mm">00</span><span class="colon">:</span><span id="sc-ss">00</span><span class="ms" id="sc-ms">.000</span>
+                            </div>
+                            <div class="sc-aux">
+                                <div class="sc-day" id="sc-day">JUMAT</div>
+                                <div class="sc-date-full" id="date">16 OKT 2026</div>
+                                <div class="sc-aux-row">
+                                    <span>WEEK<strong id="sc-week">42</strong></span>
+                                    <span>DOY<strong id="sc-doy">290</strong></span>
+                                    <span>EPOCH<strong id="sc-epoch">0</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sc-progress" title="Progress hari dalam tahun ini">
+                            <span class="sc-prog-label"><strong>YEAR_PROGRESS</strong></span>
+                            <div class="sc-prog-bar"><div class="sc-prog-fill" id="sc-year-fill" style="width:0%"></div></div>
+                            <span class="sc-prog-pct" id="sc-year-pct">0%</span>
+                        </div>
+
+                        {{-- Hidden tetap render agar JS lama tidak break --}}
+                        <span id="clock" style="display:none"></span>
+                    </div>
                 </div>
 
                 <!-- MASTER LOG STREAM -->
@@ -1767,6 +2154,39 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    {{-- ====== SERVER CHECK REMINDER PANEL (inline di dalam Master Log card) ====== --}}
+                    <div id="server-check-panel" class="scheck-panel scheck-panel--inline" hidden>
+                        <div class="scheck-left">
+                            <div class="scheck-icon">
+                                <i class="fas fa-triangle-exclamation"></i>
+                            </div>
+                            <div class="scheck-text">
+                                <div class="scheck-title">HIMBAUAN · CEK RUANG SERVER</div>
+                                <div class="scheck-desc" id="scheck-desc">
+                                    Belum terdeteksi aktivitas apapun di CCTV sejak pagi.
+                                    Mohon lakukan pengecekan fisik ruang server.
+                                </div>
+                                <div class="scheck-meta">
+                                    <span><i class="fas fa-clock"></i> <strong id="scheck-triggered">—</strong></span>
+                                    <span><i class="fas fa-film"></i> Motion: <strong id="scheck-count">0</strong></span>
+                                    <span><i class="fab fa-telegram"></i> Telegram terkirim</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scheck-actions">
+                            <button type="button" id="scheck-ack-btn" class="scheck-btn ok">
+                                <i class="fas fa-check-circle"></i> SUDAH DICEK
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- Confirmation banner saat SUDAH di-ack --}}
+                    <div id="server-check-ack-banner" class="scheck-ack" hidden>
+                        <i class="fas fa-shield-check"></i>
+                        Server sudah dicek oleh <strong id="scheck-ack-by">—</strong>
+                        · <strong id="scheck-ack-at">—</strong>
                     </div>
                 </div>
             </div>
@@ -2212,17 +2632,67 @@
             window.alertSnoozeUntil = Date.now() + 30000;
         }
 
-        // CLOCK & UPTIME
-        setInterval(() => {
-            document.getElementById('clock').innerText = new Date().toLocaleTimeString('id-ID', { hour12: false });
-            document.getElementById('date').innerText = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase();
+        // ===== SYS_CLOCK — cyber digital clock tick =====
+        (function sysClockTick() {
+            const $ = (id) => document.getElementById(id);
+            const pad = (n, w = 2) => String(n).padStart(w, '0');
 
-            const uptime = Math.floor((Date.now() - startTime) / 1000);
-            const h = Math.floor(uptime / 3600).toString().padStart(2, '0');
-            const m = Math.floor((uptime % 3600) / 60).toString().padStart(2, '0');
-            const s = (uptime % 60).toString().padStart(2, '0');
-            document.getElementById('uptime-val').innerText = `${h}:${m}:${s}`;
-        }, 1000);
+            // ISO week number
+            function isoWeek(d) {
+                const dt = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+                const dow = dt.getUTCDay() || 7;
+                dt.setUTCDate(dt.getUTCDate() + 4 - dow);
+                const yStart = new Date(Date.UTC(dt.getUTCFullYear(), 0, 1));
+                return Math.ceil((((dt - yStart) / 86400000) + 1) / 7);
+            }
+            // Day of year (1-366)
+            function dayOfYear(d) {
+                const start = new Date(d.getFullYear(), 0, 0);
+                return Math.floor((d - start) / 86400000);
+            }
+            function daysInYear(y) {
+                return ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0) ? 366 : 365;
+            }
+
+            const dayNames = ['MINGGU','SENIN','SELASA','RABU','KAMIS','JUMAT','SABTU'];
+            const monthNames = ['JAN','FEB','MAR','APR','MEI','JUN','JUL','AGU','SEP','OKT','NOV','DES'];
+
+            function tick() {
+                const now = new Date();
+                const hh = pad(now.getHours());
+                const mm = pad(now.getMinutes());
+                const ss = pad(now.getSeconds());
+                const ms = pad(now.getMilliseconds(), 3);
+
+                if ($('sc-hh')) $('sc-hh').textContent = hh;
+                if ($('sc-mm')) $('sc-mm').textContent = mm;
+                if ($('sc-ss')) $('sc-ss').textContent = ss;
+                if ($('sc-ms')) $('sc-ms').textContent = '.' + ms;
+
+                // Legacy hidden #clock supaya script lain (kalau ada) tidak break
+                const cl = $('clock'); if (cl) cl.textContent = `${hh}:${mm}:${ss}`;
+
+                // Day & date
+                if ($('sc-day'))  $('sc-day').textContent  = dayNames[now.getDay()];
+                if ($('date'))    $('date').textContent    = `${now.getDate()} ${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+
+                // Aux: week, doy, epoch
+                if ($('sc-week'))  $('sc-week').textContent  = pad(isoWeek(now));
+                const doy = dayOfYear(now);
+                if ($('sc-doy'))   $('sc-doy').textContent   = pad(doy, 3);
+                if ($('sc-epoch')) $('sc-epoch').textContent = Math.floor(now.getTime() / 1000);
+
+                // Year progress bar
+                const diy = daysInYear(now.getFullYear());
+                const pct = Math.min(100, (doy / diy) * 100);
+                if ($('sc-year-fill')) $('sc-year-fill').style.width = pct.toFixed(2) + '%';
+                if ($('sc-year-pct'))  $('sc-year-pct').textContent  = pct.toFixed(1) + '%';
+            }
+
+            tick();
+            // Update tiap ~90ms supaya milis bergerak smooth tanpa over-render
+            setInterval(tick, 90);
+        })();
 
         window.onload = () => {
             initMasterCharts();
@@ -2436,6 +2906,103 @@
                 }
                 startY = null; pulled = 0;
             });
+        })();
+
+        // ===== SERVER-CHECK REMINDER (polling flag himbauan) =====
+        (function serverCheckWatcher() {
+            const panel     = document.getElementById('server-check-panel');
+            const ackBanner = document.getElementById('server-check-ack-banner');
+            const btn       = document.getElementById('scheck-ack-btn');
+            if (!panel || !btn) return;
+
+            const $ = id => document.getElementById(id);
+            const csrf = () => (document.querySelector('meta[name="csrf-token"]')?.content) || '';
+
+            let lastWasActive = false;
+
+            function fmtTime(iso) {
+                if (!iso) return '—';
+                try {
+                    return new Date(iso).toLocaleTimeString('id-ID', { hour12: false }) +
+                           ' · ' + new Date(iso).toLocaleDateString('id-ID', { day: '2-digit', month: 'short' });
+                } catch { return iso; }
+            }
+
+            async function poll() {
+                try {
+                    const r = await fetch('/api/server-check/status', { headers: { 'Accept': 'application/json' } });
+                    if (!r.ok) return;
+                    const data = await r.json();
+
+                    // ---- PANEL himbauan ----
+                    if (data.active) {
+                        panel.hidden = false;
+                        if (data.payload) {
+                            $('scheck-triggered').textContent = fmtTime(data.payload.triggered_at);
+                            $('scheck-count').textContent = String(data.payload.motion_count ?? 0);
+                        }
+                        // Trigger notif cyber + vibrate SEKALI saat baru muncul
+                        if (!lastWasActive) {
+                            if (window.NocCyber) NocCyber.warning(
+                                'Himbauan: cek ruang server. Belum ada motion sejak pagi.',
+                                { title: 'CEK SERVER', duration: 8000 }
+                            );
+                            if (window.NocPwa) NocPwa.alarmVibrate();
+                        }
+                    } else {
+                        panel.hidden = true;
+                    }
+                    lastWasActive = !!data.active;
+
+                    // ---- ACK banner (muncul kalau tadi ada dicek) ----
+                    if (!data.active && data.ack_by && data.ack_at) {
+                        ackBanner.hidden = false;
+                        $('scheck-ack-by').textContent = data.ack_by;
+                        $('scheck-ack-at').textContent = fmtTime(data.ack_at);
+                    } else if (!data.ack_by) {
+                        ackBanner.hidden = true;
+                    }
+                } catch (e) { /* silent */ }
+            }
+
+            btn.addEventListener('click', async () => {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES...';
+                try {
+                    const r = await fetch('/api/server-check/ack', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrf(),
+                            'Accept': 'application/json',
+                        },
+                        credentials: 'same-origin',
+                    });
+                    if (r.ok) {
+                        if (window.NocCyber) NocCyber.success('Terima kasih sudah mengecek server!', { title: 'ACK TERKIRIM' });
+                        // Hide langsung + reset state biar tidak kedip saat next poll
+                        panel.hidden = true;
+                        lastWasActive = false;
+                        await poll();
+                        // Auto-hide ack banner setelah 20 detik supaya tidak numpuk
+                        setTimeout(() => { if (ackBanner) ackBanner.hidden = true; }, 20_000);
+                    } else {
+                        const text = await r.text().catch(() => '');
+                        console.warn('ACK fail HTTP ' + r.status, text.slice(0, 200));
+                        if (window.NocCyber) NocCyber.error('Gagal ack (HTTP ' + r.status + '). Refresh page lalu coba lagi.');
+                    }
+                } catch (e) {
+                    console.error('ACK error:', e);
+                    if (window.NocCyber) NocCyber.error('Error: ' + e.message);
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> SUDAH DICEK';
+                }
+            });
+
+            // Poll pertama saat page load, lalu tiap 60 detik
+            poll();
+            setInterval(poll, 60_000);
         })();
 
     </script>
