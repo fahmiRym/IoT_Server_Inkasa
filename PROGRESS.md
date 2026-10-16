@@ -9,6 +9,45 @@
 
 ---
 
+## 🚀 DEPLOY PRODUCTION (2026-10-16 — commit `b04f7bc`)
+
+**Fitur deployed:**
+- SYS_CLOCK cyber digital (replace clock header → lebih space)
+- Master Log Stream fix overflow (icon-only status)
+- Server-Check Reminder system end-to-end:
+  - Command `noc:server-check-reminder` scheduled daily 15:00 WIB
+  - Scan motion/ dir — kalau 0 motion → kirim Telegram "HIMBAUAN CEK SERVER"
+  - UI panel inline di Master Log card
+  - Tombol SUDAH DICEK → clear + Telegram konfirmasi
+  - Flag `acked_today` → tidak spam reminder lagi hari itu
+- Debug command `noc:server-check` (status/clear/ack-reset)
+
+**Deploy flow:**
+1. `git pull` di server → `b04f7bc` fast-forward (973 lines +)
+2. `docker compose build app` (14s)
+3. `docker compose up -d app` (downtime ~3s)
+4. `config:clear + view:clear + route:clear + config:cache + route:cache`
+
+**Verifikasi:**
+```
+/ → 302 (login redirect) · 0.73s
+/login → 200
+/up → 200 (health)
+/api/server-check/status → 401 (expected tanpa auth)
+Routes: api/server-check/status + api/server-check/ack ✓
+Commands: noc:server-check + noc:server-check-reminder ✓
+```
+
+**Catatan:** tidak ada migration baru di release ini. SMTP masih MAIL_MAILER=log
+(fallback OTP ke Telegram sudah live sejak hotfix 073a1b6).
+
+**Config server (sudah ada):**
+- CACHE_STORE=database ✓ (penting untuk flag server-check persist)
+- VAPID keys ✓
+- TELEGRAM_* ✓
+
+---
+
 ## 🔧 HOTFIX POST-DEPLOY (2026-09-18 — commit `073a1b6`)
 
 **Masalah:** Superadmin (Fahmi) tidak bisa login walau password + OTP benar.
