@@ -14,7 +14,7 @@
         // ===== CACHE BUSTER =====
         // Cek versi UI. Kalau localStorage versi berbeda, unregister SW + clear caches + reload sekali.
         (function () {
-            var UI_VER = '2026-10-16-r18';   // <- bump saat rilis CSS/JS baru
+            var UI_VER = '2026-10-16-r19';   // <- bump saat rilis CSS/JS baru
             var last = null;
             try { last = localStorage.getItem('noc-ui-ver'); } catch (e) {}
             if (last !== UI_VER) {
@@ -1138,17 +1138,18 @@
         .sc-time {
             font-family: 'JetBrains Mono', 'Courier New', monospace;
             font-weight: 700;
-            font-size: clamp(4.5rem, 9vw, 7.2rem);
+            font-size: clamp(2.6rem, 5.5vw, 4.6rem);
             line-height: .95;
             color: var(--green);
             text-shadow: 0 0 2px rgba(10,255,0,.5);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-variant-numeric: tabular-nums;
             display: flex;
             align-items: baseline;
             gap: 2px;
             position: relative;
-            justify-content: center;
+            white-space: nowrap;
+            min-width: 0;
         }
         /* 7-segment faux background — digit "88:88:88" ghost (lebih subtle) */
         .sc-time::before {
@@ -1186,20 +1187,22 @@
         .sc-day {
             font-family: 'Orbitron';
             font-weight: 900;
-            font-size: clamp(3.6rem, 5.6vw, 5.4rem);
-            letter-spacing: 7px;
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            letter-spacing: 5px;
             color: #fff;
             text-shadow: 0 0 2px rgba(255,255,255,.3);
             line-height: 1;
+            white-space: nowrap;
         }
         .sc-date-full {
             font-family: 'JetBrains Mono';
             font-weight: 700;
-            font-size: clamp(1.6rem, 2.3vw, 2.3rem);
+            font-size: clamp(1rem, 1.4vw, 1.5rem);
             color: var(--cyan);
-            letter-spacing: 3px;
-            margin-top: 14px;
+            letter-spacing: 2.5px;
+            margin-top: 10px;
             line-height: 1;
+            white-space: nowrap;
         }
         .sc-aux-row {
             display: flex;
@@ -1262,11 +1265,25 @@
             95% { opacity: .95; }
         }
 
+        /* Container sempit (CCTV card < 820px): stack jam di atas, aux di bawah */
+        @media (max-width: 1400px) {
+            .sc-main {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .sc-aux {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid rgba(0,243,255,.15);
+                padding-top: 12px;
+            }
+        }
         @media (max-width: 700px) {
             .sys-clock { padding: 12px 14px; }
-            .sc-main { grid-template-columns: 1fr; gap: 10px; }
-            .sc-aux { text-align: left; }
-            .sc-aux-row { justify-content: flex-start; }
+            .sc-time { font-size: clamp(2rem, 11vw, 3.5rem); letter-spacing: 1.5px; }
+            .sc-day { font-size: clamp(1.5rem, 6vw, 2.2rem); letter-spacing: 3px; }
+            .sc-date-full { font-size: clamp(.85rem, 3vw, 1.1rem); margin-top: 8px; }
+            .sc-aux-row { justify-content: flex-start; font-size: .55rem; }
             .sc-time .ms { display: none; }
         }
 
