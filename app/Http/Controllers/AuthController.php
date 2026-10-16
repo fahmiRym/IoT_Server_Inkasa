@@ -225,12 +225,32 @@ class AuthController extends Controller
 
     private function generateAndSendOtp(User $user): void
     {
+        // ===== DEDUPE: cegah spam OTP =====
+        // Kalau user baru generate OTP < 60 detik lalu, skip regenerate.
+        // OTP lama masih valid (TTL 5 menit). Browser tetap dapat halaman OTP,
+        // tapi tidak kirim notif baru ke Telegram/email.
+        $lastSentKey = 'otp.last_sent:' . $user->id;
+        $lastSent    = \Illuminate\Support\Facades\Cache::get($lastSentKey);
+
+        if ($lastSent) {
+            $elapsed = now()->diffInSeconds(\Carbon\Carbon::parse($lastSent));
+            if ($elapsed < 60) {
+                \Illuminate\Support\Facades\Log::info(
+                    "OTP dedupe: user={$user->username} elapsed={$elapsed}s < 60s, SKIP send."
+                );
+                return;
+            }
+        }
+
         $code = str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
 
         $user->update([
             'otp_code'       => $code,
             'otp_expires_at' => now()->addMinutes(5),
         ]);
+
+        // Catat waktu generate — basis dedupe berikutnya
+        \Illuminate\Support\Facades\Cache::put($lastSentKey, now()->toIso8601String(), now()->addMinutes(5));
 
         // Kirim via email — kalau MAIL_MAILER=log, hanya masuk ke storage/logs
         try {
